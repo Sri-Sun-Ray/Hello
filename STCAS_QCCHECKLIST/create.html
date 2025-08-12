@@ -28,7 +28,7 @@ if (isset($_SESSION['loco_id'])) {
   <script src="libs/jspdf.plugin.autotable.min.js"></script>
 
   <!-- your application logic -->
-  <script src="js/script.js" defer></script>
+  <script src="script.js" defer></script>
   <style>
     footer {
       position: fixed;
@@ -256,17 +256,17 @@ window.addEventListener("beforeunload", beforeUnloadHandler);
         const stored = localStorage.getItem("locoDetails");
         if (stored) {
           const locoInfo = JSON.parse(stored);
-          const locoIdElem = document.getElementById("loco-id");
+          const locoIdElem = document.getElementById("station-id");
           if (locoIdElem) locoIdElem.value = locoInfo.locoID || "";
-          const locoTypeElem = document.getElementById("loco-type");
+          const locoTypeElem = document.getElementById("station-name");
           if (locoTypeElem) locoTypeElem.value = locoInfo.locoType || "";
-          const brakeTypeElem = document.getElementById("brake-type");
+          const brakeTypeElem = document.getElementById("zone");
           if (brakeTypeElem) brakeTypeElem.value = locoInfo.brakeType || "";
-          const divisionElem = document.getElementById("railway-division");
+          const divisionElem = document.getElementById("division");
           if (divisionElem) divisionElem.value = locoInfo.railwayDivision || "";
-          const shedElem = document.getElementById("shed-name");
+          const shedElem = document.getElementById("intial-date");
           if (shedElem) shedElem.value = locoInfo.shedName || "";
-          const dateElem = document.getElementById("date");
+          const dateElem = document.getElementById("updated-date");
           if (dateElem && locoInfo.inspectionDate) {
             const d = new Date(locoInfo.inspectionDate);
             const year = d.getFullYear();

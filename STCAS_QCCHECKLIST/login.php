@@ -3,7 +3,7 @@ session_start();
 
 try {
     // Database connection
-    $pdo = new PDO("mysql:host=localhost;dbname=loco_info", 'root', 'Hbl@1234');
+    $pdo = new PDO("mysql:host=localhost;dbname=station_info", 'root', 'Hbl@1234');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {

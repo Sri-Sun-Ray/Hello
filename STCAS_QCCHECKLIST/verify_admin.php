@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";  // Update with your database username
 $password = "Hbl@1234";  // Update with your database password
-$dbname = "loco_info";
+$dbname = "station_info";
 
 // Admin password to verify
 $admin_password = 'hbl@123'; // Replace this with your actual admin password for verification

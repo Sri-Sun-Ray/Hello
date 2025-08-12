@@ -1,0 +1,7 @@
+=====================================
+ From: Sushma (EG-YAP-DSK-114/10.10.29.85/Sushma-<907a7a96166c5ba3>)
+  at Fri Jul 25 10:55:26 2025
+-------------------------------------
+ALTER TABLE loco
+ADD COLUMN start_time DATETIME DEFAULT NULL,
+ADD COLUMN completed_time DATETIME DEFAULT NULL;
