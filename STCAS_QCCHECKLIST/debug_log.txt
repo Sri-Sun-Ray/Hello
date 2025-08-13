@@ -265,3 +265,317 @@ Received Data: Array
 )
 
 Received Section ID: 9
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [stationId] => 23678
+    [zone] => Nagpur
+    [division] => ECR
+    [sectionId] => 2.0
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => undefined
+    [zone] => ECR
+    [division] => Nagpur
+    [sectionId] => 2_0
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => undefined
+    [zone] => ECR
+    [division] => Nagpur
+    [sectionId] => 2_0
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => undefined
+    [zone] => ECR
+    [division] => Nagpur
+    [sectionId] => 2_0
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => undefined
+    [zone] => ECR
+    [division] => Nagpur
+    [sectionId] => 2_0
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [stationId] => 3654635
+    [zone] => Nagpur
+    [division] => ECR
+    [sectionId] => 2.0
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [stationId] => 568556
+    [zone] => Mumbai
+    [division] => CR
+    [sectionId] => 2.0
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 432525
+    [zone] => Howrah-COO
+    [division] => ER
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [stationId] => 52667
+    [zone] => Nagpur
+    [division] => CR
+    [sectionId] => 2.0
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => undefined
+    [zone] => CR
+    [division] => Nagpur
+    [sectionId] => 2_0
+)
+
+Received Section ID: 2
+Received Data: 
+Received Data: 
+Received Data: 
+Received Data: 
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [stationId] => 78654
+    [division] => Sholapur
+    [zone] => CR
+    [sectionId] => 2.0
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => undefined
+    [division] => CR
+    [zone] => Sholapur
+    [sectionId] => 2_0
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [stationId] => 8976
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 2.0
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [stationId] => 23456
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 2.0
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [sectionId] => 0.0
+)
+
+Received Data: Array
+(
+    [stationId] => 98765
+    [division] => Ahmedabad
+    [zone] => CR
+    [sectionId] => 2.0
+)
+
+Received Section ID: 2
