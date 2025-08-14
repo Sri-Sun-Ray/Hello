@@ -1,6 +1,4 @@
 <?php
-// Make sure this file is named 'generateReport.php' and is located at c:\xampp\htdocs\STCAS_QCCHECKLIST\
-
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
@@ -33,19 +31,19 @@ try {
                   FROM station
                   WHERE station_id = ? AND railway_zone = ? AND division = ?";
     $stationStmt = $pdo->prepare($stationQuery);
-    $stationStmt->execute([$stationID, $zone, $division]);
+    $stationStmt->execute([$stationID, $division, $zone]);
     $stationDetails = $stationStmt->fetch();
 
     if (!$stationDetails) {
         http_response_code(404);
-        echo json_encode(['success' => false, 'message' => 'Station details not found.']);
+        echo json_encode(['success' => false, 'message' => 'Loco details not found.']);
         exit;
     }
 
     $tableNames = [
         'verify_serial_numbers_of_equipment_as_per_ic',
-        'tower_and_rtu', 'station_tcas', 'relay_installation_and_wiring', 'smocip',
-        'rfid_tags'
+        'loco_kavach', 'emi_filter_box', 'rib_cab_input_box', 'dmi_lp_ocip',
+        'rfid_ps_unit'
     ];
 
     $observations = [];
@@ -62,7 +60,7 @@ try {
                   FROM $tableName
                   WHERE station_id = ? AND railway_zone = ? AND division = ?";
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$stationID, $zone, $division]);
+        $stmt->execute([$stationID, $division, $zone]);
         $tableObservations = $stmt->fetchAll();
 
         foreach ($tableObservations as &$obs) {
