@@ -45,12 +45,13 @@ file_put_contents("debug_log.txt", "Received Section ID: $sectionId\n", FILE_APP
 
 // Define table names associated with each section ID
 $tableNames = [
+    0 => 'station',
     2 => 'verify_serial_numbers_of_equipment_as_per_ic',
-    3 => 'loco_kavach',
-    4 => 'emi_filter_box',
-    5 => 'rib_cab_input_box',
-    6 => 'dmi_lp_ocip',
-    7 => 'rfid_ps_unit',
+    3 => 'tower_and_rtu',
+    4 => 'station_tcas',
+    5 => 'relay_installation_and_wiring',
+    6 => 'smocip',
+    7 => 'rfid_tags',
 ];
 
 // Check if the provided section ID is valid

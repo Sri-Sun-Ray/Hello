@@ -1,3 +1,17 @@
+<?php
+session_start(); 
+if (isset($_SESSION['loco_id'])) {
+    // Locomotive data available in session variables.
+    $locoID = $_SESSION['loco_id'];
+    $locoType = $_SESSION['loco_type'];
+    $brakeType = $_SESSION['brake_type'];
+    $railwayDivision = $_SESSION['railway_division'];
+    $shedName = $_SESSION['shed_name'];
+    $inspectionDate = $_SESSION['inspection_date'];
+} else {
+    echo "No locomotive data available.";
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +28,7 @@
   <script src="libs/jspdf.plugin.autotable.min.js"></script>
 
   <!-- your application logic -->
-  <script src="js/script.js" defer></script>
+
   <style>
     footer {
       position: fixed;
