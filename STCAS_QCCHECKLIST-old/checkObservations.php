@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 // Database connection details
 $servername = "localhost";
-$username = "root";
+$username = "root"; 
 $password = "Hbl@1234";
 $dbname = "station_info";
 
@@ -45,23 +45,13 @@ file_put_contents("debug_log.txt", "Received Section ID: $sectionId\n", FILE_APP
 
 // Define table names associated with each section ID
 $tableNames = [
-    1 => 'document_verification_table',
+    0 => 'station',
     2 => 'verify_serial_numbers_of_equipment_as_per_ic',
-    3 => 'loco_kavach',
-    4 => 'emi_filter_box',
-    5 => 'rib_cab_input_box',
-    6 => 'dmi_lp_ocip',
-    7 => 'rfid_ps_unit',
-    8 => 'loco_antenna_and_gps_gsm_antenna',
-    9 => 'pneumatic_fittings_and_ep_valve_cocks_fixing',
-    10 => 'pressure_sensors_installation_in_loco',
-    11 => 'iru_faviely_units_fixing_for_e70_type_loco',
-    12 => 'psjb_tpm_units_fixing_for_ccb_type_loco',
-    13 => 'sifa_valve_fixing_for_ccb_type_loco',
-    14 => 'pgs_and_speedo_meter_units_fixing',
-    15 => 'rfid_reader_assembly',
-    16 => 'earthing',
-    17 => 'radio_power'
+    3 => 'tower_and_rtu',
+    4 => 'station_tcas',
+    5 => 'relay_installation_and_wiring',
+    6 => 'smocip',
+    7 => 'rfid_tags',
 ];
 
 // Check if the provided section ID is valid
@@ -77,9 +67,9 @@ if (!isset($tableNames[$sectionId])) {
 $table = $tableNames[$sectionId];
 
 // Prepare SQL query to check if observations exist in the table
-$checkQuery = "SELECT COUNT(*) as count FROM $table WHERE loco_id = ? AND shed_name = ? AND railway_division = ?";
+$checkQuery = "SELECT COUNT(*) as count FROM $table WHERE station_id = ? AND railway_zone = ? AND division = ?";
 $checkStmt = $conn->prepare($checkQuery);
-$checkStmt->bind_param("sss", $locoId, $shedName, $railwayDivision);
+$checkStmt->bind_param("sss", $stationId, $zone, $division);
 $checkStmt->execute();
 
 // Fetch result and determine if any observations exist

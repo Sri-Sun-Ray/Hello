@@ -1,15 +1,15 @@
 <?php
 session_start(); 
-if (isset($_SESSION['loco_id'])) {
-    // Locomotive data available in session variables.
-    $locoID = $_SESSION['loco_id'];
-    $locoType = $_SESSION['loco_type'];
-    $brakeType = $_SESSION['brake_type'];
-    $railwayDivision = $_SESSION['railway_division'];
-    $shedName = $_SESSION['shed_name'];
-    $inspectionDate = $_SESSION['inspection_date'];
+if (isset($_SESSION['station_id'])) {
+    // Station data available in session variables.
+    $stationID = $_SESSION['station_id'];
+    $stationName = $_SESSION['station_name'];
+    $zone = $_SESSION['zone'];
+    $division = $_SESSION['division'];
+    $initialDate = $_SESSION['initial_date'];
+    $updateDate = $_SESSION['update_date'];
 } else {
-    echo "No locomotive data available.";
+    echo "No Station data available.";
 }
 ?>
 
@@ -20,7 +20,6 @@ if (isset($_SESSION['loco_id'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dynamic QA Form</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script src = "script.js" defer></script>
    <!-- 3rd‑party libraries (all local) -->
   <script src="libs/jquery-3.6.0.min.js"></script>
   <script src="libs/zxing-browser.min.js"></script>
@@ -64,36 +63,27 @@ if (isset($_SESSION['loco_id'])) {
   </div>
 
   <div class="sidebar">
-    <button class="button" onclick="showSection('0.0')" id="loco-info-button">Station Info</button>
-    <button class="button" onclick="showSection('1_0')" id="button-1" disabled>1.0 Document Verification</button>
-    <button class="button" onclick="showSection('2.0')" id="button-2" disabled>2.0 Verify Serial Numbers Of Equipment as per IC</button>
-    <button class="button" onclick="showSection('3.0')" id="button-3" disabled>3.0 Loco Kavach</button>
-    <button class="button" onclick="showSection('4.0')" id="button-4" disabled>4.0 EMI Filter Box</button>
-    <button class="button" onclick="showSection('5.0')" id="button-5" disabled>5.0 RIB & CAB INPUT BOX</button>
-    <button class="button" onclick="showSection('6.0')" id="button-6" disabled>6.0 DMI (LP-OCIP)</button>
-    <button class="button" onclick="showSection('7.0')" id="button-7" disabled>7.0 RFID PS Unit</button>
-    <button class="button" onclick="showSection('8.0')" id="button-8" disabled>8.0 LOCO Antenna and GPS_GSM Antenna</button>
-    <button class="button" onclick="showSection('9.0')" id="button-9" disabled>9.0 Pneumatic Fittings and Ep Valve,Cocks Fixing</button>
-    <button class="button" onclick="showSection('10.0')" id="button-10" disabled>10.0 Pressure sensors Installation in LOCO</button>
-    <button class="button" onclick="showSection('11.0')" id="button-11" disabled>11.0 IRU (Faviely) Units Fixing For E70 Type Loco</button>
-    <button class="button" onclick="showSection('12.0')" id="button-12" disabled>12.0 PSJB, TPM Units Fixing For CCB Type Loco</button>
-    <button class="button" onclick="showSection('13.0')" id="button-13" disabled>13.0 IRAB (Indian Railway Air-Break)</button>
-    <button class="button" onclick="showSection('14.0')" id="button-14" disabled>14.0 PG's and Speedo Meter Units Fixing</button>
-    <button class="button" onclick="showSection('15.0')" id="button-15" disabled>15.0 RFID Reader Assembly</button>
-    <button class="button" onclick="showSection('16.0')" id="button-16" disabled>16.0 Auto Horn Installation </button>
+    <button class="button" onclick="showSection('0.0')" id="station-info-button">Station Info</button>
+    <button class="button" onclick="showSection('2.0')" id="button-2" disabled>1.0 Verify Serial Numbers Of Equipment as per IC</button>
+    <button class="button" onclick="showSection('3.0')" id="button-3" disabled>2.0 Tower and RTU</button>
+    <button class="button" onclick="showSection('4.0')" id="button-4" disabled>3.0 Station TCAS</button>
+    <button class="button" onclick="showSection('5.0')" id="button-5" disabled>4.0 Relay installation and wiring</button>
+    <button class="button" onclick="showSection('6.0')" id="button-6" disabled>5.0 SMOCIP</button>
+    <button class="button" onclick="showSection('7.0')" id="button-7" disabled>6.0 RFID tags</button>
+    <button class="button" onclick="showSection('8.0')" id="button-8" disabled>7.0 General and safety</button>
   </div>
 
   
   <script>
     window.addEventListener('load', function() {
       // Clear all relevant stored data to ensure a fresh page each time.
-      sessionStorage.removeItem("locoDetails");
+      sessionStorage.removeItem("stationDetails");
       sessionStorage.removeItem("observationsData");
       // Optionally, clear all of sessionStorage (caution: if you have other data you want to keep)
       // sessionStorage.clear();
       // Also clear localStorage if you use it:
-      // localStorage.removeItem("selectedLocoId");
-      // localStorage.removeItem("locoDetails");
+      // localStorage.removeItem("selectedStationId");
+      // localStorage.removeItem("stationDetails");
       
       // Read the URL hash to determine which section to show (e.g., "#0.0")
       const hash = window.location.hash;
@@ -109,38 +99,38 @@ if (isset($_SESSION['loco_id'])) {
   </script>
   
 
-  <!-- Your additional scripts (for handling loco info fetching, etc.) -->
+  <!-- Your additional scripts (for handling station info fetching, etc.) -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const urlParams = new URLSearchParams(window.location.search);
       // If you don't want to prefill based on a query parameter, skip this part
-      const locoId = urlParams.get("loco_id");
-      if (locoId) {
+      const stationId = urlParams.get("station_id");
+      if (stationId) {
         // Optionally remove these lines if you always want a fresh form
-        localStorage.setItem("selectedLocoId", locoId);
+        localStorage.setItem("selectedStationId", stationId);
         // Fetch and fill details if desired. Otherwise, don't populate:
-        // fetch(`getReportById.php?loco_id=${locoId}`)
+        // fetch(`getReportById.php?station_id=${stationId}`)
         //   .then(response => response.json())
         //   .then(data => { /* populate form fields if needed */ })
         //   .catch(error => console.error("Fetch error:", error));
       } else {
         // No query parameter - ensure stored data is not used.
-        localStorage.removeItem("locoDetails");
+        localStorage.removeItem("stationDetails");
       }
     });
 </script>
 <script>
  window.addEventListener('load', function() {
   // Clear only the keys specific to the form data.
-  sessionStorage.removeItem("locoDetails");
+  sessionStorage.removeItem("stationDetails");
   sessionStorage.removeItem("observationsData");
   
-  localStorage.removeItem("selectedLocoId");
-  localStorage.removeItem("locoDetails");
+  localStorage.removeItem("selectedStationId");
+  localStorage.removeItem("stationDetails");
   // Do not remove "user_id" so that the user id remains stored.
 
   // Clear form fields explicitly
-  const fieldIds = ["loco-id", "loco-type", "brake-type", "railway-division", "shed-name", "inspection-date"];
+  const fieldIds = ["station-id", "station-name", "zone", "division", "initial-date", "updated-date"];
   fieldIds.forEach(id => {
     const element = document.getElementById(id);
     if (element) {
@@ -212,39 +202,49 @@ window.addEventListener("beforeunload", beforeUnloadHandler);
 
   </script>
   
-  <!-- Additional scripts (for loco info handling, etc.) -->
+  <!-- Additional scripts (for station info handling, etc.) -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const urlParams = new URLSearchParams(window.location.search);
-      const locoId = urlParams.get("loco_id");
-      if (locoId) {
-        localStorage.setItem("selectedLocoId", locoId);
+      const stationId = urlParams.get("station_id");
+      if (stationId) {
+        localStorage.setItem("selectedStationId", stationId);
         // Set current date if necessary.
-        const dateElem = document.getElementById("date");
-        if (dateElem) {
+        const initialDateElem = document.getElementById("initial-date");
+        if (initialDateElem) {
           const now = new Date();
           const year = now.getFullYear();
           const month = String(now.getMonth() + 1).padStart(2, "0");
           const day = String(now.getDate()).padStart(2, "0");
-          dateElem.value = `${year}-${month}-${day}`;
+          initialDateElem.value = `${year}-${month}-${day}`;
         }
-        fetch(`getReportById.php?loco_id=${locoId}`)
+        const updateDateElem = document.getElementById("updated-date");
+        if (updateDateElem) {
+          const now = new Date();
+          const year = now.getFullYear();
+          const month = String(now.getMonth() + 1).padStart(2, "0");
+          const day = String(now.getDate()).padStart(2, "0");
+          updateDateElem.value = `${year}-${month}-${day}`;
+        }
+        fetch(`getReportById.php?station_id=${stationId}`)
           .then(response => response.json())
           .then(data => {
             if (data.success) {
-              const locoInfo = data.data.locoDetails;
-              if (locoInfo) {
-                localStorage.setItem("locoDetails", JSON.stringify(locoInfo));
-                const locoIdElem = document.getElementById("loco-id");
-                if (locoIdElem) locoIdElem.value = locoInfo.locoID || "";
-                const locoTypeElem = document.getElementById("loco-type");
-                if (locoTypeElem) locoTypeElem.value = locoInfo.locoType || "";
-                const brakeTypeElem = document.getElementById("brake-type");
-                if (brakeTypeElem) brakeTypeElem.value = locoInfo.brakeType || "";
-                const divisionElem = document.getElementById("railway-division");
-                if (divisionElem) divisionElem.value = locoInfo.railwayDivision || "";
-                const shedElem = document.getElementById("shed-name");
-                if (shedElem) shedElem.value = locoInfo.shedName || "";
+              const stationInfo = data.data.stationDetails;
+              if (stationInfo) {
+                localStorage.setItem("stationDetails", JSON.stringify(stationInfo));
+                const stationIdElem = document.getElementById("station-id");
+                if (stationIdElem) stationIdElem.value = stationInfo.stationId || "";
+                const stationNameElem = document.getElementById("station-name");
+                if (stationNameElem) stationNameElem.value = stationInfo.stationName || "";
+                const zoneElem = document.getElementById("zone");
+                if (zoneElem) zoneElem.value = stationInfo.zone || "";
+                const divisionElem = document.getElementById("division");
+                if (divisionElem) divisionElem.value = stationInfo.division || "";
+                const initialDateElem=document.getElementById("initial-date");
+                if (initialDateElem) initialDateElem.value=stationInfo.initialDate || "";
+                const updateDateElem=document.getElementById("updated-date");
+                if (updateDateElem) updateDateElem.value=stationInfo.updatedDate || "";
               }
             } else {
               console.error("Error fetching report details:", data.message);
@@ -252,27 +252,33 @@ window.addEventListener("beforeunload", beforeUnloadHandler);
           })
           .catch(error => console.error("Fetch error:", error));
       } else {
-        localStorage.removeItem("locoDetails");
-        const stored = localStorage.getItem("locoDetails");
+        localStorage.removeItem("stationDetails");
+        const stored = localStorage.getItem("stationDetails");
         if (stored) {
-          const locoInfo = JSON.parse(stored);
-          const locoIdElem = document.getElementById("station-id");
-          if (locoIdElem) locoIdElem.value = locoInfo.locoID || "";
-          const locoTypeElem = document.getElementById("station-name");
-          if (locoTypeElem) locoTypeElem.value = locoInfo.locoType || "";
-          const brakeTypeElem = document.getElementById("zone");
-          if (brakeTypeElem) brakeTypeElem.value = locoInfo.brakeType || "";
+          const stationInfo = JSON.parse(stored);
+          const stationIdElem = document.getElementById("station-id");
+          if (stationIdElem) stationIdElem.value = stationInfo.stationID || "";
+          const stationNameElem = document.getElementById("station-name");
+          if (stationNameElem) stationNameElem.value = stationInfo.stationName || "";
+          const zoneElem = document.getElementById("zone");
+          if (zoneElem) zoneElem.value = stationInfo.zone || "";
           const divisionElem = document.getElementById("division");
-          if (divisionElem) divisionElem.value = locoInfo.railwayDivision || "";
-          const shedElem = document.getElementById("intial-date");
-          if (shedElem) shedElem.value = locoInfo.shedName || "";
-          const dateElem = document.getElementById("updated-date");
-          if (dateElem && locoInfo.inspectionDate) {
-            const d = new Date(locoInfo.inspectionDate);
+          if (divisionElem) divisionElem.value = stationInfo.division || "";
+          const initialDateElem = document.getElementById("initial-date");
+          if (initialDateElem && stationInfo.initialDate) {
+            const d = new Date(stationInfo.initialDate);
             const year = d.getFullYear();
             const month = String(d.getMonth() + 1).padStart(2, "0");
             const day = String(d.getDate()).padStart(2, "0");
-            dateElem.value = `${year}-${month}-${day}`;
+            initialDateElem.value = `${year}-${month}-${day}`;
+          }
+          const updateDateElem = document.getElementById("updated-date");
+          if (updateDateElem && stationInfo.updatedDate) {
+            const d = new Date(stationInfo.updatedDate);
+            const year = d.getFullYear();
+            const month = String(d.getMonth() + 1).padStart(2, "0");
+            const day = String(d.getDate()).padStart(2, "0");
+            updateDateElem.value = `${year}-${month}-${day}`;
           }
         }
       }

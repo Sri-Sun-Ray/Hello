@@ -19,7 +19,7 @@ if (!$stationID) {
     exit;
 }
 
-$update = $conn->prepare("UPDATE station SET completed_time = ? WHERE station_Id = ?");
+$update = $conn->prepare("UPDATE station SET completed_time = ? WHERE station_id = ?");
 $update->bind_param("si", $currentTime, $stationID);
 
 if ($update->execute()) {

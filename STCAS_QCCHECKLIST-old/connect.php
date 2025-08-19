@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $currentTime = date("Y-m-d H:i:s");
 
-    $check = $conn->prepare("SELECT 1 FROM station WHERE Station_Id = ?");
+    $check = $conn->prepare("SELECT 1 FROM station WHERE station_id = ?");
     $check->bind_param("i", $stationId);
     $check->execute();
     $check->store_result();
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['success' => true, 'message' => 'ℹ️ Station already exists. Start time preserved.']);
     } else {
         $insert = $conn->prepare("INSERT INTO station 
-            (Station_Id, Station_Name, Zone, Division, Initial_Date, Updated_Date, start_time, completed_time)
+            (station_id, station_name, railway_zone, division, initial_date, updated_date, start_time, completed_time)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $insert->bind_param("isssssss", $stationId, $stationName, $zone, $division, $initialDate, $updatedDate, $currentTime, $currentTime);
         if ($insert->execute()) {

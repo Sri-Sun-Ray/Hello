@@ -1,6 +1,5 @@
-let unsavedChanges = false;
+let unsavedChanges=false;
 const rowImages = new Map(); // Store images for each row
-
 // Delegated event listener: if an <input>, <select>, or <textarea> changes anywhere
 // in the document, set unsavedChanges=true.
 document.addEventListener("change", function (event) {
@@ -128,11 +127,21 @@ async function showSection(section) {
 
   console.log("stationInfo is:", stationInfo);
 
-  const stationIdVal = document.getElementById("station-id")?.value;
-  const divisionVal = document.getElementById("division")?.value;
-  const zoneVal = document.getElementById("zone")?.value;
+  /*const stationId = document.getElementById("station-id")?.value;
+  const division = document.getElementById("division")?.value;
+  const zone = document.getElementById("zone")?.value;*/
+  const stationId=stationInfo.stationId;
+  const division=stationInfo.division;
+  const zone=stationInfo.zone;
+  
 
-  const exists = await checkExistingObservations(stationIdVal, divisionVal, zoneVal, section);
+  let backendSectionId=section;
+    if (["0.0","2.0","3.0","4.0","5.0","6.0","7.0"].includes(section)) {
+    backendSectionId = parseInt(section, 10);
+  }
+  console.log("This is section Id",backendSectionId);
+  
+  const exists = await checkExistingObservations(stationId, division, zone, backendSectionId);
 
   setTimeout(() => {
     const actionButtons = document.querySelector('.action-buttons');
@@ -298,22 +307,22 @@ async function showSection(section) {
     
     // Check if we came from the Edit button in viewReports.php
     const urlParams = new URLSearchParams(window.location.search);
-    const locoIdFromUrl = urlParams.get('loco_id');
+    const stationIdFromUrl = urlParams.get('station_id');
     
     // If we came from the Edit button, show Get Details and hide Save
-    if (locoIdFromUrl) {
+    if (stationIdFromUrl) {
       saveBtnDisplay = "none";
       getDetailsBtnDisplay = "inline-block";
     }
     mainContent.innerHTML += `
       <div class="actio-buttons">
          <button
-          id="save-loco-info-btn"
+          id="station-info-btn"
           type="button"
-          onclick="saveLocoInfo('loco-info')"
+          onclick="saveStationInfo('station-info')"
           style="display:${saveBtnDisplay};"
         >
-          Save Loco Info
+          Save Station Info
         </button>
         <button
           id="get-details-btn"
@@ -326,79 +335,7 @@ async function showSection(section) {
         
       </div>
     `;
-  }else if (section === "1_0") {
-    // For section 1_0
-    mainContent.innerHTML += `
-      <h3 class="document-heading"><b>Document verification:</b> Verify availability of the following documents:</h3>
-      <div id="section-1_0">
-        <table class="observations" id="observations-section-1_0">
-          <thead>
-            <tr>
-              <th>S_No</th>
-              <th>Description</th>
-              <th>Observation</th>
-              <th>Remarks/Comments</th> 
-            </tr>
-          </thead>
-          <tbody id="observations-tbody-1_0">
-            <!-- Row 1 -->
-            <tr id="row-1">
-              <td>1.1</td>
-              <td class="observation_text">Annexure of IC (Inspection Certificate) issued by RDSO.</td>
-              <td class="select">
-                <select id="status-dropdown" onchange="highlightSelect(this)">
-                  <option value="Select">Select</option>
-                  <option value="Available">Available</option>
-                  <option value="Not Available">Not Available</option>
-                </select>
-              </td>
-              <td class="remarks">
-                <textarea placeholder="Add comments here if NOT OK..." rows="2" cols="20"></textarea><br>
-              </td>
-            </tr>
-             <tr id="row-2">
-      <td>1.2</td>
-      <td class="observation_text">Loco Allocation Letter</td>
-      <td>
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-                  <option value="Select">Select</option>
-                  <option value="Available">Available</option>
-                  <option value="Not Available">Not Available</option>
-                </select>
-
-      </td>
-      <td class ="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      
-
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  
-      <div class="action-buttons">
-    <!-- Update Button: Hidden by default -->
-    <button type="button" 
-            id="update-btn" 
-            style="background-color: blue; color: white; display: none;" 
-            onclick="updateObservation('1_0')">
-      Update
-    </button>
-
-    <!-- Save Button: Visible by default -->
-    <button type="button" 
-            id="save-btn" 
-            style="display: inline-block;" 
-            onclick="saveObservation('1_0')">
-      Save
-    </button>
-
-    <!-- Get Details Button: Visible by default -->
-    <button id="get-details-btn" onclick="getDetails()">Get Details</button>
-      </div>`;
-
-  } else if (section === "2.0") {
+  }else if (section === "2.0") {
     // For all other sections, add Save Observation button
     mainContent.innerHTML += `
       <h3 class="section-heading">Equipment serial number verification:</h3>
@@ -4614,102 +4551,7 @@ async function showSection(section) {
 </div>
    
     </tr>
-   <!-- <tr id="row-1140">
-      <td>5.7</td>
-      <td class="observation_text"><b>Earthing:</b>Ensure that earthing done with 10Sq.mm Yellow/Green cable for Relay Interface Box and Cab Input box.</td>
-      <td class="select">
-        <select id="status-dropdown"  onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(1140)">Add Image</button>
-<div class="upload-options" id="upload-options-1140" style="display: none;">
-  <button class="add-image" onclick="startCamera(1140)">Camera</button>
-  <label for="file-input-1140" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-1140" accept="image/*" multiple onchange="displayImages(this, 1140)">
-</div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-1140"></div>
-      <!-- Camera Container -->
-<div id="camera-container-1140" style="display: none;">
-  <video id="camera-1140" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(1140)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(1140)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(1140)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-1140" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
    
-    </tr>
-    <tr id="row-1240">
-      <td>5.8</td>
-      <td class="observation_text"><b>Earth Cable:</b>Ensure that cable continuity, lug's crimping and tightness of earth cable.</td>
-      <td class="select">
-        <select id="status-dropdown"  onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(1240)">Add Image</button>
-<div class="upload-options" id="upload-options-1240" style="display: none;">
-  <button class="add-image" onclick="startCamera(1240)">Camera</button>
-  <label for="file-input-1240" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-1240" accept="image/*" multiple onchange="displayImages(this, 1240)">
-</div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-1240"></div>
-      <!-- Camera Container -->
-<div id="camera-container-1240" style="display: none;">
-  <video id="camera-1240" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(1240)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(1240)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(1240)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-1240" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-   
-    </tr>
-    <tr id="row-1340">
-      <td>5.9</td>
-      <td class="observation_text"><b>Earth Cable routing:</b>Ensure that the earth cables are routed through the conduit and routed properly and tied with metal clamps / cable ties.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing done</option>
-          <option value="Routing Not Done">Routing Not done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(1340)">Add Image</button>
-<div class="upload-options" id="upload-options-1340" style="display: none;">
-  <button class="add-image" onclick="startCamera(1340)">Camera</button>
-  <label for="file-input-1340" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-1340" accept="image/*" multiple onchange="displayImages(this, 1340)">
-</div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-1340"></div>
-      <!-- Camera Container -->
-<div id="camera-container-1340" style="display: none;">
-  <video id="camera-1340" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(1340)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(1340)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(1340)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-1340" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-   
-    </tr>-->
 
     </tbody>
       </table>
@@ -4900,224 +4742,7 @@ async function showSection(section) {
   <canvas id="canvas-45" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
-   <!-- <tr id="row-46">
-      <td>6.6</td>
-      <td class="observation_text"><b>Cable routing:</b>Ensure all the cables routed without any stress, without sharp bends and tied with metal clamps.</td>
-     <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing done</option>
-          <option value="Routing Not Done">Routing Not done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-     <td>
-       <button class="add-image" onclick="showUploadOptions(46)">Add Image</button>
-<div class="upload-options" id="upload-options-46" style="display: none;">
-  <button class="add-image" onclick="startCamera(46)">Camera</button>
-  <label for="file-input-46" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-46" accept="image/*" multiple onchange="displayImages(this, 46)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-46"></div>
-<!-- Camera Container -->
-<div id="camera-container-46" style="display: none;">
-  <video id="camera-46" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(46)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(46)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(46)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-46" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-    <tr id="row-47">
-      <td>6.7</td>
-      <td class="observation_text"><b>Cable Booting:</b>Verify that the cable booting is not damaged or peeled during and after cable routing, and ensure circular connectors are fully locked with the DMI unit enclosure receptacles</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-    <td>
-       <button class="add-image" onclick="showUploadOptions(47)">Add Image</button>
-<div class="upload-options" id="upload-options-47" style="display: none;">
-  <button class="add-image" onclick="startCamera(47)">Camera</button>
-  <label for="file-input-47" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-47" accept="image/*" multiple onchange="displayImages(this, 47)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-47"></div>
-<!-- Camera Container -->
-<div id="camera-container-47" style="display: none;">
-  <video id="camera-47" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(47)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(47)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(47)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-47" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-    <tr id="row-48">
-      <td>6.8</td>
-      <td class="observation_text"><b>DMI-1 Cable Connection:</b>DMI-1 cable should be connected to MC1 at Loco Kavach unit.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(48)">Add Image</button>
-<div class="upload-options" id="upload-options-48" style="display: none;">
-  <button class="add-image" onclick="startCamera(48)">Camera</button>
-  <label for="file-input-48" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-48" accept="image/*" multiple onchange="displayImages(this, 48)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-48"></div>
-<!-- Camera Container -->
-<div id="camera-container-48" style="display: none;">
-  <video id="camera-48" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(48)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(48)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(48)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-48" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-    <tr id="row-49">
-      <td>6.9</td>
-      <td class="observation_text"><b>DMI 2 Cable Connection:</b>DMI-2 cable should be connected to MC3 at Loco Kavach unit.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(49)">Add Image</button>
-<div class="upload-options" id="upload-options-49" style="display: none;">
-  <button class="add-image" onclick="startCamera(49)">Camera</button>
-  <label for="file-input-49" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-49" accept="image/*" multiple onchange="displayImages(this, 49)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-49"></div>
-<!-- Camera Container -->
-<div id="camera-container-49" style="display: none;">
-  <video id="camera-49" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(49)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(49)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(49)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-49" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-       </tr>
- <tr id="row-1449">
-      <td>6.10</td>
-      <td class="observation_text"><b>Earthing:</b>Ensure that earthing done with 10Sq.mm Yellow/Green cable for
- LP-OCIP -1 and LP-OCIP-2.</td>
-      <td class="select">
-      <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(1449)">Add Image</button>
-<div class="upload-options" id="upload-options-1449" style="display: none;">
-  <button class="add-image" onclick="startCamera(1449)">Camera</button>
-  <label for="file-input-1449" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-1449" accept="image/*" multiple onchange="displayImages(this, 1449)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-1449"></div>
-<!-- Camera Container -->
-<div id="camera-container-1449" style="display: none;">
-  <video id="camera-1449" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(1449)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(1449)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(1449)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-1449" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-       </tr>
- <tr id="row-1549">
-      <td>6.11</td>
-      <td class="observation_text"><b>Earth Cable:</b>Ensure that cable continuity,lug's crimping and tightness of earth cable.</td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(1549)">Add Image</button>
-<div class="upload-options" id="upload-options-1549" style="display: none;">
-  <button class="add-image" onclick="startCamera(1549)">Camera</button>
-  <label for="file-input-1549" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-1549" accept="image/*" multiple onchange="displayImages(this, 1549)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-1549"></div>
-<!-- Camera Container -->
-<div id="camera-container-1549" style="display: none;">
-  <video id="camera-1549" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(1549)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(1549)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(1549)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-1549" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-       </tr>
- <tr id="row-1649">
-      <td>6.12</td>
-      <td class="observation_text"><b>Earth Cable routing:</b>Ensure that the earth cables are routed through the conduit and routed properly and tied with metal clamps / cable ties.</td>
-      <td class="select">
-        
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing done</option>
-          <option value="Routing Not Done">Routing Not done</option>
-        </select>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(1649)">Add Image</button>
-<div class="upload-options" id="upload-options-1649" style="display: none;">
-  <button class="add-image" onclick="startCamera(1649)">Camera</button>
-  <label for="file-input-1649" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-1649" accept="image/*" multiple onchange="displayImages(this, 1649)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-1649"></div>
-<!-- Camera Container -->
-<div id="camera-container-1649" style="display: none;">
-  <video id="camera-1649" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(1649)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(1649)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(1649)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-1649" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-       </tr>-->
+  
     </tbody>
       </table>
       </div>
@@ -5290,12 +4915,13 @@ Fixing proper Brackets (Point sleeper Bracket & Normal Sleeper Bracket) as per d
          <button id="get-details-btn" onclick="getDetails()">Get Details</button>
       </div>
     ;`
-  } else if (section === "8.0") {
+  }  
+  else if (section === "8.0") {
     // For all other sections, add Save Observation button
     mainContent.innerHTML += `
-      <h3 class="section-heading"> LOCO Antenna and GPS/GSM Antenna Observations</h3>
-       <div class="table-container">
-      <table class="observations" id="observations-section-8_0">
+      <h3 class="section-heading">RFID PS Unit Observations</h3>
+      <div class="table-container"> 
+      <table class="observations" id="observations-section-7_0">
         <thead>
           <tr>
             <th>S_No</th>
@@ -5305,73 +4931,42 @@ Fixing proper Brackets (Point sleeper Bracket & Normal Sleeper Bracket) as per d
             <th>Image</th>
           </tr>
         </thead>
-        <tbody id="observations-tbody-8_0">
-          <tr id="row-56">
+        <tbody id="observations-tbody-7_0">
+          <tr id="row-510">
       <td>8.1</td>
       <td class="observation_text">Verification of Safety Practices as per Safety Instructions 5 16 72 0014</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
+          <option value="Torquing done">Torquing done</option>
+          <option value="Torquing Not done">Torquing Not done</option>
         </select>
       </td>
       <td class="remarks">
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(56)">Add Image</button>
-<div class="upload-options" id="upload-options-56" style="display: none;">
-  <button class="add-image" onclick="startCamera(56)">Camera</button>
-  <label for="file-input-56" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-56" accept="image/*" multiple onchange="displayImages(this, 56)">
+       <button class="add-image" onclick="showUploadOptions(51)">Add Image</button>
+<div class="upload-options" id="upload-options-51" style="display: none;">
+  <button class="add-image" onclick="startCamera(51)">Camera</button>
+  <label for="file-input-51" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-51" accept="image/*" multiple onchange="displayImages(this, 51)">
 </div>
 <!-- Container for multiple images --> 
-<div id="image-container-56"></div>
+<div id="image-container-51"></div>
 <!-- Camera Container -->
-<div id="camera-container-56" style="display: none;">
-  <video id="camera-56" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(56)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(56)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(56)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-56" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-51" style="display: none;">
+  <video id="camera-51" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(51)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(51)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(51)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-51" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
-    <tr id="row-57">
+    <tr id="row-520">
       <td>8.2</td>
       <td class="observation_text">Procedures for STCAS and Tower I&C. 5 16 76 0009 & 5 16 76 0010</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(57)">Add Image</button>
-<div class="upload-options" id="upload-options-57" style="display: none;">
-  <button class="add-image" onclick="startCamera(57)">Camera</button>
-  <label for="file-input-57" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-57" accept="image/*" multiple onchange="displayImages(this, 57)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-57"></div>
-<!-- Camera Container -->
-<div id="camera-container-57" style="display: none;">
-  <video id="camera-57" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(57)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(57)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(57)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-57" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-    <tr id="row-58">
-      <td>8.3</td>
-      <td class="observation_text">Training to field persons and S&T Staff.</td>
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
@@ -5382,25 +4977,56 @@ Fixing proper Brackets (Point sleeper Bracket & Normal Sleeper Bracket) as per d
       <td class="remarks">
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(58)">Add Image</button>
-<div class="upload-options" id="upload-options-58" style="display: none;">
-  <button class="add-image" onclick="startCamera(58)">Camera</button>
-  <label for="file-input-58 " class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-58" accept="image/*" multiple onchange="displayImages(this, 58)">
+      <td>
+       <button class="add-image" onclick="showUploadOptions(52)">Add Image</button>
+<div class="upload-options" id="upload-options-52" style="display: none;">
+  <button class="add-image" onclick="startCamera(52)">Camera</button>
+  <label for="file-input-52" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-52" accept="image/*" multiple onchange="displayImages(this, 52)">
 </div>
 <!-- Container for multiple images --> 
-<div id="image-container-58"></div>
+<div id="image-container-52"></div>
 <!-- Camera Container -->
-<div id="camera-container-58" style="display: none;">
-  <video id="camera-58" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(58)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(58)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(58)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-58" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-52" style="display: none;">
+  <video id="camera-52" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(52)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(52)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(52)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-52" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
-    <tr id="row-59">
+    <tr id="row-530">
+      <td>8.3</td>
+      <td class="observation_text">Training to field persons and S&T Staff.</td>
+      <td class="select">
+        <select id="status-dropdown" onchange="highlightSelect(this)">
+          <option value="Select">Select</option>
+          <option value="Routing Done">Routing done</option>
+          <option value="Routing Not Done">Routing Not done</option>
+        </select>
+      </td>
+      <td class="remarks">
+        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
+      </td>
+      <td>
+       <button class="add-image" onclick="showUploadOptions(53)">Add Image</button>
+       <div class="upload-options" id="upload-options-53" style="display: none;">
+       <button class="add-image" onclick="startCamera(53)">Camera</button>
+       <label for="file-input-53" class="upload-label">Upload from Device</label>
+       <input type="file" id="file-input-53" accept="image/*" multiple onchange="displayImages(this, 53)">
+       </div>
+      <!-- Container for multiple images --> 
+      <div id="image-container-53"></div>
+      <!-- Camera Container -->
+      <div id="camera-container-53" style="display: none;">
+      <video id="camera-53" width="100%" height="auto" autoplay></video>
+      <button class="add-image" onclick="captureImage(53)">Capture Image</button>
+      <button class="add-image" onclick="stopCamera(53)">Stop Camera</button>
+      <button class="reverse-camera" onclick="switchCamera(53)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+      <canvas id="canvas-53" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+      </div>
+    </tr>
+    <tr id="row-540">
       <td>8.4</td>
       <td class="observation_text">Documents at site;
 -Relay Interface drawing (Bell test copies)
@@ -5419,306 +5045,66 @@ PCCL</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
+          <option value="Locked">Locked</option>
+          <option value="Not Locked">Not Locked</option>
         </select>
       </td>
       <td class="remarks">
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
        <td>
-       <button class="add-image" onclick="showUploadOptions(59)">Add Image</button>
-<div class="upload-options" id="upload-options-59" style="display: none;">
-  <button class="add-image" onclick="startCamera(59)">Camera</button>
-  <label for="file-input-59" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-59" accept="image/*" multiple onchange="displayImages(this, 59)">
+       <button class="add-image" onclick="showUploadOptions(54)">Add Image</button>
+<div class="upload-options" id="upload-options-54" style="display: none;">
+  <button class="add-image" onclick="startCamera(54)">Camera</button>
+  <label for="file-input-54" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-54" accept="image/*" multiple onchange="displayImages(this, 54)">
 </div>
 <!-- Container for multiple images --> 
-<div id="image-container-59"></div>
+<div id="image-container-54"></div>
 <!-- Camera Container -->
-<div id="camera-container-59" style="display: none;">
-  <video id="camera-59" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(59)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(59)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(59)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-59" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-54" style="display: none;">
+  <video id="camera-54" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(54)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(54)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(54)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-54" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
-    </tr>
-    <tr id="row-60">
+       </tr>
+       <tr id="row-5400">
       <td>8.5</td>
       <td class="observation_text">Workmanship  and quality of work
 (Check whether all connections are made through crimped eyelets and are numbered with PVC cables marker rings)</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
+          <option value="Locked">Locked</option>
+          <option value="Not Locked">Not Locked</option>
         </select>
       </td>
       <td class="remarks">
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
        <td>
-       <button class="add-image" onclick="showUploadOptions(60)">Add Image</button>
-       <div class="upload-options" id="upload-options-60" style="display: none;">
-       <button class="add-image" onclick="startCamera(60)">Camera</button>
-       <label for="file-input-60" class="upload-label">Upload from Device</label>
-       <input type="file" id="file-input-60" accept="image/*" multiple onchange="displayImages(this, 60)">
-       </div>
-       <!-- Container for multiple images --> 
-       <div id="image-container-60"></div>
-       <!-- Camera Container -->
-       <div id="camera-container-60" style="display: none;">
-      <video id="camera-60" width="100%" height="auto" autoplay></video>
-      <button class="add-image" onclick="captureImage(60)">Capture Image</button>
-      <button class="add-image" onclick="stopCamera(60)">Stop Camera</button>
-      <button class="reverse-camera" onclick="switchCamera(60)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-      <canvas id="canvas-60" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-      </div>
-    </tr>
-    <!--<tr id="row-61">
-      <td>8.6</td>
-      <td class="observation_text"><b>GPS/GSM Antenna and Cable Installation:</b>Are the GPS and GSM cables clearly labeled and correctly connected to their respective GPS and GSM antenna on both sides of the locomotive?</td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(61)">Add Image</button>
-       <div class="upload-options" id="upload-options-61" style="display: none;">
-       <button class="add-image" onclick="startCamera(61)">Camera</button>
-       <label for="file-input-61" class="upload-label">Upload from Device</label>
-       <input type="file" id="file-input-61" accept="image/*" multiple onchange="displayImages(this, 61)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-61"></div>
-      <!-- Camera Container -->
-      <div id="camera-container-61" style="display: none;">
-      <video id="camera-61" width="100%" height="auto" autoplay></video>
-      <button class="add-image" onclick="captureImage(61)">Capture Image</button>
-      <button class="add-image" onclick="stopCamera(61)">Stop Camera</button>
-      <button class="reverse-camera" onclick="switchCamera(61)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-      <canvas id="canvas-61" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-      </div>
-    </tr>
-  <tr id="row-62">
-      <td>8.7</td>
-      <td class="observation_text"> 
-      <b>Antenna Cables Routing:</b><br>
-      Verify that cables from the two RF antenna and GPS/GSM antennae are routed through a 2” steel-reinforced conduit.
-      </td>
-        <td class = "select">
-           <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing done</option>
-          <option value="Routing Not Done">Routing Not done</option>
-        </select>
-
-
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(62)">Add Image</button>
-       <div class="upload-options" id="upload-options-62" style="display: none;">
-      <button class="add-image" onclick="startCamera(62)">Camera</button>
-      <label for="file-input-62" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-62" accept="image/*" multiple onchange="displayImages(this, 62)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-62"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-62" style="display: none;">
-     <video id="camera-62" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(62)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(62)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(62)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-62" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-623">
-      <td>8.7.1</td>
-      <td class="observation_text"> 
-      <b>Antenna Cables Routing:</b><br>
-     Ensure the conduit is securely clamped to the roof using clamps welded to the rooftop, as per the installation drawing.
-      </td>
-        <td class = "select">
-           <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(623)">Add Image</button>
-       <div class="upload-options" id="upload-options-623" style="display: none;">
-      <button class="add-image" onclick="startCamera(623)">Camera</button>
-      <label for="file-input-623" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-623" accept="image/*" multiple onchange="displayImages(this, 623)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-623"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-623" style="display: none;">
-     <video id="camera-623" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(623)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(623)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(623)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-623" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-<tr id="row-624">
-      <td>8.7.2</td>
-      <td class="observation_text"> 
-      <b>Antenna Cables Routing:</b><br>
-     Confirm the conduit is routed into the Loco cabin through the elbow pipe installed in the flasher unit on the roof.
-      </td>
-        <td class = "select">
-          <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(624)">Add Image</button>
-       <div class="upload-options" id="upload-options-624" style="display: none;">
-      <button class="add-image" onclick="startCamera(624)">Camera</button>
-      <label for="file-input-624" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-624" accept="image/*" multiple onchange="displayImages(this, 624)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-624"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-624" style="display: none;">
-     <video id="camera-624" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(624)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(624)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(624)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-624" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-625">
-      <td>8.7.3</td>
-      <td class="observation_text"> 
-      <b>Antenna Cables Routing:</b><br>
-     Ensure the conduit pipe and elbow are sourced from the Loco Kavach Installation Kit.
-      </td>
-        <td class = "select">
-          <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(625)">Add Image</button>
-       <div class="upload-options" id="upload-options-625" style="display: none;">
-      <button class="add-image" onclick="startCamera(625)">Camera</button>
-      <label for="file-input-625" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-625" accept="image/*" multiple onchange="displayImages(this, 625)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-625"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-625" style="display: none;">
-     <video id="camera-625" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(625)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(625)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(625)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-625" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-  <tr id="row-699">
-      <td>8.7.4</td>
-      <td class="observation_text"> 
-      <b>Antenna Cables Routing:</b><br>
-    Verify that RTV Silicone compound (from the Loco Kavach Installation Kit) is applied around all open conduit and cable entry joints to prevent ingress of dust,water, etc.
-      </td>
-        <td class = "select">
-       <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(699)">Add Image</button>
-       <div class="upload-options" id="upload-options-699" style="display: none;">
-      <button class="add-image" onclick="startCamera(699)">Camera</button>
-      <label for="file-input-699" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-699" accept="image/*" multiple onchange="displayImages(this, 699)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-699"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-699" style="display: none;">
-     <video id="camera-699" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(699)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(699)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(699)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-699" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-
-
-    <tr id="row-63">
-      <td>8.8</td>
-      <td class="observation_text"><b>Red oxide coating:</b>Ensure that all welded portions should be treated with red oxide coating, before painted with RAL7032 (pebble grey / Smoke Gray ) paint, to avoid corrosion. </td>
-        <td class = "select">
-          <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Applied">Applied</option>
-          <option value="Not Applied">Not Applied</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(63)">Add Image</button>
-       <div class="upload-options" id="upload-options-63" style="display: none;">
-      <button class="add-image" onclick="startCamera(63)">Camera</button>
-      <label for="file-input-63" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-63" accept="image/*" multiple onchange="displayImages(this, 63)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-63"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-63" style="display: none;">
-     <video id="camera-63" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(63)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(63)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(63)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-63" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr> -->
+       <button class="add-image" onclick="showUploadOptions(54)">Add Image</button>
+<div class="upload-options" id="upload-options-54" style="display: none;">
+  <button class="add-image" onclick="startCamera(54)">Camera</button>
+  <label for="file-input-54" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-54" accept="image/*" multiple onchange="displayImages(this, 54)">
+</div>
+<!-- Container for multiple images --> 
+<div id="image-container-54"></div>
+<!-- Camera Container -->
+<div id="camera-container-54" style="display: none;">
+  <video id="camera-54" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(54)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(54)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(54)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-54" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+</div>
+       </tr>
      </tbody>
       </table>
-       </div>
+      </div>
       <div class="action-buttons">
         <!-- New UPDATE button: -->
       <button type="button" 
@@ -5730,2807 +5116,9 @@ PCCL</td>
         <button type="button" id= "save-btn" style = "display: inline-block;"  onclick="if(validateMandatoryImages('8_0')) { saveObservation('8_0'); }">Save</button>
          <button id="get-details-btn" onclick="getDetails()">Get Details</button>
       </div>
-
-    ;`
-  }  else if (section === "9.0") {
-    // For all other sections, add Save Observation button
-    mainContent.innerHTML += `
-      <h3 class="section-heading">Pneumatic Fittings and Ep Valve Cocks Fixing Observations</h3>
-       <div  class="table-container">
-      <table class="observations" id="observations-section-9_0">
-        <thead>
-          <tr>
-            <th>S_No</th>
-            <th>Description</th>
-            <th>Observation</th>
-            <th>Remarks/Comments</th>
-            <th>Image</th>
-          </tr>
-        </thead>
-        <tbody id="observations-tbody-9_0">
-          <tr id="row-64">
-      <td>9.1</td>
-      <td class="observation_text"><b>Pneumatic fittings:</b>Confirm that all pipes and fittings used in the assembly are from the approved BOM and sourced from the I and C kit supplied by the factory.Any locally procured items must be checked for compliance with the approved BOM</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(64)">Add Image</button>
-       <div class="upload-options" id="upload-options-64" style="display: none;">
-      <button class="add-image" onclick="startCamera(64)">Camera</button>
-      <label for="file-input-64" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-64" accept="image/*" multiple onchange="displayImages(this, 64)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-64"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-64" style="display: none;">
-     <video id="camera-64" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(64)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(64)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(64)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-64" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-
-    <tr id="row-65">
-      <td>9.2</td>
-      <td class="observation_text"><b>Copper Pipes:</b>Ensure that copper pipes are bent using appropriate bending tool, and there no kinks or sharp bends in the pipe.</td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(65)">Add Image</button>
-       <div class="upload-options" id="upload-options-65" style="display: none;">
-      <button class="add-image" onclick="startCamera(65)">Camera</button>
-      <label for="file-input-65" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-65" accept="image/*" multiple onchange="displayImages(this, 65)">
-     </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-65"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-65" style="display: none;">
-     <video id="camera-65" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(65)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(65)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(65)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-65" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-66">
-      <td>9.3</td>
-      <td class="observation_text"><b>Copper Tube:</b>Ensure that copper tube length is measured with respect to the connectivity from loco pneumatic to EP Valve, BP cock, Horn cock and valve arrangements.</td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(66)">Add Image</button>
-       <div class="upload-options" id="upload-options-66" style="display: none;">
-      <button class="add-image" onclick="startCamera(66)">Camera</button>
-      <label for="file-input-66" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-66" accept="image/*" multiple onchange="displayImages(this, 66)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-66"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-66" style="display: none;">
-     <video id="camera-66" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(66)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(66)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(66)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-66" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-67">
-      <td>9.4</td>
-      <td class="observation_text"><b>Copper pipe connections:</b>Ensure that copper pipe connections made properly with approved make (Ex. Fluid Control) ferrules and TEE-joints used.</td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(67)">Add Image</button>
-       <div class="upload-options" id="upload-options-67" style="display: none;">
-      <button class="add-image" onclick="startCamera(67)">Camera</button>
-      <label for="file-input-67" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-67" accept="image/*" multiple onchange="displayImages(this, 67)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-67"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-67" style="display: none;">
-     <video id="camera-67" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(67)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(67)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(67)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-67" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-68">
-      <td>9.5</td>
-      <td class="observation_text"><b>Threaded Connections:</b>All threaded connections must be sealed with loctite 567 (Not With Teflon Tape), which is supplied in the IandC kit.</td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(68)">Add Image</button>
-       <div class="upload-options" id="upload-options-68" style="display: none;">
-      <button class="add-image" onclick="startCamera(68)">Camera</button>
-      <label for="file-input-68" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-68" accept="image/*" multiple onchange="displayImages(this, 68)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-68"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-68" style="display: none;">
-     <video id="camera-68" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(68)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(68)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(68)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-68" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-     <tr id="row-69">
-      <td>9.6</td>
-      <td class="observation_text"><b>Pneumatic Lines Connections:</b>Check the pneumatic lines with a soap solution to make sure there are no loose connections and no air bubbles should be seen.</td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(69)">Add Image</button>
-       <div class="upload-options" id="upload-options-69" style="display: none;">
-      <button class="add-image" onclick="startCamera(69)">Camera</button>
-      <label for="file-input-69" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-69" accept="image/*" multiple onchange="displayImages(this, 69)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-69"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-69" style="display: none;">
-     <video id="camera-69" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(69)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(69)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(69)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-69" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-<tr id="row-969">
-      <td>9.7</td>
-      <td class="observation_text"><b>Pneumatic Lines Connections:</b>The soap solution must be cleaned after the test.</td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(969)">Add Image</button>
-       <div class="upload-options" id="upload-options-969" style="display: none;">
-      <button class="add-image" onclick="startCamera(969)">Camera</button>
-      <label for="file-input-969" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-969" accept="image/*" multiple onchange="displayImages(this, 969)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-969"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-969" style="display: none;">
-     <video id="camera-969" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(969)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(969)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(969)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-969" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-         </tbody>
-      </table>
-      </div>
-      <div class="action-buttons">
-        <!-- New UPDATE button: -->
-      <button type="button" 
-              id="update-btn" 
-              style="background-color: blue; color: white; display:none;" 
-              onclick="updateObservation('9_0')">
-        Update
-      </button>
-       <button type="button" id= "save-btn" style = "display: inline-block;" onclick="if(validateMandatoryImages('9_0')){ saveObservation('9_0'); }">Save</button>
-       <button id="get-details-btn" onclick="getDetails()">Get Details</button>
-      </div>
-    ;`
-  } else if (section === "10.0") {
-    // For all other sections, add Save Observation button
-    mainContent.innerHTML += `
-      <h3 class="section-heading"> Pressure sensors Installation in LOCO Observations</h3>
-       <div  class="table-container">
-      <table class="observations" id="observations-section-10_0">
-        <thead>
-          <tr>
-            <th>S_No</th>
-            <th>Description</th>
-            <th>Observation</th>
-            <th>Remarks/Comments</th>
-            <th>Image</th>
-          </tr>
-        </thead>
-        <tbody id="observations-tbody-10_0">
-          <tr id="row-71">
-      <td>10.1</td>
-      <td class="observation_text">Ensure all these pressure sensors shall be installed under CAB1 driver desk.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Installed">Installed</option>
-          <option value="Not Installed">Not Installed</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(71)">Add Image</button>
-       <div class="upload-options" id="upload-options-71" style="display: none;">
-      <button class="add-image" onclick="startCamera(71)">Camera</button>
-      <label for="file-input-71" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-71" accept="image/*" multiple onchange="displayImages(this, 71)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-71"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-71" style="display: none;">
-     <video id="camera-71" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(71)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(71)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(71)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-71" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-
-    <tr id="row-72">
-      <td>10.2</td>
-      <td class="observation_text">Ensure MR sensor should be 16 bar, and remain BP,BC1,BC2 are 7 bar</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Installed">Installed</option>
-          <option value="Not Installed">Not Installed</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(72)">Add Image</button>
-       <div class="upload-options" id="upload-options-72" style="display: none;">
-      <button class="add-image" onclick="startCamera(72)">Camera</button>
-      <label for="file-input-72" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-72" accept="image/*" multiple onchange="displayImages(this, 72)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-72"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-72" style="display: none;">
-     <video id="camera-72" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(72)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(72)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(72)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-72" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-73">
-      <td>10.3</td>
-      <td class="observation_text">Ensure all pressure sensors should be installed on T-Joints</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Installed">Installed</option>
-          <option value="Not Installed">Not Installed</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(73)">Add Image</button>
-       <div class="upload-options" id="upload-options-73" style="display: none;">
-      <button class="add-image" onclick="startCamera(73)">Camera</button>
-      <label for="file-input-73" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-73" accept="image/*" multiple onchange="displayImages(this, 73)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-73"></div>
-      <!-- Camera Container -->
-      <div id="camera-container-73" style="display: none;">
-     <video id="camera-73" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(73)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(73)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(73)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-73" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-7323">
-      <td>10.4</td>
-      <td class="observation_text"><b>Wiring Connections :</b> Red (+V) to Terminal 1,  Black (–V) to Terminal 2 & Black-White (Earth) to Terminal 3—Mention In Status</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-        </select>
-
-</td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(7323)">Add Image</button>
-       <div class="upload-options" id="upload-options-7323" style="display: none;">
-      <button class="add-image" onclick="startCamera(7323)">Camera</button>
-      <label for="file-input-7323" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-7323" accept="image/*" multiple onchange="displayImages(this, 7323)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-7323"></div>
-      <!-- Camera Container -->
-      <div id="camera-container-7323" style="display: none;">
-     <video id="camera-7323" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(7323)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(7323)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(7323)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-7323" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    </tbody>
-      </table>
-      </div>
-      <div class="action-buttons">
-        <!-- New UPDATE button: -->
-      <button type="button" 
-              id="update-btn" 
-              style="background-color: blue; color: white; display:none;" 
-              onclick="updateObservation('10_0')">
-        Update
-      </button>
-        <button type="button" id= "save-btn" style = "display: inline-block;" onclick="if(validateMandatoryImages('10_0')) { saveObservation('10_0'); }">Save</button>
-         <button id="get-details-btn" onclick="getDetails()">Get Details</button>
-      </div>
-    ;`
-  } else if (section === "11.0") {
-    // For all other sections, add Save Observation button
-    mainContent.innerHTML += `
-      <h3 class="section-heading">IRU Faiveley Units Fixing For E70 Type Loco Observations</h3>
-       <div  class="table-container">
-      <table class="observations" id="observations-section-11_0">
-        <thead>
-          <tr>
-            <th>S_No</th>
-            <th>Description</th>
-            <th>Observation</th>
-            <th>Remarks/Comments</th>
-            <th>Image</th>
-          </tr>
-        </thead>
-        <tbody id="observations-tbody-11_0">
-          <tr id="row-74">
-      <td>11.1</td>
-      <td class="observation_text"><b>IRU Fixing Place:</b>Are two IRUs installed—one in CAB-I and one in CAB-II—as per installation instructions?</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(74)">Add Image</button>
-       <div class="upload-options" id="upload-options-74" style="display: none;">
-      <button class="add-image" onclick="startCamera(74)">Camera</button>
-      <label for="file-input-74" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-74" accept="image/*" multiple onchange="displayImages(this, 74)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-74"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-74" style="display: none;">
-     <video id="camera-74" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(74)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(74)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(74)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-74" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-  <tr id="row-774">
-      <td>11.1.1</td>
-      <td class="observation_text"><b>IRU Fixing Place</b>:
-Is the mounting frame fabricated using 50x50x5 mm galvanized steel tube or angle?</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-          <option value="Not Applicable">Not Applicable</option>
-
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(774)">Add Image</button>
-       <div class="upload-options" id="upload-options-774" style="display: none;">
-      <button class="add-image" onclick="startCamera(774)">Camera</button>
-      <label for="file-input-774" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-774" accept="image/*" multiple onchange="displayImages(this, 774)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-774"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-774" style="display: none;">
-     <video id="camera-774" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(774)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(774)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(774)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-774" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-
-
-
-    <tr id="row-75">
-      <td>11.2</td>
-      <td class="observation_text"><b>Welding:</b>Has the mounting frame been welded under the A9 Driver Brake Controller (DBC) of each cab and after welding has the frame been painted properly?</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(75)">Add Image</button>
-       <div class="upload-options" id="upload-options-75" style="display: none;">
-      <button class="add-image" onclick="startCamera(75)">Camera</button>
-      <label for="file-input-75" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-75" accept="image/*" multiple onchange="displayImages(this, 75)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-75"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-75" style="display: none;">
-     <video id="camera-75" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(75)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(75)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(75)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-75" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-78">
-      <td>11.3</td>
-      <td class="observation_text"><b>Red oxide coating:</b>Ensure that the welded portion should be coated with red oxide and painted with RAL7032 (Pebble grey/smoke gray) paint.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Applied">Applied</option>
-          <option value="Not Applied">Not Applied</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(78)">Add Image</button>
-       <div class="upload-options" id="upload-options-78" style="display: none;">
-      <button class="add-image" onclick="startCamera(78)">Camera</button>
-      <label for="file-input-78" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-78" accept="image/*" multiple onchange="displayImages(this, 78)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-78"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-78" style="display: none;">
-     <video id="camera-78" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(78)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(78)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(78)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-78" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    
-    <tr id="row-76">
-      <td>11.4</td>
-      <td class="observation_text">Have the IRU units been fixed to the mounting frame using the bolts, nuts, and washers supplied in the Brake Interface Installation Kit?</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(76)">Add Image</button>
-       <div class="upload-options" id="upload-options-76" style="display: none;">
-      <button class="add-image" onclick="startCamera(76)">Camera</button>
-      <label for="file-input-76" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-76" accept="image/*" multiple onchange="displayImages(this, 76)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-76"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-76" style="display: none;">
-     <video id="camera-76" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(76)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(76)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(76)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-76" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-       <tr id="row-79">
-      <td>11.5</td>
-      <td class="observation_text"><b>Cable connections:</b>Ensure that cable connections are given at the corresponding location with respect to labels provided.</td>
-     <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-     <td>
-       <button class="add-image" onclick="showUploadOptions(79)">Add Image</button>
-       <div class="upload-options" id="upload-options-79" style="display: none;">
-      <button class="add-image" onclick="startCamera(79)">Camera</button>
-      <label for="file-input-79" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-79" accept="image/*" multiple onchange="displayImages(this, 79)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-79"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-79" style="display: none;">
-     <video id="camera-79" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(79)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(79)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(79)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-79" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-80">
-      <td>11.6</td>
-      <td class="observation_text"><b>Cable routing:</b>Ensure that cables are routed properly without hanging on ground and tied properly with cable ties.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(80)">Add Image</button>
-       <div class="upload-options" id="upload-options-80" style="display: none;">
-      <button class="add-image" onclick="startCamera(80)">Camera</button>
-      <label for="file-input-80" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-80" accept="image/*" multiple onchange="displayImages(this, 80)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-80"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-80" style="display: none;">
-     <video id="camera-80" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(80)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(80)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(80)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-80" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-8022">
-      <td>11.7</td>
-      <td class="observation_text">EP Valve and Isolation Cock are installed on the stand where the IRU unit is mounted -- Mention In Status</td>
-      <td class="select">
-<select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Installed">Installed</option>
-          <option value="Not Installed">Not Installed</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(8022)">Add Image</button>
-       <div class="upload-options" id="upload-options-8022" style="display: none;">
-      <button class="add-image" onclick="startCamera(8022)">Camera</button>
-      <label for="file-input-8022" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-8022" accept="image/*" multiple onchange="displayImages(this, 8022)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-8022"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-8022" style="display: none;">
-     <video id="camera-80" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(8022)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(8022)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(8022)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-8022" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-     <tr id="row-8023">
-      <td>11.8</td>
-      <td class="observation_text">EP Solenoid Valve wiring: Red (+V) connected to Terminal 1, Black (–V) connected to Terminal 2 (Cable from MILB3)-- Mention In Status </td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(8023)">Add Image</button>
-       <div class="upload-options" id="upload-options-8023" style="display: none;">
-      <button class="add-image" onclick="startCamera(8023 )">Camera</button>
-      <label for="file-input-8023" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-8023" accept="image/*" multiple onchange="displayImages(this, 8023)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-8023"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-8023" style="display: none;">
-     <video id="camera-8023" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(8023)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(8023)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(8023)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-8023" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-     <tr id="row-8024">
-      <td>11.9</td>
-      <td class="observation_text">Isolation Cock (N/C type) wiring: Red (+V) connected to Terminal 1, Black (–V) to Terminal 2 (Cable from MC26)-- Mention In Status </td>
-      <td class="select">
-       <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(8024)">Add Image</button>
-       <div class="upload-options" id="upload-options-8024" style="display: none;">
-      <button class="add-image" onclick="startCamera(8024)">Camera</button>
-      <label for="file-input-8024" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-8024" accept="image/*" multiple onchange="displayImages(this, 8024)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-8024"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-8024" style="display: none;">
-     <video id="camera-8024" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(8024)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(8024)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(8024)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-8024" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-     <tr id="row-8025">
-      <td>11.10</td>
-      <td class="observation_text">Verify that the existing D2 Relay Valve and Manifold Unit are removed from previous location and New D2 Relay Valve is installed on the LE (Locomotive Equipment) unit-- -- Mention In Status</td>
-      <td class="select">
-<select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Installed">Installed</option>
-          <option value="Not Installed">Not Installed</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(8025)">Add Image</button>
-       <div class="upload-options" id="upload-options-8025" style="display: none;">
-      <button class="add-image" onclick="startCamera(8025)">Camera</button>
-      <label for="file-input-8025" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-8025" accept="image/*" multiple onchange="displayImages(this, 8025)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-8025"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-8025" style="display: none;">
-     <video id="camera-8025" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(8025)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(8025)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(8025)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-8025" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-     </tr>
-     <tr id="row-8026">
-      <td>11.11</td>
-      <td class="observation_text">Wire connections: LE Unit Solenoid Valve wiring: Red (+V) connected to Terminal 1, Black (–V) to Terminal 2 (Cable from MILB1)-- Mention In Status </td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(8026)">Add Image</button>
-       <div class="upload-options" id="upload-options-8026" style="display: none;">
-      <button class="add-image" onclick="startCamera(8026)">Camera</button>
-      <label for="file-input-8026" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-8026" accept="image/*" multiple onchange="displayImages(this, 8026)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-8026"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-8026" style="display: none;">
-     <video id="camera-8026" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(8026)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(8026)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(8026)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-8026" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-     
-     </tbody>
-      </table>
-      </div>
-      <div class="action-buttons">
-        <!-- New UPDATE button: -->
-      <button type="button" 
-              id="update-btn" 
-              style="background-color: blue; color: white; display: none;" 
-              onclick="updateObservation('11_0')">
-        Update
-      </button>
-        <button type="button" id= "save-btn" style = "display: inline-block;" onclick="if(validateMandatoryImages('11_0')) { saveObservation('11_0'); }">Save</button>
-        <button id="get-details-btn" onclick="getDetails()">Get Details</button>
-      </div>
-    ;`
-  } else if (section === "12.0") {
-    // For all other sections, add Save Observation button
-    mainContent.innerHTML += `
-      <h3 class="section-heading">PSJB TPM Units Fixing For CCB Type Loco Observations</h3>
-       <div  class="table-container">
-      <table class="observations" id="observations-section-12_0">
-        <thead>
-          <tr>
-            <th>S_No</th>
-            <th>Description</th>
-            <th>Observation</th>
-            <th>Remarks/Comments</th>
-            <th>Image</th>
-          </tr>
-        </thead>
-         <tbody id="observations-tbody-12_0">
-           <tr id="row-81">
-      <td>12.1</td>
-      <td class="observation_text"><b>PSJB Fixing:</b>Ensure existing PSJB removed and Handed over to Loco Shed Rail team, And install factory supplied PSJB</td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Installed">Installed</option>
-          <option value="Not Installed">Not Installed</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-        <button class="add-image" onclick="showUploadOptions(81)">Add Image</button>
-        <div class="upload-options" id="upload-options-81" style="display: none;">
-          <button class="add-image" onclick="startCamera(81)">Camera</button>
-          <label for="file-input-81" class="upload-label">Upload from Device</label>
-          <input type="file" id="file-input-81" accept="image/*" multiple onchange="displayImages(this, 81)">
-        </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-81"></div>
-      <!-- Camera Container -->
-      <div id="camera-container-81" style="display: none;">
-        <video id="camera-81" width="100%" height="auto" autoplay></video>
-        <button class="add-image" onclick="captureImage(81)">Capture Image</button>
-        <button class="add-image" onclick="stopCamera(81)">Stop Camera</button>
-        <canvas id="canvas-81" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-      </div>
-    </tr>
-
-    <tr id="row-82">
-      <td>12.2</td>
-      <td class="observation_text"><b>TPM Unit Fixing:</b>Ensure that TPM module is installed right side to the MPIO module</td>
-      <td class="select">
-       <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Installed">Installed</option>
-          <option value="Not Installed">Not Installed</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-        <button class="add-image" onclick="showUploadOptions(82)">Add Image</button>
-        <div class="upload-options" id="upload-options-82" style="display: none;">
-          <button class="add-image" onclick="startCamera(82)">Camera</button>
-          <label for="file-input-82" class="upload-label">Upload from Device</label>
-          <input type="file" id="file-input-82" accept="image/*" multiple onchange="displayImages(this, 82)">
-         </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-82"></div>
-      <!-- Camera Container -->
-      <div id="camera-container-82" style="display: none;">
-        <video id="camera-82" width="100%" height="auto" autoplay></video>
-        <button class="add-image" onclick="captureImage(82)">Capture Image</button>
-        <button class="add-image" onclick="stopCamera(82)">Stop Camera</button>
-        <canvas id="canvas-82" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-      </div>
-    </tr>
-    <tr id="row-83">
-      <td>12.3</td>
-      <td class="observation_text"><b>Fixing of PSJB and TPM:</b>Ensure that PSJB and TPM units fixing holes are matching with supporting clamps</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Matching">Matching</option>
-          <option value="Not Matching">Not Matching</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(83)">Add Image</button>
-       <div class="upload-options" id="upload-options-83" style="display: none;">
-      <button class="add-image" onclick="startCamera(83)">Camera</button>
-      <label for="file-input-83" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-83" accept="image/*" multiple onchange="displayImages(this, 83)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-83"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-83" style="display: none;">
-     <video id="camera-83" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(83)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(83)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(83)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-83" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-84">
-      <td>12.4</td>
-      <td class="observation_text"><b>Cable connections:</b>Ensure that cable connections are given at the corresponding location with respect to labels provided.</td>
-      <td class="select">
-           <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(84)">Add Image</button>
-       <div class="upload-options" id="upload-options-84" style="display: none;">
-      <button class="add-image" onclick="startCamera(84)">Camera</button>
-      <label for="file-input-84" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-84" accept="image/*" multiple onchange="displayImages(this, 84)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-84"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-84" style="display: none;">
-     <video id="camera-84" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(84)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(84)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(84)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-84" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-85">
-      <td>12.5</td>
-      <td class="observation_text"><b>Cable routing:</b>Ensure that cables are routed properly without hanging on ground and tied properly with cable ties.</td>
-      <td class="select">
-          <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(85)">Add Image</button>
-       <div class="upload-options" id="upload-options-85" style="display: none;">
-      <button class="add-image" onclick="startCamera(85)">Camera</button>
-      <label for="file-input-85" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-85" accept="image/*" multiple onchange="displayImages(this, 85)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-85"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-85" style="display: none;">
-     <video id="camera-85" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(85)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(85)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(85)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-85" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-     <tr id="row-1186">
-      <td>12.6</td>
-      <td class="observation_text">Ensure SIFA Valve is installed with mounting frame under DBC panel in CAB-1 side(NOTE: Ensure that SIFA VALVE SHOULD BE CLOSED CONDITION WHILE INSTALLATION)</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Installed">Installed</option>
-          <option value="Not Installed">Not Installed</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(1186)">Add Image</button>
-       <div class="upload-options" id="upload-options-1186" style="display: none;">
-      <button class="add-image" onclick="startCamera(1186)">Camera</button>
-      <label for="file-input-1186" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-1186" accept="image/*" multiple onchange="displayImages(this, 1186)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-1186"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-1186" style="display: none;">
-     <video id="camera-1186" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(1186)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(1186)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(1186)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-1186" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-1187">
-      <td>12.7</td>
-      <td class="observation_text">Ensure that mounting location of the SIFA valve should be easy for operations and maintenance</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(1187)">Add Image</button>
-       <div class="upload-options" id="upload-options-1187" style="display: none;">
-      <button class="add-image" onclick="startCamera(1187)">Camera</button>
-      <label for="file-input-1187" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-1187" accept="image/*" multiple onchange="displayImages(this, 1187)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-1187"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-1187" style="display: none;">
-     <video id="camera-1187" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(1187)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(1187)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(1187)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-1187" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-1188">
-      <td>12.8</td>
-      <td class="observation_text">Ensure SIFA valve manifold should be fixed to mounting frame by using hardware provided along with the installation Kit.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Fixed">Fixed</option>
-          <option value="Not Fixed">Not Fixed</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(1188)">Add Image</button>
-       <div class="upload-options" id="upload-options-1188" style="display: none;">
-      <button class="add-image" onclick="startCamera(1188)">Camera</button>
-      <label for="file-input-1188" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-1188" accept="image/*" multiple onchange="displayImages(this, 1188)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-1188"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-1188" style="display: none;">
-     <video id="camera-1186" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(1188)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(1188)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(1188)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-1188" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-1189">
-      <td>12.9</td>
-      <td class="observation_text">Welding: Ensure that welded portion should be neat and clean. Check that there is no welding gaps and cracks.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(1189)">Add Image</button>
-       <div class="upload-options" id="upload-options-1189" style="display: none;">
-      <button class="add-image" onclick="startCamera(1189)">Camera</button>
-      <label for="file-input-1189" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-1189" accept="image/*" multiple onchange="displayImages(this, 1189)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-1189"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-1189" style="display: none;">
-     <video id="camera-1189" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(1189)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(1189)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(1189)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-1189" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-     </tbody>
-      </table>
-      </div>
-      <div class="action-buttons">
-        <!-- New UPDATE button: -->
-      <button type="button" 
-              id="update-btn" 
-              style="background-color: blue; color: white; display: none;" 
-              onclick="updateObservation('12_0')">
-        Update
-      </button>
-        <button type="button" id= "save-btn" style = "display: inline-block;"  onclick="saveObservation('12_0')">Save</button>
-        <button id="get-details-btn" onclick="getDetails()">Get Details</button>
-        
-      </div>
-    ;`
-  } else if (section === "13.0") {
-    // For all other sections, add Save Observation button
-    mainContent.innerHTML += `
-      <h3 class="section-heading"> IRAB (Indian Railway Air-Break)</h3>
-       <div class="table-container">
-      <table class="observations" id="observations-section-13_0">
-        <thead>
-          <tr>
-            <th>S_No</th>
-            <th>Description</th>
-            <th>Observation</th>
-            <th>Remarks/Comments</th>
-            <th>Image</th>
-          </tr>
-        </thead>
-         <tbody id="observations-tbody-13_0">
-          <tr id="row-86">
-      <td>13.1</td>
-      <td class="observation_text">Check the Pneumatic connections are as per the connectivity diagram.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(86)">Add Image</button>
-       <div class="upload-options" id="upload-options-86" style="display: none;">
-      <button class="add-image" onclick="startCamera(86)">Camera</button>
-      <label for="file-input-86" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-86" accept="image/*" multiple onchange="displayImages(this, 86)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-86"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-86" style="display: none;">
-     <video id="camera-86" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(86)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(86)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(86)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-86" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-
-    <tr id="row-87">
-      <td>13.2</td>
-      <td class="observation_text">Verify ball value installation on BP(3/4") and MR (3/8") pipes, and confirm Loctite 567 is used at every connection.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Verified and ok">Verified and ok</option>
-          <option value="Not ok">Not ok</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(87)">Add Image</button>
-       <div class="upload-options" id="upload-options-87" style="display: none;">
-      <button class="add-image" onclick="startCamera(87)">Camera</button>
-      <label for="file-input-87" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-87" accept="image/*" multiple onchange="displayImages(this, 87)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-87"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-87" style="display: none;">
-     <video id="camera-87" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(87)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(87)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(87)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-87" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-88">
-      <td>13.3</td>
-      <td class="observation_text">Ensure BC pressure transducer reads 7 bar, BP is at 5 bar, and MR is at 16 bar.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Verified and ok">Verified and ok</option>
-          <option value="Not ok">Not ok</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-        <button class="add-image" onclick="showUploadOptions(88)">Add Image</button>
-        <div class="upload-options" id="upload-options-88" style="display: none;">
-          <button class="add-image" onclick="startCamera(88)">Camera</button>
-          <label for="file-input-88" class="upload-label">Upload from Device</label>
-          <input type="file" id="file-input-88" accept="image/*" multiple onchange="displayImages(this, 88)">
-         </div>
-        <!-- Container for multiple images --> 
-        <div id="image-container-88"></div>
-        <!-- Camera Container -->
-      <div id="camera-container-88" style="display: none;">
-        <video id="camera-88" width="100%" height="auto" autoplay></video>
-        <button class="add-image" onclick="captureImage(88)">Capture Image</button>
-        <button class="add-image" onclick="stopCamera(88)">Stop Camera</button>
-        <canvas id="canvas-88" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-      </div>
-    </tr>
-    <tr id="row-89">
-      <td>13.4</td>
-      <td class="observation_text">Check that all pipe joints are properly connected to the LPSR (MUB-2 and MUB-3).</td>
-      <td class="select">
-       <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(89)">Add Image</button>
-       <div class="upload-options" id="upload-options-89" style="display: none;">
-      <button class="add-image" onclick="startCamera(89)">Camera</button>
-      <label for="file-input-89" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-89" accept="image/*" multiple onchange="displayImages(this, 89)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-89"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-89" style="display: none;">
-     <video id="camera-89" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(89)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(89)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(89)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-89" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-11189">
-      <td>13.5</td>
-      <td class="observation_text">Check that the BP line is connected to the QRV (Quick Release Valve).</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(11189)">Add Image</button>
-       <div class="upload-options" id="upload-options-11189" style="display: none;">
-      <button class="add-image" onclick="startCamera(11189)">Camera</button>
-      <label for="file-input-11189" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-11189" accept="image/*" multiple onchange="displayImages(this, 11189)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-11189"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-11189" style="display: none;">
-     <video id="camera-11189" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(11189)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(11189)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(11189)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-11189" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-1189">
-      <td>13.6</td>
-      <td class="observation_text">Check if the ball valve electrical terminations are properly connected.</td>
-      <td class="select">
-       <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(1189)">Add Image</button>
-       <div class="upload-options" id="upload-options-1189" style="display: none;">
-      <button class="add-image" onclick="startCamera(1189)">Camera</button>
-      <label for="file-input-1189" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-1189" accept="image/*" multiple onchange="displayImages(this, 1189)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-1189"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-1189" style="display: none;">
-     <video id="camera-1189" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(1189)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(1189)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(1189)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-1189" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-     </tbody>
-      </table>
-      </div>
-      <div class="action-buttons">
-        <!-- New UPDATE button: -->
-      <button type="button" 
-              id="update-btn" 
-              style="background-color: blue; color: white; display: none;" 
-              onclick="updateObservation('13_0')">
-        Update
-      </button>
-        <button type="button" id= "save-btn" style = "display: inline-block;"  onclick="saveObservation('13_0')">Save</button>
-        <button id="get-details-btn" onclick="getDetails()">Get Details</button>
-      </div>
-    ;`
-  } else if (section === "14.0") {
-    // For all other sections, add Save Observation button
-    mainContent.innerHTML += `
-      <h3 class="section-heading">PGs and SpeedoMeter Units Fixing Observations</h3>
-       <div class="table-container">
-      <table class="observations" id="observations-section-14_0">
-        <thead>
-          <tr>
-            <th>S_No</th>
-            <th>Description</th>
-            <th>Observation</th>
-            <th>Remarks/Comments</th>
-            <th>Image</th>
-          </tr>
-        </thead>
-         <tbody id="observations-tbody-14_0">
-          <tr id="row-90">
-      <td>14.1</td>
-      <td class="observation_text"<b>PG1 and PG2 Installation:</b>Ensure that PG1(Left from LP of CAB1) and PG2 (Right from LP of CAB1) are installed on allotted axles (WAP5=wheel 2and3, WAP7=whee2and5) of locomotives on left and right side.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Installed">Installed</option>
-          <option value="Not Installed">Not Installed</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(90)">Add Image</button>
-       <div class="upload-options" id="upload-options-90" style="display: none;">
-      <button class="add-image" onclick="startCamera(90)">Camera</button>
-      <label for="file-input-90" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-90" accept="image/*" multiple onchange="displayImages(this, 90)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-90"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-90" style="display: none;">
-     <video id="camera-90" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(90)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(90)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(90)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-90" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-
-    <tr id="row-91">
-      <td>14.2</td>
-      <td class="observation_text"><b>Washer Insertion:</b>Verify that M12 spring is correctly inserted in the drive pin.</td>
-     <td class="select">
-        <select id="status-dropdown"  onchange="highlightSelect(this)">
-                <option value="Select">Select</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(91)">Add Image</button>
-       <div class="upload-options" id="upload-options-91" style="display: none;">
-      <button class="add-image" onclick="startCamera(91)">Camera</button>
-      <label for="file-input-91" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-91" accept="image/*" multiple onchange="displayImages(this, 91)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-91"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-91" style="display: none;">
-     <video id="camera-91" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(91)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(91)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(91)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-91" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-92">
-      <td>14.3</td>
-      <td class="observation_text"><b>Drive Pin Fixing:</b><br>
-Ensure drive pin length before installation as per Loco type,(loco type WAP7=60 mm, WAP5=76mm, EMU=90mm).<br>
-Ensure the drive pin is securely fixed with LOCTITE 542.<br>
-Verify that the torque applied is 76N·m using a calibrated torque wrench.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Torquing done">Torquing done</option>
-          <option value="Torquing Not done">Torquing Not done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(92)">Add Image</button>
-       <div class="upload-options" id="upload-options-92" style="display: none;">
-      <button class="add-image" onclick="startCamera(92)">Camera</button>
-      <label for="file-input-92" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-92" accept="image/*" multiple onchange="displayImages(this, 92)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-92"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-92" style="display: none;">
-     <video id="camera-92" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(92)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(92)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(92)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-92" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-93">
-      <td>14.4</td>
-      <td class="observation_text"><b>Gasket Lock Plate Placement:</b>Ensure the Gasket Lock Plate is correctly positioned on the axle cover without any misalignment.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Positioning done">Positioning done</option>
-          <option value="Positioning Not done">Positioning Not done </option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(93)">Add Image</button>
-       <div class="upload-options" id="upload-options-93" style="display: none;">
-      <button class="add-image" onclick="startCamera(93)">Camera</button>
-      <label for="file-input-93" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-93" accept="image/*" multiple onchange="displayImages(this, 93)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-93"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-93" style="display: none;">
-     <video id="camera-93" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(93)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(93)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(93)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-93" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-94">
-      <td>14.5</td>
-      <td class="observation_text"><b>PG Coupler Ring Placement:</b><br>
-Verify that PG coupler ring is positioned correctly on the gasket.<br>
-Ensure that the label (PG1 / PG2) is clearly visible at the top end.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Positioning done">Positioning done</option>
-          <option value="Positioning Not done">Positioning Not done </option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(94)">Add Image</button>
-       <div class="upload-options" id="upload-options-94" style="display: none;">
-      <button class="add-image" onclick="startCamera(94)">Camera</button>
-      <label for="file-input-94" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-94" accept="image/*" multiple onchange="displayImages(this, 94)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-94"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-94" style="display: none;">
-     <video id="camera-94" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(94)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(94)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(94)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-94" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-95">
-      <td>14.6</td>
-      <td class="observation_text"><b>Coupler Ring Alignment:</b>Confirm that the selected PG (PG1 / PG2) determines the alignment of four out of eight holes with the axle cover.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(95)">Add Image</button>
-       <div class="upload-options" id="upload-options-95" style="display: none;">
-      <button class="add-image" onclick="startCamera(95)">Camera</button>
-      <label for="file-input-95" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-95" accept="image/*" multiple onchange="displayImages(this, 95)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-95"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-95" style="display: none;">
-     <video id="camera-95" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(95)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(95)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(95)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-95" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-96">
-      <td>14.7</td>
-      <td class="observation_text"><b>Coupler Ring Fixing:</b><br>
-Ensure the CSK Hex Socket screws size M10×30mm-SS are used to fix the coupler ring with LOCTITE 542.<br>
-Check that screws are tightened to the specified torque of 40 N.m using a calibrated torque wrench.(Note: Bolthead surface should be flush.)</td>
-      <td class="select">
-          <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Torquing done">Torquing done</option>
-          <option value="Torquing Not done">Torquing Not done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(96)">Add Image</button>
-       <div class="upload-options" id="upload-options-96" style="display: none;">
-      <button class="add-image" onclick="startCamera(96)">Camera</button>
-      <label for="file-input-96" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-96" accept="image/*" multiple onchange="displayImages(this, 96)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-96"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-96" style="display: none;">
-     <video id="camera-96" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(96)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(96)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(96)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-96" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-97">
-      <td>14.8</td>
-      <td class="observation_text"><b>Gasket PG Placement:</b>Verify that "Gasket PG" is correctly placed on the coupler ring without any gaps or misalignment.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(97)">Add Image</button>
-       <div class="upload-options" id="upload-options-97" style="display: none;">
-      <button class="add-image" onclick="startCamera(97)">Camera</button>
-      <label for="file-input-97" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-97" accept="image/*" multiple onchange="displayImages(this, 97)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-97"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-97" style="display: none;">
-     <video id="camera-97" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(97)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(97)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(97)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-97" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-98">
-      <td>14.9</td>
-      <td class="observation_text"><b>PG1 / PG2 Insertion:</b><br>
-Ensure PG1 / PG2 is inserted correctly into the axle cover.<br>
-Confirm that driving fork is aligned with the drive pin before proceeding.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Aligned">Aligned</option>
-          <option value="Not Aligned">Not Aligned</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(98)">Add Image</button>
-       <div class="upload-options" id="upload-options-98" style="display: none;">
-      <button class="add-image" onclick="startCamera(98)">Camera</button>
-      <label for="file-input-98" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-98" accept="image/*" multiple onchange="displayImages(this, 98)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-98"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-98" style="display: none;">
-     <video id="camera-98" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(98)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(98)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(98)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-98" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-99">
-      <td>14.10</td>
-      <td class="observation_text"><b>PG Alignment:</b>Ensure that all eight holes on PG align perfectly with holes on the gasket and coupler ring.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Aligned">Aligned</option>
-          <option value="Not Aligned">Not Aligned</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(99)">Add Image</button>
-       <div class="upload-options" id="upload-options-99" style="display: none;">
-      <button class="add-image" onclick="startCamera(99)">Camera</button>
-      <label for="file-input-99" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-99" accept="image/*" multiple onchange="displayImages(this, 99)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-99"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-99" style="display: none;">
-     <video id="camera-99" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(99)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(99)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(99)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-99" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-100">
-      <td>14.11</td>
-      <td class="observation_text"><b>PG Fixing with M8 Bolts:</b><br>
-Check that the M8×25mm bolts are properly installed with LOCTITE 542.<br>
-Ensure both spring and plain washers are used.</td>
-      <td class="select">
-       <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Installed">Installed</option>
-          <option value="Not Installed">Not Installed</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(100)">Add Image</button>
-       <div class="upload-options" id="upload-options-100" style="display: none;">
-      <button class="add-image" onclick="startCamera(100)">Camera</button>
-      <label for="file-input-100" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-100" accept="image/*" multiple onchange="displayImages(this, 100)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-100"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-100" style="display: none;">
-     <video id="camera-100" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(100)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(100)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(100)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-100" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-101">
-      <td>14.12</td>
-      <td class="observation_text"><b>M8 Bolt Torque Check:</b>Verify that all M8 bolts are tightened to 25 N.m using a calibrated torque wrench.Marking with green/yellow paint.</td>
-      <td class="select">
-       <select id="status-dropdown"  onchange="highlightSelect(this)">
-                <option value="Select">Select</option>
-                <option value="Torquing done">Torquing done</option>
-                <option value="Torquing Not done">Torquing Not done</option>
-              </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(101)">Add Image</button>
-       <div class="upload-options" id="upload-options-101" style="display: none;">
-      <button class="add-image" onclick="startCamera(101)">Camera</button>
-      <label for="file-input-101" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-101" accept="image/*" multiple onchange="displayImages(this, 101)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-101"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-101" style="display: none;">
-     <video id="camera-101" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(101)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(101)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(101)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-101" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-      <tr id="row-340">
-      <td>14.13</td>
-      <td class="observation_text"><b>Final Position Check:</b>Ensure that the final installed positions of PG1 and PG2 match the specified locations.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Matching">Matching</option>
-          <option value="Not Matching">Not Matching</option>
-        </select>
-
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(340)">Add Image</button>
-       <div class="upload-options" id="upload-options-340" style="display: none;">
-      <button class="add-image" onclick="startCamera(340)">Camera</button>
-      <label for="file-input-340" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-340" accept="image/*" multiple onchange="displayImages(this, 340)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-340"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-340" style="display: none;">
-     <video id="camera-340" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(340)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(340)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(340)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-340" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-341">
-      <td>14.14</td>
-      <td class="observation_text"><b>Cable routing:</b>Ensure that PG cables routing made properly with metal clamps / cable ties</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(341)">Add Image</button>
-       <div class="upload-options" id="upload-options-341" style="display: none;">
-      <button class="add-image" onclick="startCamera(341)">Camera</button>
-      <label for="file-input-341" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-341" accept="image/*" multiple onchange="displayImages(this, 341)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-341"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-341" style="display: none;">
-     <video id="camera-341" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(341)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(341)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(341)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-341" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-342">
-      <td>14.15</td>
-      <td class="observation_text"><b>Speedometer Boxes fixing:</b>
-Is each Speedometer Interface Unit mounted on the locomotive chassis near its corresponding Pulse Generator?</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(342)">Add Image</button>
-       <div class="upload-options" id="upload-options-342" style="display: none;">
-      <button class="add-image" onclick="startCamera(342)">Camera</button>
-      <label for="file-input-342" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-342" accept="image/*" multiple onchange="displayImages(this, 342)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-342"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-342" style="display: none;">
-     <video id="camera-342" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(342)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(342)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(342)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-342" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-<tr id="row-392">
-      <td>14.15.1</td>
-      <td class="observation_text"><b>Speedometer Boxes fixing</b>: 
-Is the Speedometer Interface Unit orientation such that cables connect to the Pulse Generator on one side and the Loco Kavach Unit on the other side without crisscrossing?
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(392)">Add Image</button>
-       <div class="upload-options" id="upload-options-392" style="display: none;">
-      <button class="add-image" onclick="startCamera(392)">Camera</button>
-      <label for="file-input-392" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-392" accept="image/*" multiple onchange="displayImages(this, 392)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-392"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-392" style="display: none;">
-     <video id="camera-392" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(392)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(392)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(392)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-392" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-
-<tr id="row-382">
-      <td>14.15.2</td>
-      <td class="observation_text"><b>Speedometer Boxes fixing</b>: 
-Speedometer holes and fixing clamp holes are to be matched evenly. Verify the M6 bolts torque 10 N-M.Marking with green/Yellow paint</td>
-      <td class="select">   
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Torquing done">Torquing done</option>
-          <option value="Torquing Not done">Torquing Not done</option>
-        </select>
-
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(382)">Add Image</button>
-       <div class="upload-options" id="upload-options-382" style="display: none;">
-      <button class="add-image" onclick="startCamera(382)">Camera</button>
-      <label for="file-input-382" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-382" accept="image/*" multiple onchange="displayImages(this, 382)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-382"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-382" style="display: none;">
-     <video id="camera-382" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(382)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(382)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(382)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-382" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-
-    <tr id="row-343">
-      <td>14.16</td>
-      <td class="observation_text"><b>Welding of supporting clamps:</b>Ensure that speedometer supporting clamps are welded without any gaps and cracks.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Welding done">Welding Done </option>
-          <option value="Welding not done">Welding not done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(343)">Add Image</button>
-       <div class="upload-options" id="upload-options-343" style="display: none;">
-      <button class="add-image" onclick="startCamera(343)">Camera</button>
-      <label for="file-input-343" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-343" accept="image/*" multiple onchange="displayImages(this, 343)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-343"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-343" style="display: none;">
-     <video id="camera-343" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(343)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(343)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(343)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-343" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-   <tr id="row-344">
-      <td>14.17</td>
-      <td class="observation_text"><b>Speedometer Cables:</b>Ensure that cables from PG to Speedometers and from speedometer units to Loco Kavach unit are connected properly.</td>
-      <td class="select">
-       <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(344)">Add Image</button>
-       <div class="upload-options" id="upload-options-344" style="display: none;">
-      <button class="add-image" onclick="startCamera(344)">Camera</button>
-      <label for="file-input-344" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-344" accept="image/*" multiple onchange="displayImages(this, 344)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-344"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-344" style="display: none;">
-     <video id="camera-344" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(344)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(344)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(344)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-344" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-345">
-      <td>14.18</td>
-      <td class="observation_text"><b>Pulse Generator & Speedometer Interface Unit Connection:</b><br>
-Is PG1 connected to the Speedometer Interface Unit with Part No.6000052976?</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(345)">Add Image</button>
-       <div class="upload-options" id="upload-options-345" style="display: none;">
-      <button class="add-image" onclick="startCamera(345)">Camera</button>
-      <label for="file-input-345" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-345" accept="image/*" multiple onchange="displayImages(this, 345)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-345"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-345" style="display: none;">
-     <video id="camera-345" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(345)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(345)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(345)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-345" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-3450">
-      <td>14.18.1</td>
-      <td class="observation_text"><b>Pulse Generator and Speedometer Interface Unit Connection:</b><br>
-Is PG2  connected to the Speedometer Interface Unit with Part No.6000052977?</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(3450)">Add Image</button>
-       <div class="upload-options" id="upload-options-3450" style="display: none;">
-      <button class="add-image" onclick="startCamera(3450)">Camera</button>
-      <label for="file-input-3450" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-3450" accept="image/*" multiple onchange="displayImages(this, 34500)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-3450"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-3450" style="display: none;">
-     <video id="camera-3450" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(3450)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(3450)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(3450)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-3450" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-3476">
-      <td>14.19</td>
-      <td class="observation_text">Is each Speedometer Interface Unit correctly connected to the Loco Kavach Unit?</td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(3476)">Add Image</button>
-       <div class="upload-options" id="upload-options-3476" style="display: none;">
-      <button class="add-image" onclick="startCamera(3476)">Camera</button>
-      <label for="file-input-3476" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-3476" accept="image/*" multiple onchange="displayImages(this, 3476)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-3476"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-3476" style="display: none;">
-     <video id="camera-3476" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(3476)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(3476)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(3476)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-3476" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-346">
-      <td>14.20</td>
-      <td class="observation_text"><b>Cable routing:</b>Ensure that external cables are routed to their respective speedometer units</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(346)">Add Image</button>
-       <div class="upload-options" id="upload-options-346" style="display: none;">
-      <button class="add-image" onclick="startCamera(346)">Camera</button>
-      <label for="file-input-346" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-346" accept="image/*" multiple onchange="displayImages(this, 346)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-346"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-346" style="display: none;">
-     <video id="camera-346" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(346)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(346)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(346)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-346" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-   <tr id="row-347">
-      <td>14.21</td>
-      <td class="observation_text"><b>Connector locking :</b>Ensure that the external cable circular connectors are properly locked with speedometer box unit receptacles.</td>
-      <td class="select">
-         <select id="status-dropdown"  onchange="highlightSelect(this)">
-                <option value="Select">Select</option>
-                <option value="Locked">Locked</option>
-                <option value="Not Locked">Not Locked</option>
-              </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(347)">Add Image</button>
-       <div class="upload-options" id="upload-options-347" style="display: none;">
-      <button class="add-image" onclick="startCamera(347)">Camera</button>
-      <label for="file-input-347" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-347" accept="image/*" multiple onchange="displayImages(this, 347)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-347"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-347" style="display: none;">
-     <video id="camera-347" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(347)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(347)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(347)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-347" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-     </tbody>
-      </table>
-      </div>
-      <div class="action-buttons">
-        <!-- New UPDATE button: -->
-      <button type="button" 
-              id="update-btn" 
-              style="background-color: blue; color: white; display: none;" 
-              onclick="updateObservation('14_0')">
-        Update
-      </button>
-        <button type="button" id= "save-btn" style = "display: inline-block;" onclick="if(validateMandatoryImages('14_0')) { saveObservation('14_0'); }">Save</button>
-         <button id="get-details-btn" onclick="getDetails()">Get Details</button>
-      </div>
-    ;`
-  } else if (section === "15.0") {
-    // For all other sections, add Save Observation button
-    mainContent.innerHTML += `
-      <h3 class="section-heading">RFID Reader Assembly Observations</h3>
-       <div  class="table-container">
-      <table class="observations" id="observations-section-15_0">
-        <thead>
-          <tr>
-            <th>S_No</th>
-            <th>Description</th>
-            <th>Observation</th>
-            <th>Remarks/Comments</th>
-            <th>Image</th>
-          </tr>
-        </thead>
-         <tbody id="observations-tbody-15_0">
-          <tr id="row-102">
-      <td>15.1</td>
-      <td class="observation_text">Is each RFID reader installed at a distance of 1 to 3 meters from the end of cattle guard?</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Installed">Installed</option>
-          <option value="Not Installed">Not Installed</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(102)">Add Image</button>
-       <div class="upload-options" id="upload-options-102" style="display: none;">
-      <button class="add-image" onclick="startCamera(102)">Camera</button>
-      <label for="file-input-102" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-102" accept="image/*" multiple onchange="displayImages(this, 102)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-102"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-102" style="display: none;">
-     <video id="camera-102" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(102)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(102)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(102)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-102" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-
-    <tr id="row-103">
-      <td>15.2</td>
-      <td class="observation_text"><b>Welding quality:</b>Ensure Stud welding/Arc Welding is done properly, such that the RFID Reader can be  withstand for loco vibrations during running and Carried out DPT Test. </td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(103)">Add Image</button>
-       <div class="upload-options" id="upload-options-103" style="display: none;">
-      <button class="add-image" onclick="startCamera(103)">Camera</button>
-      <label for="file-input-103" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-103" accept="image/*" multiple onchange="displayImages(this, 103)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-103"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-103" style="display: none;">
-     <video id="camera-103" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(103)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(103)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(103)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-103" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-10333">
-      <td>15.2.1</td>
-      <td class="observation_text"><b>Welding quality:</b> Has Ballata been placed between the RFID bracket and Loco chassis frame,M12 bolts tightened with Nylock nuts,torque verified at 20 N-m, and cotter pin inserted into the stud hole? </td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-          <option value="Not Applicable">Not Applicable</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(10333)">Add Image</button>
-       <div class="upload-options" id="upload-options-10333" style="display: none;">
-      <button class="add-image" onclick="startCamera(10333)">Camera</button>
-      <label for="file-input-10333" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-10333" accept="image/*" multiple onchange="displayImages(this, 10333)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-10333"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-10333" style="display: none;">
-     <video id="camera-10333" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(10333)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(10333)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(10333)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-10333" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    
-    <tr id="row-104">
-      <td>15.3</td>
-      <td class="observation_text"><b>Channels tightness:</b>Verify the tightness for channels fixing screws (M8X16mm) by using torque wrench (25N-M).marking with green/yellow pain</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Torquing done">Torquing done</option>
-          <option value="Torquing Not done">Torquing Not done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-     <td>
-       <button class="add-image" onclick="showUploadOptions(104)">Add Image</button>
-       <div class="upload-options" id="upload-options-104" style="display: none;">
-      <button class="add-image" onclick="startCamera(104)">Camera</button>
-      <label for="file-input-104" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-104" accept="image/*" multiple onchange="displayImages(this, 104)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-104"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-104" style="display: none;">
-     <video id="camera-104" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(104)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(104)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(104)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-104" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-105">
-      <td>15.4</td>
-      <td class="observation_text">Has the bottom surface of the RFID reader been adjusted and fixed at a height of 450 ± 50 mm from the rail head?</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(105)">Add Image</button>
-       <div class="upload-options" id="upload-options-105" style="display: none;">
-      <button class="add-image" onclick="startCamera(105)">Camera</button>
-      <label for="file-input-105" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-105" accept="image/*" multiple onchange="displayImages(this, 105)">
-      </div>
-      <!-- Container for multiple images --> 
-     <div id="image-container-105"></div>
-     <!-- Camera Container -->
-     <div id="camera-container-105" style="display: none;">
-     <video id="camera-105" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(105)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(105)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(105)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-105" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-507">
-      <td>15.5</td>
-      <td class="observation_text">Is one end of the Chain/Sling welded to locomotive chassis, away from the mounting bracket weld joint?</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(507)">Add Image</button>
-       <div class="upload-options" id="upload-options-507" style="display: none;">
-      <button class="add-image" onclick="startCamera(507)">Camera</button>
-      <label for="file-input-507" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-507" accept="image/*" multiple onchange="displayImages(this, 507)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-507"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-507" style="display: none;">
-     <video id="camera-507" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(507)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(507)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(507)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-507" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-<tr id="row-607">
-      <td>15.5.1</td>
-      <td class="observation_text">
-Is other end of the Chain/Sling securely fastened to RFID reader by using bolt provided in the Loco Kavach Installation Kit?</td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(607)">Add Image</button>
-       <div class="upload-options" id="upload-options-607" style="display: none;">
-      <button class="add-image" onclick="startCamera(607)">Camera</button>
-      <label for="file-input-607" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-607" accept="image/*" multiple onchange="displayImages(this, 607)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-607"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-607" style="display: none;">
-     <video id="camera-607" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(607)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(607)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(607)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-607" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-
-    <tr id="row-108">
-      <td>15.6</td>
-      <td class="observation_text">Is mud guard (from the Loco Kavach Installation Kit) been fixed to RFID reader mounting bracket,installed in front of each RFID reader on the cattle guard side, using the supplied bolts and washers?</td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Fixed">Fixed</option>
-          <option value="Not Fixed">Not Fixed</option>
-        </select>
-
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(108)">Add Image</button>
-       <div class="upload-options" id="upload-options-108" style="display: none;">
-      <button class="add-image" onclick="startCamera(108)">Camera</button>
-      <label for="file-input-108" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-108" accept="image/*" multiple onchange="displayImages(this, 108)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-108"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-108" style="display: none;">
-     <video id="camera-108" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(108)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(108)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(108)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-108" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-     <tr id="row-109">
-      <td>15.7</td>
-      <td class="observation_text"><b>Cable trench:</b>Verify that RFID reader cables are routed properly through the loco trench without any overlaps and over-stress. Ensure that cable should not have any sharp bends in routing and mill connectors without any damage while routing.</td>
-      <td class="select"><select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(109)">Add Image</button>
-       <div class="upload-options" id="upload-options-109" style="display: none;">
-      <button class="add-image" onclick="startCamera(109)">Camera</button>
-      <label for="file-input-109" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-109" accept="image/*" multiple onchange="displayImages(this, 109)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-109"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-109" style="display: none;">
-     <video id="camera-109" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(109)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(109)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(109)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-109" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-110">
-      <td>15.8</td>
-      <td class="observation_text"><b>Connector connectivity:</b>Ensure that MIL connectors connectivity as per the connectivity drawing.</td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(110)">Add Image</button>
-       <div class="upload-options" id="upload-options-110" style="display: none;">
-      <button class="add-image" onclick="startCamera(110)">Camera</button>
-      <label for="file-input-110" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-110" accept="image/*" multiple onchange="displayImages(this, 110)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-110"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-110" style="display: none;">
-     <video id="camera-110" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(110)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(110)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(110)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-110" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-111">
-      <td>15.9</td>
-      <td class="observation_text"><b>RFID -1 connectivity:</b>Ensure that RFID Reader-1 is connected to MC6 at Loco Kavach.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(111)">Add Image</button>
-       <div class="upload-options" id="upload-options-111" style="display: none;">
-      <button class="add-image" onclick="startCamera(111)">Camera</button>
-      <label for="file-input-111" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-111" accept="image/*" multiple onchange="displayImages(this, 111)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-111"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-111" style="display: none;">
-     <video id="camera-111" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(111)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(111)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(111)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-111" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-112">
-      <td>15.10</td>
-      <td class="observation_text"><b>RFID -2 connectivity:</b>Ensure that RFID Reader-2 is connected to MC7 at Loco Kavach.</td>
-        <td class = "select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(112)">Add Image</button>
-       <div class="upload-options" id="upload-options-112" style="display: none;">
-      <button class="add-image" onclick="startCamera(112)">Camera</button>
-      <label for="file-input-112" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-112" accept="image/*" multiple onchange="displayImages(this, 112)">
-       </div>
-       <!-- Container for multiple images --> 
-       <div id="image-container-112"></div>
-       <!-- Camera Container -->
-     <div id="camera-container-112" style="display: none;">
-     <video id="camera-112" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(112)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(112)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(112)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-112" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-   
-   <tr id="row-765">
-      <td>15.11</td>
-      <td class="observation_text"><b>Circular connectors:</b>Ensure that the circular connectors are properly locked with RFID box unit receptacles.</td>
-        <td class = "select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Locked">Locked</option>
-          <option value="Not Locked">Not Locked</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(765)">Add Image</button>
-       <div class="upload-options" id="upload-options-765" style="display: none;">
-      <button class="add-image" onclick="startCamera(765)">Camera</button>
-      <label for="file-input-765" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-765" accept="image/*" multiple onchange="displayImages(this, 765)">
-       </div>
-       <!-- Container for multiple images --> 
-       <div id="image-container-765"></div>
-       <!-- Camera Container -->
-     <div id="camera-container-765" style="display: none;">
-     <video id="camera-765" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(765)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(765)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(765)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-765" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-
-     </tbody>
-      </table>
-      </div>
-      <div class="action-buttons">
-        <!-- New UPDATE button: -->
-      <button type="button" 
-              id="update-btn" 
-              style="background-color: blue; color: white; display : none;" 
-              onclick="updateObservation('15_0')">
-        Update
-      </button>
-       <button type="button" id= "save-btn" style = "display: inline-block;" onclick="if(validateMandatoryImages('15_0')) { saveObservation('15_0'); }">Save</button>
-       <button id="get-details-btn" onclick="getDetails()">Get Details</button>
-      </div>
     ;`
   }  
-else if (section === "16.0") {
-    // For all other sections, add Save Observation button
-    mainContent.innerHTML += `
-      <h3 class="section-heading"> Auto Horn Installation </h3>
-       <div  class="table-container">
-      <table class="observations" id="observations-section-16_0">
-        <thead>
-          <tr>
-            <th>S_No</th>
-            <th>Description</th>
-            <th>Observation</th>
-            <th>Remarks/Comments</th>
-            <th>Image</th>
-          </tr>
-        </thead>
-        <tbody id="observations-tbody-16_0">
-          <tr id="row-766">
-      <td>16.1</td>
-      <td class="observation_text"><b>Pneumatic fittings:</b>Confirm that all pipes and fittings used in the assembly are from the approved BOM and sourced from the IandC kit supplied by the factory.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(766)">Add Image</button>
-       <div class="upload-options" id="upload-options-766" style="display: none;">
-      <button class="add-image" onclick="startCamera(766)">Camera</button>
-      <label for="file-input-766" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-766" accept="image/*" multiple onchange="displayImages(this, 766)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-766"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-766" style="display: none;">
-     <video id="camera-766" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(766)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(766)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(766)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-766" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
 
-    <tr id="row-767">
-      <td>16.2</td>
-      <td class="observation_text"><b>Copper Pipes:</b> Confirm that copper pipes are bent using appropriate bending tool, and that  there no kinks or sharp bends in the pipe.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(767)">Add Image</button>
-       <div class="upload-options" id="upload-options-767" style="display: none;">
-      <button class="add-image" onclick="startCamera(767)">Camera</button>
-      <label for="file-input-767" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-767" accept="image/*" multiple onchange="displayImages(this, 767)">
-      </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-72"></div>
-      <!-- Camera Container -->
-     <div id="camera-container-72" style="display: none;">
-     <video id="camera-72" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(72)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(72)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(72)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-72" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-768">
-      <td>16.3</td>
-      <td class="observation_text"><b>Copper Tube :</b>Ensure that copper tube length is measured with respect to the connectivity  from loco pneumatics MR to ON/OFF Ball Cock, Solenoid Valve to HT Horn MR Pipe arrangements, as per approved drawing for WAP5, WAP7, WAG9, WAG7 and WAP4. This pneumatic arrangement is not required for Diesele locos.</td>
-      <td class="select">
-       <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(768)">Add Image</button>
-       <div class="upload-options" id="upload-options-768" style="display: none;">
-      <button class="add-image" onclick="startCamera(768)">Camera</button>
-      <label for="file-input-768" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-768" accept="image/*" multiple onchange="displayImages(this, 768)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-768"></div>
-      <!-- Camera Container -->
-      <div id="camera-container-768" style="display: none;">
-     <video id="camera-768" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(768)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(768)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(768)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-768" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-   <tr id="row-769">
-      <td>16.4</td>
-      <td class="observation_text"><b>Copper pipe connections:</b>Ensure that copper pipe connections made properly with                        approved make (Ex. Fluid Control) ferrules and TEE-joints used.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(769)">Add Image</button>
-       <div class="upload-options" id="upload-options-769" style="display: none;">
-      <button class="add-image" onclick="startCamera(769)">Camera</button>
-      <label for="file-input-768" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-768" accept="image/*" multiple onchange="displayImages(this, 769)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-769"></div>
-      <!-- Camera Container -->
-      <div id="camera-container-769" style="display: none;">
-     <video id="camera-769" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(769)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(769)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(769)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-769" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    <tr id="row-800">
-      <td>16.5</td>
-      <td class="observation_text">Auto Horn Solenoid valve connections(Red +ve) to be connected at terminal1 and (Black -ve) to be connected at terminal2. This cable part of CAB I/P wiring of TB21 (Red +ve) & TB22 (Black -ve). This cable part of CAB I/P wiring of TB21 (Red +ve) & TB22 (Black -ve).</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(800)">Add Image</button>
-       <div class="upload-options" id="upload-options-800" style="display: none;">
-      <button class="add-image" onclick="startCamera(800)">Camera</button>
-      <label for="file-input-800" class="upload-label">Upload from Device</label>
-      <input type="file" id="file-input-800" accept="image/*" multiple onchange="displayImages(this, 800)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-800"></div>
-      <!-- Camera Container -->
-      <div id="camera-container-800" style="display: none;">
-     <video id="camera-768" width="100%" height="auto" autoplay></video>
-     <button class="add-image" onclick="captureImage(800)">Capture Image</button>
-     <button class="add-image" onclick="stopCamera(800)">Stop Camera</button>
-     <button class="reverse-camera" onclick="switchCamera(800)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-     <canvas id="canvas-800" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-     </div>
-    </tr>
-    </tbody>
-      </table>
-      </div>
-      <div class="action-buttons">
-        <!-- New UPDATE button: -->
-      <button type="button" 
-              id="update-btn" 
-              style="background-color: blue; color: white; display:none;" 
-              onclick="updateObservation('16_0')">
-        Update
-      </button>
-        <button type="button" id= "save-btn" style = "display: inline-block;" onclick="if(validateMandatoryImages('16_0')) { saveObservation('16_0'); }">Save</button>
-         <button id="get-details-btn" onclick="getDetails()">Get Details</button>
-      </div>
-    ;`
-  }
 }
 
 // Function to handle the logout
@@ -8592,24 +5180,24 @@ async function generateReport() {
   // Remove the beforeunload listener so that it won't trigger when clicking the button.
   window.removeEventListener("beforeunload", beforeUnloadHandler);
 
-  const locoId = document.getElementById("loco-id").value;
-  const railwayDivision = document.getElementById("railway-division").value;
-  const shedName = document.getElementById("shed-name").value;
+  const stationId = document.getElementById("station-id").value;
+  const division = document.getElementById("division").value;
+  const zone = document.getElementById("zone").value;
 
-  if (!locoId || !railwayDivision || !shedName) {
+  if (!stationId || !division || !zone) {
     alert("Please fill all the fields.");
     return;
   }
 
-  const response = await fetch("generateReport.php", {
+  const response = await fetch('/STCAS_QCCHECKLIST/generateReport.php', {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: new URLSearchParams({
-      "loco-id": locoId,
-      "railway-division": railwayDivision,
-      "shed-name": shedName,
+      "station-id": stationId,
+      "zone": zone,
+      "division": division,
     }),
   });
 
@@ -8617,7 +5205,7 @@ async function generateReport() {
 
   if (data.success) {
     // Store the fetched data in sessionStorage
-    sessionStorage.setItem("locoDetails", JSON.stringify(data.locoDetails));
+    sessionStorage.setItem("stationDetails", JSON.stringify(data.stationDetails));
     sessionStorage.setItem(
       "observationsData",
       JSON.stringify(data.observations)
@@ -8630,8 +5218,8 @@ async function generateReport() {
   }
 
   if (data.success) {
-    // Optional: Display Loco Details and Observations on console
-    console.log(data.locoDetails);
+    // Optional: Display Station Details and Observations on console
+    console.log(data.stationDetails);
     console.log(data.observations);
   } else {
     alert(data.message);
@@ -8711,10 +5299,10 @@ function highlightSelect(selectElement) {
 // ---------------------------------------------------------------------------
 // The "completeData" function
 function completeData() {
-  sessionStorage.removeItem("locoInfo");
+  sessionStorage.removeItem("stationInfo");
   sessionStorage.removeItem("observations");
   alert(
-    "Data has been saved and cleared. You can now enter information for a new loco."
+    "Data has been saved and cleared. You can now enter information for a new station."
   );
   document.getElementById("main-content").innerHTML = "";
 }
@@ -8736,9 +5324,9 @@ function validateBarcode(input) {
 }
 
 // ---------------------------------------------------------------------------
-// Save Loco Info
-async function saveLocoInfo(section) {
-  const stationID = document.getElementById("station-id").value;
+// Save Station Info
+async function saveStationInfo(section) {
+  const stationId = document.getElementById("station-id").value;
   const stationName = document.getElementById("station-name").value;
   const zone = document.getElementById("zone").value;
   const division = document.getElementById("division").value;
@@ -8746,7 +5334,7 @@ async function saveLocoInfo(section) {
   const updated_date = document.getElementById("updated-date").value;
 
   if (
-    !stationID ||
+    !stationId ||
     !stationName ||
     !zone ||
     !division ||
@@ -8757,8 +5345,8 @@ async function saveLocoInfo(section) {
     return;
   }
 
-  const locoData = {
-    stationID: stationID,
+  const stationData = {
+    stationId: stationId,
     stationName: stationName,
     zone: zone,
     division: division,
@@ -8767,7 +5355,7 @@ async function saveLocoInfo(section) {
   };
 
   // Save to sessionStorage
-  sessionStorage.setItem("locoInfo", JSON.stringify(locoData));
+  sessionStorage.setItem("stationInfo", JSON.stringify(stationData));
 
   try {
     const response = await fetch("connect.php", {
@@ -8776,7 +5364,7 @@ async function saveLocoInfo(section) {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: new URLSearchParams({
-        "station-id": stationID,
+        "station-id": stationId,
         "station-name": stationName,
         "zone": zone,
         "division": division,
@@ -8789,7 +5377,7 @@ async function saveLocoInfo(section) {
     console.log("Response:", data);
 
     if (data.success) {
-      showModal("Loco info saved successfully!");
+      showModal("Station info saved successfully!");
       // Once saved, no unsaved changes
       unsavedChanges = false;
     } else {
@@ -8819,11 +5407,11 @@ document.addEventListener("click", function (event) {
 async function checkAndHighlightSections(stationId, zone, division) {
   // List of section IDs you want to check.
   // Adjust this list as needed.
-  const sectionIds = ['1_0', '2.0', '3.0', '4.0', '5.0', '6.0', '7.0', '8.0', '9.0', '10.0', '11.0', '12.0', '13.0', '14.0', '15.0', '16.0'];
+  const sectionIds = ['2.0', '3.0', '4.0', '5.0', '6.0', '7.0'];
 
   for (const sectionId of sectionIds) {
     // Check if observations exist for this section.
-    const exists = await checkExistingObservations(stationIdId, zone, division, sectionId);
+    const exists = await checkExistingObservations(stationId, division, zone, sectionId);
 
     // Convert sectionId to a button ID.
     // For example: "1_0" becomes "button-1" and "2.0" becomes "button-2".
@@ -8855,10 +5443,10 @@ async function checkAndHighlightSections(stationId, zone, division) {
 
 
 // Function to check if observations exist for a given section
-async function checkExistingObservations(stationId, zone, division, sectionId) {
+async function checkExistingObservations(stationId, division, zone, sectionId) {
   try {
-    const requestData = { stationId, zone, division, sectionId };
-
+    console.log("This is section Id in function",sectionId);
+    const requestData = { stationId, division, zone, sectionId };
     console.log("🚀 Sending request to check existing observations:", requestData);
 
     const response = await fetch("checkObservations.php", {
@@ -8887,15 +5475,15 @@ async function saveObservation(section) {
   const saveBtn = document.querySelector(`#save-btn`);
   if (saveBtn) saveBtn.disabled = true;
 
-  // ✅ Validate loco info
+  // ✅ Validate Station info
   if (!stationId || !zone || !division) {
-    alert("⚠️ Please enter Loco ID, Shed Name, and Railway Division.");
+    alert("⚠️ Please enter Station ID, Shed Name, and Railway Division.");
     if (saveBtn) saveBtn.disabled = false;
     return;
   }
 
   try {
-    const exists = await checkExistingObservations(stationId, zone, division, section);
+    const exists = await checkExistingObservations(stationId, division, zone, section);
     if (exists === true) {
       alert("⚠️ Observations already exist for this section.");
       if (saveBtn) saveBtn.disabled = false;
@@ -8911,7 +5499,7 @@ async function saveObservation(section) {
   const formData = new FormData();
   formData.append("station-id", stationId);
   formData.append("station-name", document.getElementById("station-name")?.value || "");
-  formData.append("intial-date", document.getElementById("initial-date")?.value || "");
+  formData.append("initial-date", document.getElementById("initial-date")?.value || "");
   formData.append("division", division);
   formData.append("zone", zone);
   formData.append("updated-date", document.getElementById("updated-date")?.value || "");
@@ -9035,28 +5623,35 @@ function getSectionIDWithSno(observations) {
   }));
 }
 
-// Function to populate loco details
-function populateLocoDetails(locoDetails) {
-  console.log("Loco Details Response:", locoDetails);
+// Function to populate station details
+function populateStationDetails(stationDetails) {
+  console.log("Station Details Response:", stationDetails);
 
-  // Check if session storage already contains loco details
-  sessionStorage.setItem("locoDetails", JSON.stringify(locoDetails));
+  // Check if session storage already contains station details
+  sessionStorage.setItem("stationDetails", JSON.stringify(stationDetails));
 
-  // Populate the form fields with the loco details
-  const locoTypeInput = document.getElementById("loco-type");
-  const brakeTypeInput = document.getElementById("brake-type");
-  const inspectionDateInput = document.getElementById("date");
+  // Populate the form fields with the station details
+  const stationNameInput = document.getElementById("station-name");
+  const initialDateInput = document.getElementById("initial-date");
+  const updateDateInput = document.getElementById("updated-date");
 
-  if (locoTypeInput) locoTypeInput.value = locoDetails.loco_type || "";
-  if (brakeTypeInput) brakeTypeInput.value = locoDetails.brake_type || "";
+  if (stationNameInput) stationNameInput.value = stationDetails.station_name || "";
+  
   
   // Always use current date when editing
-  if (inspectionDateInput) {
+  if (initialDateInput) {
     const now = new Date();
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, "0");
     const day = String(now.getDate()).padStart(2, "0");
-    inspectionDateInput.value = `${year}-${month}-${day}`;
+    initialDateInput.value = `${year}-${month}-${day}`;
+  }
+  if (updateDateInput) {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    updateDateInput.value = `${year}-${month}-${day}`;
   }
 }
 
@@ -9280,13 +5875,13 @@ function deleteImage(event, sectionID, s_no, imgPath) {
 
   if (!confirm("Are you sure you want to delete this image?")) return;
 
-  const locoId = document.getElementById("loco-id").value;
+  const stationId = document.getElementById("station-id").value;
   const relativePath = imgPath.replace(/^.*\/uploads\//, 'uploads/');
 
   fetch('deleteImage.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ loco_id: locoId, s_no, imgPath: relativePath })
+    body: JSON.stringify({ station_id: stationId, s_no, imgPath: relativePath })
   })
   .then(response => response.json())
   .then(data => {
@@ -9420,24 +6015,24 @@ function formatDescription(observationText) {
 
 // Function to fetch updated details when clicking "Get Details"
 function getDetails() {
-  let locoID = document.getElementById("loco-id").value.trim();
-  let railwayDivision = document.getElementById("railway-division").value.trim();
-  let shedName = document.getElementById("shed-name").value.trim();
+  let  stationId= document.getElementById("station-id").value.trim();
+  let zone = document.getElementById("zone").value.trim();
+  let division = document.getElementById("division").value.trim();
 
-  if (!locoID || !railwayDivision || !shedName) {
+  if (!stationId || !zone || !division) {
     alert("Please fill in all the fields.");
     return;
   }
 
-  console.log("📢 Fetching details for:", { locoID, railwayDivision, shedName });
+  console.log("📢 Fetching details for:", { stationId, zone, division });
 
   $.ajax({
-    url: "generateReport.php",
+    url: '/STCAS_QCCHECKLIST/generateReport.php',
     type: "POST",
     data: {
-      "loco-id": locoID,
-      "railway-division": railwayDivision,
-      "shed-name": shedName,
+      "station-id": stationId,
+      "zone": zone,
+      "division": division,
     },
     dataType: "json",
     success: async function (response) {
@@ -9449,8 +6044,8 @@ function getDetails() {
         return;
       }
 
-      console.log("🚂 Loco Details Found:", response.locoDetails);
-      populateLocoDetails(response.locoDetails);
+      console.log("🚂 Station Details Found:", response.stationDetails);
+      populateStationDetails(response.stationDetails);
 
       let sectionWiseSno = {};
 
@@ -9482,7 +6077,7 @@ function getDetails() {
         });
       }, 500);
 
-      await checkAndHighlightSections(locoID, shedName, railwayDivision);
+      await checkAndHighlightSections(stationId, zone, division);
 
       // Hide Save button and show Update button when Get Details is clicked
       document.getElementById('save-btn').style.display = 'none';
@@ -9515,7 +6110,7 @@ function displayImagesWithDelete(images, rowId) {
       imageContainer.innerHTML += imgHTML;
     });
   }
-}
+} 
 
 
 /**
@@ -9526,16 +6121,14 @@ function displayImagesWithDelete(images, rowId) {
 async function updateObservation(section) {
   // 1) Section mapping (optional index)
   const sectionMapping = {
-    "1_0": 0,  "2_0": 1,  "3_0": 2,  "4_0": 3,
-    "5_0": 4,  "6_0": 5,  "7_0": 6,  "8_0": 7,
-    "9_0": 8, "10_0": 9, "11_0":10, "12_0":11,
-   "13_0":12, "14_0":13, "15_0":14, "16_0":15
+    "2_0": 1,  "3_0": 2,  "4_0": 3,
+    "5_0": 4,  "6_0": 5,  "7_0": 6
   };
 
   // 2) Section‐level fields
-  const locoId          = document.getElementById("loco-id").value;
-  const shedName        = document.getElementById("shed-name").value;
-  const railwayDivision = document.getElementById("railway-division").value;
+  const stationId          = document.getElementById("station-id").value;
+  const zone       = document.getElementById("zone").value;
+  const division = document.getElementById("division").value;
 
   if (sectionMapping[section] === undefined) {
     alert("Invalid section provided.");
@@ -9547,12 +6140,12 @@ async function updateObservation(section) {
 
   // 4) Build base FormData
   const formData = new FormData();
-  formData.append("loco-id",          locoId);
-  formData.append("loco-type",        document.getElementById("loco-type").value);
-  formData.append("brake-type",       document.getElementById("brake-type").value);
-  formData.append("railway-division", railwayDivision);
-  formData.append("shed-name",        shedName);
-  formData.append("inspection-date",  document.getElementById("date").value);
+  formData.append("station-id",          stationId);
+  formData.append("station-name",        document.getElementById("station-name").value);
+  formData.append("initial-date",       document.getElementById("initial-date").value);
+  formData.append("zone", zone);
+  formData.append("division",        division);
+  formData.append("updated-date",  document.getElementById("updated-date").value);
   formData.append("section-id",       section);
   formData.append("action",           "update");
   formData.append("section_index",    sectionMapping[section]);
@@ -9676,38 +6269,23 @@ function getDropdownOptions(sno, observationStatus) {
   if (!sno || typeof sno !== "string") {
     console.error("Invalid S_no value:", sno);
     return defaultOption;
-  }
+  }  
 const specificOptions = {
     "2.1": ["Present", "Not Present"],
-"2.38,2.39,2.40" : ["Matching", "Not Matching", "Not Installed", "Not Applicable"],    "2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,2.10,2.11,2.12,2.13,2.14,2.15,2.16,2.17,2.18,2.19,2.20,2.21,2.22,2.23,2.24,2.25,2.26,2.27,2.28,2.29,2.30,2.31,2.32,2.33,2.34,2.35,2.36,2.37": ["Matching", "Not Matching", "Not Installed"],
-    "3.6,14.13": ["Matching", "Not Matching"],
-    "3.3,3.4,3.5,3.5.1,3.5.2,3.12,3.13,6.2,6.4,6.7,7.2,8.1,8.2,8.3,8.7.1,8.7.2,8.7.3,8.7.4,9.1-9.6,14.2,14.6,15.2,15.4,15.10,16.2,15.5,15.5.1,3.12,3.13,5.7,6.10,6.11,5.1,8.4,14.8,5.2,5.3,9.7,16.1,16.2,16.3,16.4,5.8,5.7,5.4,15.9": ["Yes", "No"],
-    "3.1,3.8,6.8,6.9,8.5,8.6,14.2,14.15.1,14.18,14.18.1,14.19,15.8,14.15,14.17,16.5,5.6,10.4": ["Connected", "Not Connected"],
-    "1.1,1.2,3.2,6.1": ["Available", "Not Available"],
-    "6.5,8.8": ["Applied", "Not Applied"],
-    "4.2,6.6,6.10,7.3,8.7,14.20,16.3,3.9,3.14,5.8,14.14,15.7,6.12,5.9,5.5": ["Routing Done", "Routing Not Done"],
-    "4.1,15.6": ["Fixed", "Not Fixed"],
-    "6.3,7.1,14.3,14.12,15.3,14.7,3.7,14.15.2": ["Torquing done", "Torquing Not done"],
-    "10.1-10.3,14.1,14.11,15.1": ["Installed", "Not Installed"],
-    "14.10,14.9": ["Aligned", "Not Aligned"],
-    "14.4,14.5": ["Positioning done", "Positioning not done"],
-    "14.16": ["Welding done", "Welding Not done"],
-    "16.1": ["Earthing done", "Earthing Not done"],
-    "15.11,7.4,14.21":["Locked" , "Not Locked"],
+"2.38,2.39,2.40,2.41,2.42,2.43,2.44,2.45,2.46,2.47,2.48,2.49" : ["Matching", "Not Matching", "Not Installed", "Not Applicable"],    "2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,2.10,2.11,2.12,2.13,2.14,2.15,2.16,2.17,2.18,2.19,2.20,2.21,2.22,2.23,2.24,2.25,2.26,2.27,2.28,2.29,2.30,2.31,2.32,2.33,2.34,2.35,2.36,2.37": ["Matching", "Not Matching", "Not Installed"],
+    "3.6": ["Matching", "Not Matching"],
+    "3.3,3.4,3.5,3.12,6.2,6.4,7.2,3.12,3.13,3.14,3.15,3.16,3.17,3.18,3.19,3.20,3.21,5.1,5.2,5.3,5.4": ["Yes", "No"],
+    "3.1,3.8,5.6": ["Connected", "Not Connected"],
+    "3.2,6.1": ["Available", "Not Available"],
+    "6.5": ["Applied", "Not Applied"],
+    "4.2,7.3,3.9,5.5": ["Routing Done", "Routing Not Done"],
+    "4.1,4.3,4.4,4.5,4.6,4.7,4.8,4.9,4.10,4.11,4.12,4.13,4.14,4.15,4.16,4.17,4.18,4.19,4.20,4.21,4.22,4.23,4.24,4.25,4.26": ["Fixed", "Not Fixed"],
+    "6.3,7.1,3.7": ["Torquing done", "Torquing Not done"],
+    "7.4":["Locked" , "Not Locked"],
     "3.11" :["Cables Connected", "Cables Not Connected"],
-    "12.9,12.7,11.4,11.2,11.1,11.1.1,15.2.1" : ["Yes", "No", "Not Applicable"],
-    "12.8" :["Fixed", "Not Fixed", "Not Applicable"],
-    "12.6,12.2,12.1,11.7,11.10" :["Installed", "Not Installed", "Not Applicable"],
-    "12.5,11.6,11.8,11.9,11.11" :["Routing Done", "Routing Not Done", "Not Applicable"], 
-    "12.4,11.5,13.1,13.4,13.5,13.6" :["Connected", "Not Connected", "Not Applicable"],
-    "12.3" :["Matching", "Not Matching", "Not Applicable"],
-    "11.3" :["Applied", "Not Applied", "Not Applicable"],
-    "13.2,13.3" :["Verified and ok", "Not ok", "Not Applicable"],
     "3.10" : ["Metal clamps implemented","Metal clamps not implemented"]
     
   };
-
-
 
 
   for (const [key, values] of Object.entries(specificOptions)) {
@@ -9771,11 +6349,11 @@ function onlyOneChecked(target, name) {
   });
 }
 
-// Event listener to load default loco info (if any) when the page is loaded
+// Event listener to load default station info (if any) when the page is loaded
 document.addEventListener("DOMContentLoaded", function () {
-  const locoInfo = JSON.parse(sessionStorage.getItem("locoInfo"));
+  const stationInfo = JSON.parse(sessionStorage.getItem("stationInfo"));
 
-  if (locoInfo) {
+  if (stationInfo) {
     showSection("0.0"); // Default section to load
   }
 });
@@ -10335,11 +6913,6 @@ const mandatoryImageRowsBySection = {
   "5_0": ["5.2","5.3","5.4","5.5"],
   "6_0": ["6.2","6.3","6.6","6.8","6.9","6.10"],
   "7_0": ["7.1","7.3"],
-  "8_0": ["8.1","8.2","8.5","8.7"],
-  "9_0": ["9.2"],
-  "10_0": ["10.1","10.2"],
-  "14_0": ["14.1","14.16","14.17","14.19","14.21","14.22"],
-  "15_0": ["15.1","15.3","15.4","15.9","15.10","15.6"]
 
 };
 function validateMandatoryImages(sectionID) {

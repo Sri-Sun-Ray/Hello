@@ -5,3 +5,87 @@
 ALTER TABLE loco
 ADD COLUMN start_time DATETIME DEFAULT NULL,
 ADD COLUMN completed_time DATETIME DEFAULT NULL;
+
+
+=====================================
+ From: Sushma (EG-YAP-DSK-114/10.10.29.85/Sushma-<907a7a96166c5ba3>)
+  at Tue Aug 19 16:53:35 2025
+-------------------------------------
+const stationInfo = JSON.parse(sessionStorage.getItem('stationInfo'));
+if (stationInfo) {
+  const currentDate = new Date();
+  const formattedCurrentDate = `${currentDate.getDate().toString().padStart(2, '0')}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getFullYear()}`;
+
+  document.getElementById("station-id").textContent = stationInfo.stationId || 'N/A';
+  document.getElementById("station-name").textContent = stationInfo.stationName || 'N/A';
+  document.getElementById("zone").textContent = stationInfo.zone || 'N/A';
+  document.getElementById("division").textContent = stationInfo.division || 'N/A';
+  document.getElementById("initial-date").textContent = stationInfo.initialDate || formattedCurrentDate;
+  document.getElementById("updated-date").textContent = stationInfo.updatedDate || formattedCurrentDate;
+} else {
+  console.error('Station details not found in sessionStorage');
+}
+observations.html
+
+function populateStationDetails(stationDetails) {
+  console.log("📥 Station Details Response from DB:", stationDetails);
+
+  // Normalize keys so both zone + division are always captured
+  const normalizedStationInfo = {
+    stationId: stationDetails.station_id,
+    stationName: stationDetails.station_name,
+    zone: stationDetails.railway_zone || stationDetails.zone || "",   // ✅ fallback added
+    division: stationDetails.division || stationDetails.railway_division || "", // ✅ fallback added
+    initialDate: stationDetails.initial_date,
+    updatedDate: stationDetails.updated_date
+  };
+
+  console.log("✅ Normalized Station Info to be stored:", normalizedStationInfo);
+
+  // Save into sessionStorage
+  sessionStorage.setItem("stationInfo", JSON.stringify(normalizedStationInfo));
+  console.log("💾 Stored in sessionStorage under 'stationInfo':", sessionStorage.getItem("stationInfo"));
+
+  // Populate the form fields
+  const stationIdInput = document.getElementById("station-id");
+  const stationNameInput = document.getElementById("station-name");
+  const zoneInput = document.getElementById("zone");
+  const divisionInput = document.getElementById("division");
+  const initialDateInput = document.getElementById("initial-date");
+  const updateDateInput = document.getElementById("updated-date");
+
+  if (stationIdInput) {
+    stationIdInput.value = normalizedStationInfo.stationId || "";
+    console.log("🔑 stationId set to:", stationIdInput.value);
+  }
+
+  if (stationNameInput) {
+    stationNameInput.value = normalizedStationInfo.stationName || "";
+    console.log("🏷️ stationName set to:", stationNameInput.value);
+  }
+
+  if (zoneInput) {
+    zoneInput.value = normalizedStationInfo.zone || "";
+    console.log("🌍 zone set to:", zoneInput.value);
+  }
+
+  if (divisionInput) {
+    divisionInput.value = normalizedStationInfo.division || "";
+    console.log("📌 division set to:", divisionInput.value);
+  }
+
+  // Dates (fallback to today if empty)
+  const now = new Date();
+  const today = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`;
+
+  if (initialDateInput) {
+    initialDateInput.value = normalizedStationInfo.initialDate || today;
+    console.log("📅 initialDate set to:", initialDateInput.value);
+  }
+
+  if (updateDateInput) {
+    updateDateInput.value = normalizedStationInfo.updatedDate || today;
+    console.log("🕒 updatedDate set to:", updateDateInput.value);
+  }
+}
+ script.js

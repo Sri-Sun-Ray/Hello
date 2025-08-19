@@ -24,26 +24,15 @@ $observation_text = $_POST['observation_text'];
 $observation_status = $_POST['observation_status'];
 $remarks = $_POST['remarks'];
 $section_id = intval($_POST['section_id']);
-$loco_id = intval($_POST['station_id']);
+$station_id = intval($_POST['station_id']);
 
 $table_mapping = [
-    1 => "document_verification_table",
     2 => "verify_serial_numbers_of_equipment_as_per_ic",
     3 => "loco_kavach",
     4 => "emi_filter_box",
     5 => "rib_cab_input_box",
     6 => "dmi_lp_ocip",
     7 => "rfid_ps_unit",
-    8 => "loco_antenna_and_gps_gsm_antenna",
-    9 => "pneumatic_fittings_and_ep_valve_cocks_fixing",
-    10 => "pressure_sensors_installation_in_loco",
-    11 => "iru_faviely_units_fixing_for_e70_type_loco",
-    12 => "psjb_tpm_units_fixing_for_ccb_type_loco",
-    13 => "sifa_valve_fixing_for_ccb_type_loco",
-    14 => "pgs_and_speedo_meter_units_fixing",
-    15 => "rfid_reader_assembly",
-    16 => "earthing",
-    17 => "radio_power"
 ];
 
 if (!isset($table_mapping[$section_id])) {
@@ -70,9 +59,9 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
 }
 
 // Check if record exists
-$sql_check = "SELECT COUNT(*) AS cnt FROM $table_name WHERE S_no = ? AND loco_id = ?";
+$sql_check = "SELECT COUNT(*) AS cnt FROM $table_name WHERE S_no = ? AND station_id = ?";
 $stmt_check = $conn->prepare($sql_check);
-$stmt_check->bind_param("ii", $S_no, $loco_id);
+$stmt_check->bind_param("ii", $S_no, $station_id);
 $stmt_check->execute();
 $result = $stmt_check->get_result()->fetch_assoc();
 $stmt_check->close();
@@ -87,16 +76,16 @@ if ($exists) {
 
     $stmt = $conn->prepare($sql);
     if ($image_path !== null) {
-        $stmt->bind_param("ssssii", $observation_text, $observation_status, $remarks, $image_path, $S_no, $loco_id);
+        $stmt->bind_param("ssssii", $observation_text, $observation_status, $remarks, $image_path, $S_no, $station_id);
     } else {
-        $stmt->bind_param("sssii", $observation_text, $observation_status, $remarks, $S_no, $loco_id);
+        $stmt->bind_param("sssii", $observation_text, $observation_status, $remarks, $S_no, $station_id);
     }
 } else {
     // INSERT
     $sql = "INSERT INTO $table_name (S_no, station_id, observation_text, observation_status, remarks, image_path)
             VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("iissss", $S_no, $loco_id, $observation_text, $observation_status, $remarks, $image_path);
+    $stmt->bind_param("iissss", $S_no, $station_id, $observation_text, $observation_status, $remarks, $image_path);
 }
 
 if ($stmt->execute()) {

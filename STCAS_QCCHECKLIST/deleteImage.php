@@ -13,7 +13,7 @@ try {
         $data = json_decode(file_get_contents("php://input"), true);
         error_log("📥 JSON Payload: " . print_r($data, true));
 
-        if (!isset($data['loco_id'], $data['s_no'], $data['imgPath'])) {
+        if (!isset($data['station_id'], $data['s_no'], $data['imgPath'])) {
             error_log("❌ Missing parameters in request.");
             echo json_encode(['success' => false, 'message' => 'Missing parameters']);
             exit;
@@ -29,7 +29,7 @@ try {
         $imgPath = $data['imgPath'];
 
         // Check if the image exists in the database
-        $checkStmt = $pdo->prepare("SELECT * FROM images WHERE loco_id = ? AND s_no = ? AND image_path = ?");
+        $checkStmt = $pdo->prepare("SELECT * FROM images WHERE station_id = ? AND s_no = ? AND image_path = ?");
         $checkStmt->execute([$stationID, $s_no, $imgPath]);
         $imageRecord = $checkStmt->fetch(PDO::FETCH_ASSOC);
 
