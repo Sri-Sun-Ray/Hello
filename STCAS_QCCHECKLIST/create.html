@@ -76,8 +76,7 @@ if (isset($_SESSION['station_id'])) {
   <script>
     window.addEventListener('load', function() {
       // Clear all relevant stored data to ensure a fresh page each time.
-      sessionStorage.removeItem("stationDetails");
-      sessionStorage.removeItem("observationsData");
+      
       // Optionally, clear all of sessionStorage (caution: if you have other data you want to keep)
       // sessionStorage.clear();
       // Also clear localStorage if you use it:
@@ -121,8 +120,6 @@ if (isset($_SESSION['station_id'])) {
 <script>
  window.addEventListener('load', function() {
   // Clear only the keys specific to the form data.
-  sessionStorage.removeItem("stationDetails");
-  sessionStorage.removeItem("observationsData");
   
   localStorage.removeItem("selectedStationId");
   localStorage.removeItem("stationDetails");

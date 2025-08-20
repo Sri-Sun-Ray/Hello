@@ -18,11 +18,7 @@ let updatedDate = "";
 
 var data = [];
 
-// showSection() is your main function that loads HTML content by 'section' key
-document.addEventListener("DOMContentLoaded", function () {
-  // No need to toggle .active in the click events.
-  // Instead, rely on showSection to do it conditionally.
-});
+
 
 // Update division dropdown based on selected zone
 function updateDivisionNames() {
@@ -110,9 +106,7 @@ async function showSection(section) {
   const storedSession = sessionStorage.getItem("stationInfo");
 
   let stationInfo = {};
-  if (storedLocal) {
-    stationInfo = JSON.parse(storedLocal);
-  } else if (storedSession) {
+  if (storedSession) {
     stationInfo = JSON.parse(storedSession);
   } else {
     stationInfo = {
@@ -4977,10 +4971,10 @@ document.addEventListener("DOMContentLoaded", function () {
 async function generateReport() {
   // Remove the beforeunload listener so that it won't trigger when clicking the button.
   window.removeEventListener("beforeunload", beforeUnloadHandler);
-
-  const stationId = document.getElementById("station-id").value;
-  const division = document.getElementById("division").value;
-  const zone = document.getElementById("zone").value;
+  const stationInfo=JSON.parse(sessionStorage.getItem("stationInfo")||"{}");
+  const stationId = stationInfo.stationId;
+  const division = stationInfo.division;
+  const zone = stationInfo.zone;
 
   if (!stationId || !division || !zone) {
     alert("Please fill all the fields.");
@@ -5003,6 +4997,7 @@ async function generateReport() {
 
   if (data.success) {
     // Store the fetched data in sessionStorage
+    console.log("SOMETHING IS FISHYYYYYYYYYYYYYYYYYYYYYYYYYYYYY")
     sessionStorage.setItem("stationDetails", JSON.stringify(data.stationDetails));
     sessionStorage.setItem(
       "observationsData",
@@ -5289,9 +5284,14 @@ async function checkExistingObservations(stationId, division, zone, sectionId) {
 }
 
 async function saveObservation(section) {
-  const stationId = document.getElementById("station-id")?.value.trim();
-  const zone = document.getElementById("zone")?.value.trim();
-  const division = document.getElementById("division")?.value.trim();
+  const stationInfo=JSON.parse(sessionStorage.getItem("stationInfo")||"{}");
+
+  const stationId=stationInfo.stationId||"";
+  const stationName=stationInfo.stationName||"";
+  const zone=stationInfo.zone||"";
+  const division=stationInfo.division||"";
+  const initialDate=stationInfo.initialDate||"";
+  const updatedDate=stationInfo.updatedDate||"";
 
   const saveBtn = document.querySelector(`#save-btn`);
   if (saveBtn) saveBtn.disabled = true;
@@ -5338,11 +5338,11 @@ async function saveObservation(section) {
 
   const formData = new FormData();
   formData.append("station-id", stationId);
-  formData.append("station-name", document.getElementById("station-name")?.value || "");
-  formData.append("initial-date", document.getElementById("initial-date")?.value || "");
+  formData.append("station-name", stationName);
+  formData.append("initial-date", initialDate);
   formData.append("division", division);
   formData.append("zone", zone);
-  formData.append("updated-date", document.getElementById("updated-date")?.value || "");
+  formData.append("updated-date", updatedDate);
   formData.append("section-id", section);
 
   const rows = document.querySelectorAll(`#observations-section-${section} tbody tr`);
@@ -5438,6 +5438,17 @@ async function saveObservation(section) {
       if (saveBtn) saveBtn.style.display = 'none';
       if (getDetailsBtn) getDetailsBtn.style.display = 'inline-block';
       if (updateBtn) updateBtn.style.display = 'none';
+
+        sessionStorage.setItem("stationInfo", JSON.stringify({
+        stationId,
+        stationName,
+        zone,
+        division,
+        initialDate,
+        updatedDate
+      }));
+
+
     } else {
       alert(data.message || "❌ Server returned failure.");
     }
@@ -5452,34 +5463,65 @@ async function saveObservation(section) {
 
 // Function to populate station details
 function populateStationDetails(stationDetails) {
-  console.log("Station Details Response:", stationDetails);
-
-  // Check if session storage already contains station details
+  console.log("Station Details Response from DB:",stationDetails);
   sessionStorage.setItem("stationDetails", JSON.stringify(stationDetails));
 
-  // Populate the form fields with the station details
+  const normalizedStationInfo={
+    stationId: stationDetails.station_id,
+    stationName: stationDetails.station_name,
+    zone: stationDetails.railway_zone||stationDetails.zone||"",
+    division: stationDetails.division||stationDetails.railway_division||"",
+    initialDate: stationDetails.initial_date,
+    updatedDate: stationDetails.updated_date
+  };
+
+  console.log("Normalized station Info to be stored:",normalizedStationInfo);
+
+  sessionStorage.setItem("stationInfo",JSON.stringify(normalizedStationInfo));
+  console.log("Stored in sessionStorage under 'stationInfo':",sessionStorage.getItem("stationInfo")); 
+  
+   // Populate the form fields
+  const stationIdInput = document.getElementById("station-id");
   const stationNameInput = document.getElementById("station-name");
+  const zoneInput = document.getElementById("zone");
+  const divisionInput = document.getElementById("division");
   const initialDateInput = document.getElementById("initial-date");
   const updateDateInput = document.getElementById("updated-date");
 
-  if (stationNameInput) stationNameInput.value = stationDetails.station_name || "";
-  
-  
-  // Always use current date when editing
+  if (stationIdInput) {
+    stationIdInput.value = normalizedStationInfo.stationId || "";
+    console.log("🔑 stationId set to:", stationIdInput.value);
+  }
+
+  if (stationNameInput) {
+    stationNameInput.value = normalizedStationInfo.stationName || "";
+    console.log("🏷️ stationName set to:", stationNameInput.value);
+  }
+
+  if (zoneInput) {
+    zoneInput.value = normalizedStationInfo.zone || "";
+    console.log("🌍 zone set to:", zoneInput.value);
+  }
+
+  if (divisionInput) {
+    divisionInput.value = normalizedStationInfo.division || "";
+    console.log("📌 division set to:", divisionInput.value);
+  }
+
+  // Dates (fallback to today if empty)
+  const now = new Date();
+  const today = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`;
+
   if (initialDateInput) {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
-    initialDateInput.value = `${year}-${month}-${day}`;
+    initialDateInput.value = normalizedStationInfo.initialDate || today;
+    console.log("📅 initialDate set to:", initialDateInput.value);
   }
+
   if (updateDateInput) {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
-    updateDateInput.value = `${year}-${month}-${day}`;
+    updateDateInput.value = normalizedStationInfo.updatedDate || today;
+    console.log("🕒 updatedDate set to:", updateDateInput.value);
   }
+
 }
 
 
@@ -6154,10 +6196,60 @@ function onlyOneChecked(target, name) {
 
 // Event listener to load default station info (if any) when the page is loaded
 document.addEventListener("DOMContentLoaded", function () {
-  const stationInfo = JSON.parse(sessionStorage.getItem("stationInfo"));
+  // 🔹 Restore Station Details
+  const stationDetails = JSON.parse(sessionStorage.getItem("stationDetails") || "{}");
+  if (stationDetails && Object.keys(stationDetails).length > 0) {
+    if (document.getElementById("station-id")) {
+      document.getElementById("station-id").value = stationDetails.station_id || "";
+    }
+    if (document.getElementById("station-name")) {
+      document.getElementById("station-name").value = stationDetails.station_name || "";
+    }
+    if (document.getElementById("zone")) {
+      document.getElementById("zone").value = stationDetails.railway_zone || "";
+    }
+    if (document.getElementById("division")) {
+      document.getElementById("division").value = stationDetails.division || "";
+    }
+    if (document.getElementById("initial-date")) {
+      document.getElementById("initial-date").value = stationDetails.initial_date || "";
+    }
+    if (document.getElementById("updated-date")) {
+      document.getElementById("updated-date").value = stationDetails.updated_date || "";
+    }
+  }
 
-  if (stationInfo) {
-    showSection("0.0"); // Default section to load
+  // 🔹 Restore Observations
+  const observationsData = JSON.parse(sessionStorage.getItem("observationsData") || "[]");
+  if (Array.isArray(observationsData) && observationsData.length > 0) {
+    observationsData.forEach(obs => {
+      // Find row by S_no (your table must use `row-S_no` as id or similar)
+      const row = document.querySelector(`#observations-section-${obs.section_id} tr[data-sno="${obs.S_no}"]`);
+      if (row) {
+        // Restore remarks
+        const remarksField = row.querySelector(".remarks textarea");
+        if (remarksField) remarksField.value = obs.remarks || "";
+
+        // Restore status
+        const statusField = row.querySelector("select");
+        if (statusField) statusField.value = obs.observation_status || "Select";
+
+        // Restore images (if any container exists)
+        if (obs.images && obs.images.length > 0) {
+          const imgContainer = row.querySelector(".image-preview");
+          if (imgContainer) {
+            imgContainer.innerHTML = ""; // clear old previews
+            obs.images.forEach(img => {
+              const imgEl = document.createElement("img");
+              imgEl.src = img;
+              imgEl.style.width = "100px";
+              imgEl.style.height = "auto";
+              imgContainer.appendChild(imgEl);
+            });
+          }
+        }
+      }
+    });
   }
 });
 
@@ -6577,7 +6669,7 @@ function uploadImages(files) {
     console.log('🔄 Sending images to upload.php…');
     fetch('upload.php', {
       method: 'POST',
-      body: formData
+      body: formData,
     })
       .then(res => res.json())
       .then(data => {
@@ -6591,7 +6683,7 @@ function uploadImages(files) {
       })
       .catch(err => {
         console.error('🚨 Upload error:', err);
-        reject('Upload failed due to a network or server error.');
+        alert('Upload failed due to a network or server error.');
       });
   });
 }
@@ -6693,20 +6785,6 @@ function highlightSelect(selectElement) {
 const deletedImagesMap = {}; // Tracks deleted image URLs for each observationID
 
 
-
-/*document.addEventListener("DOMContentLoaded", function () {
-  const buttons = document.querySelectorAll(".sidebar .button");
-
-  buttons.forEach(button => {
-    button.addEventListener("click", function () {
-      // Remove 'active' class from all buttons
-      buttons.forEach(btn => btn.classList.remove("active"));
-
-      // Add 'active' class to the clicked button
-      this.classList.add("active");
-    });
-  });
-});*/
 
 
 // 1) define per‑section lists of S_no that require an image

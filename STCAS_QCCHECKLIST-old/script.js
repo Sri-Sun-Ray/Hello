@@ -4916,208 +4916,6 @@ Fixing proper Brackets (Point sleeper Bracket & Normal Sleeper Bracket) as per d
       </div>
     ;`
   }  
-  else if (section === "8.0") {
-    // For all other sections, add Save Observation button
-    mainContent.innerHTML += `
-      <h3 class="section-heading">RFID PS Unit Observations</h3>
-      <div class="table-container"> 
-      <table class="observations" id="observations-section-7_0">
-        <thead>
-          <tr>
-            <th>S_No</th>
-            <th>Description</th>
-            <th>Observation</th>
-            <th>Remarks/Comments</th>
-            <th>Image</th>
-          </tr>
-        </thead>
-        <tbody id="observations-tbody-7_0">
-          <tr id="row-510">
-      <td>8.1</td>
-      <td class="observation_text">Verification of Safety Practices as per Safety Instructions 5 16 72 0014</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Torquing done">Torquing done</option>
-          <option value="Torquing Not done">Torquing Not done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(51)">Add Image</button>
-<div class="upload-options" id="upload-options-51" style="display: none;">
-  <button class="add-image" onclick="startCamera(51)">Camera</button>
-  <label for="file-input-51" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-51" accept="image/*" multiple onchange="displayImages(this, 51)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-51"></div>
-<!-- Camera Container -->
-<div id="camera-container-51" style="display: none;">
-  <video id="camera-51" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(51)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(51)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(51)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-51" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-
-    <tr id="row-520">
-      <td>8.2</td>
-      <td class="observation_text">Procedures for STCAS and Tower I&C. 5 16 76 0009 & 5 16 76 0010</td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(52)">Add Image</button>
-<div class="upload-options" id="upload-options-52" style="display: none;">
-  <button class="add-image" onclick="startCamera(52)">Camera</button>
-  <label for="file-input-52" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-52" accept="image/*" multiple onchange="displayImages(this, 52)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-52"></div>
-<!-- Camera Container -->
-<div id="camera-container-52" style="display: none;">
-  <video id="camera-52" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(52)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(52)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(52)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-52" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-    <tr id="row-530">
-      <td>8.3</td>
-      <td class="observation_text">Training to field persons and S&T Staff.</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing done</option>
-          <option value="Routing Not Done">Routing Not done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(53)">Add Image</button>
-       <div class="upload-options" id="upload-options-53" style="display: none;">
-       <button class="add-image" onclick="startCamera(53)">Camera</button>
-       <label for="file-input-53" class="upload-label">Upload from Device</label>
-       <input type="file" id="file-input-53" accept="image/*" multiple onchange="displayImages(this, 53)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-53"></div>
-      <!-- Camera Container -->
-      <div id="camera-container-53" style="display: none;">
-      <video id="camera-53" width="100%" height="auto" autoplay></video>
-      <button class="add-image" onclick="captureImage(53)">Capture Image</button>
-      <button class="add-image" onclick="stopCamera(53)">Stop Camera</button>
-      <button class="reverse-camera" onclick="switchCamera(53)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-      <canvas id="canvas-53" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-      </div>
-    </tr>
-    <tr id="row-540">
-      <td>8.4</td>
-      <td class="observation_text">Documents at site;
--Relay Interface drawing (Bell test copies)
--RFID Tag Layout
--RFID Tag Data
--Cable Route Plan
--Floor Plan
--Tower site folder
--Tag Data
--TOC
--Power Supply  Schematic
--STCAS connectivity drawing
--Power load calculation sheet
--Installation Manual
-PCCL</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Locked">Locked</option>
-          <option value="Not Locked">Not Locked</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(54)">Add Image</button>
-<div class="upload-options" id="upload-options-54" style="display: none;">
-  <button class="add-image" onclick="startCamera(54)">Camera</button>
-  <label for="file-input-54" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-54" accept="image/*" multiple onchange="displayImages(this, 54)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-54"></div>
-<!-- Camera Container -->
-<div id="camera-container-54" style="display: none;">
-  <video id="camera-54" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(54)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(54)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(54)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-54" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-       </tr>
-       <tr id="row-5400">
-      <td>8.5</td>
-      <td class="observation_text">Workmanship  and quality of work
-(Check whether all connections are made through crimped eyelets and are numbered with PVC cables marker rings)</td>
-      <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Locked">Locked</option>
-          <option value="Not Locked">Not Locked</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(54)">Add Image</button>
-<div class="upload-options" id="upload-options-54" style="display: none;">
-  <button class="add-image" onclick="startCamera(54)">Camera</button>
-  <label for="file-input-54" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-54" accept="image/*" multiple onchange="displayImages(this, 54)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-54"></div>
-<!-- Camera Container -->
-<div id="camera-container-54" style="display: none;">
-  <video id="camera-54" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(54)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(54)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(54)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-54" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-       </tr>
-     </tbody>
-      </table>
-      </div>
-      <div class="action-buttons">
-        <!-- New UPDATE button: -->
-      <button type="button" 
-              id="update-btn" 
-              style="background-color: blue; color: white; display:none;" 
-              onclick="updateObservation('8_0')">
-        Update
-      </button>
-        <button type="button" id= "save-btn" style = "display: inline-block;"  onclick="if(validateMandatoryImages('8_0')) { saveObservation('8_0'); }">Save</button>
-         <button id="get-details-btn" onclick="getDetails()">Get Details</button>
-      </div>
-    ;`
-  }  
 
 }
 
@@ -5330,16 +5128,16 @@ async function saveStationInfo(section) {
   const stationName = document.getElementById("station-name").value;
   const zone = document.getElementById("zone").value;
   const division = document.getElementById("division").value;
-  const initial_date = document.getElementById("initial-date").value;
-  const updated_date = document.getElementById("updated-date").value;
+  const initialDate = document.getElementById("initial-date").value;
+  const updatedDate = document.getElementById("updated-date").value;
 
   if (
     !stationId ||
     !stationName ||
     !zone ||
     !division ||
-    !initial_date ||
-    !updated_date
+    !initialDate ||
+    !updatedDate
   ) {
     alert("Please fill out all fields before saving.");
     return;
@@ -5350,8 +5148,8 @@ async function saveStationInfo(section) {
     stationName: stationName,
     zone: zone,
     division: division,
-    initial_date: initial_date,
-    updated_date: updated_date,
+    initialDate: initialDate,
+    updatedDate: updatedDate,
   };
 
   // Save to sessionStorage
@@ -5368,8 +5166,8 @@ async function saveStationInfo(section) {
         "station-name": stationName,
         "zone": zone,
         "division": division,
-        "initial-date": initial_date,
-        "updated-date": updated_date,
+        "initial-date": initialDate,
+        "updated-date": updatedDate,
       }),
     });
 
@@ -5407,11 +5205,34 @@ document.addEventListener("click", function (event) {
 async function checkAndHighlightSections(stationId, zone, division) {
   // List of section IDs you want to check.
   // Adjust this list as needed.
-  const sectionIds = ['2.0', '3.0', '4.0', '5.0', '6.0', '7.0'];
+  const sectionIds = ['0.0','2.0', '3.0', '4.0', '5.0', '6.0', '7.0'];
+  let numSectionId;
+
 
   for (const sectionId of sectionIds) {
     // Check if observations exist for this section.
-    const exists = await checkExistingObservations(stationId, division, zone, sectionId);
+    if (sectionId==='0.0'){
+        numSectionId=0;
+    }
+    else if(sectionId==='2.0'){
+        numSectionId=2;
+    }
+    else if(sectionId==='3.0'){
+        numSectionId=3;
+    }
+    else if(sectionId==='4.0'){
+        numSectionId=4;
+    }
+    else if(sectionId==='5.0'){
+        numSectionId=5;
+    }
+    else if(sectionId==='6.0'){
+        numSectionId=6;
+    }
+    else if(sectionId==='7.0'){
+        numSectionId=7;
+    }
+    const exists = await checkExistingObservations(stationId, division, zone, numSectionId);
 
     // Convert sectionId to a button ID.
     // For example: "1_0" becomes "button-1" and "2.0" becomes "button-2".
@@ -5477,13 +5298,32 @@ async function saveObservation(section) {
 
   // ✅ Validate Station info
   if (!stationId || !zone || !division) {
-    alert("⚠️ Please enter Station ID, Shed Name, and Railway Division.");
+    alert("⚠️ Please enter Station ID, Zone, and division.");
     if (saveBtn) saveBtn.disabled = false;
     return;
   }
 
   try {
-    const exists = await checkExistingObservations(stationId, division, zone, section);
+    let numSection=2;
+    if(section==='2_0'){
+      numSection=2;
+    }
+    else if(section==='3_0'){
+      numSection=3;
+    }
+    else if(section==='4_0'){
+      numSection=4;
+    }
+    else if(section==='5_0'){
+      numSection=5;
+    }
+    else if(section==='6_0'){
+      numSection=6;
+    }
+    else if(section==='7_0'){
+      numSection=7;
+    }
+    const exists = await checkExistingObservations(stationId, division, zone, numSection);
     if (exists === true) {
       alert("⚠️ Observations already exist for this section.");
       if (saveBtn) saveBtn.disabled = false;
@@ -5608,20 +5448,7 @@ async function saveObservation(section) {
     if (saveBtn) saveBtn.disabled = false;
   }
 }
-// Function to get unique section_ids along with their S_no
-function getSectionIDWithSno(observations) {
-  const sectionMap = {};
-  observations.forEach(observation => {
-    if (!sectionMap[observation.section_id]) {
-      sectionMap[observation.section_id] = [];
-    }
-    sectionMap[observation.section_id].push(observation.S_no);
-  });
-  return Object.keys(sectionMap).map(section_id => ({
-    section_id: section_id,
-    sno: sectionMap[section_id]
-  }));
-}
+
 
 // Function to populate station details
 function populateStationDetails(stationDetails) {
@@ -5655,15 +5482,7 @@ function populateStationDetails(stationDetails) {
   }
 }
 
-// Enable buttons dynamically based on section IDs
-function enableSectionButtons(sectionID) {
-  const button = document.getElementById(`button-${sectionID}`);
-  if (button) {
-    button.disabled = false;
-  } else {
-    console.warn(`Button not found for section: ${sectionID}`);
-  }
-}
+
 
 // — after you fetch your data, do something like:
 //    window.allObservations = fetchedArray;
@@ -5672,28 +5491,12 @@ function enableSectionButtons(sectionID) {
 // Global store of everything you've fetched
 window.allObservations = [];
 
-// Enable buttons dynamically based on section IDs
-function enableSectionButtons(sectionID) {
-  const button = document.getElementById(`button-${sectionID}`);
-  if (button) {
-    button.disabled = false;
-  } else {
-    console.warn(`Button not found for section: ${sectionID}`);
-  }
-}
+
 
 // Global object to store edited barcode values keyed by rowId.
 window.editedBarcodes = window.editedBarcodes || {};
 
-/**
- * Called on each barcode input. Saves the new value, then re-renders
- * just that section so the table reflects the fresh code.
- */
-function updateEditedBarcode(rowId, value, sectionID, sno) {
-  window.editedBarcodes[rowId] = value;
-  // re-render only this section:
-  updateSections(window.allObservations, sectionID, sno);
-}
+
 
 /**
  * Filter & render a single section's table.
