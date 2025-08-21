@@ -101,9 +101,9 @@ try {
             <tbody>
             <?php foreach ($reports as $report): ?>
                 <?php
-                // Extract Loco ID from the beginning of the file name (digits)
-                preg_match('/^\d+/', $report['file_name'], $locoMatches);
-                $loco_id = $locoMatches[0] ?? null;
+                // Extract Station ID from the beginning of the file name (digits)
+                preg_match('/^\d+/', $report['file_name'], $stationMatches);
+                $station_id = $stationMatches[0] ?? null;
 
                 // Modified regex to handle:
                 // - a dash after "Version" (e.g., _Version-1)
@@ -125,7 +125,7 @@ try {
                     <td><?php echo $statusLabel; ?></td>
                     <td>
                         <a href="uploads/reports/<?php echo htmlspecialchars($report['file_name']); ?>" class="btn view-btn">View</a>
-                        <a href="create.html?loco_id=<?php echo htmlspecialchars($station_id); ?>" class="btn edit-btn">Edit</a>
+                        <a href="create.html?station_id=<?php echo htmlspecialchars($station_id); ?>" class="btn edit-btn">Edit</a>
                         <a href="uploads/reports/<?php echo htmlspecialchars($report['file_name']); ?>" download class="btn download-btn">Download</a>
                     </td>
                 </tr>
@@ -142,8 +142,8 @@ try {
     const searchValue = this.value.toLowerCase();
     const rows = document.querySelectorAll('#report-table tbody tr');
     rows.forEach(row => {
-      const locoId = row.getAttribute('data-station-id') || '';
-      if (locoId.toLowerCase().includes(searchValue)) {
+      const stationId = row.getAttribute('data-station-id') || '';
+      if (stationId.toLowerCase().includes(searchValue)) {
         row.style.display = '';
       } else {
         row.style.display = 'none';

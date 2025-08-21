@@ -28,7 +28,7 @@ try {
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
 
-    // Fetch loco details
+    // Fetch station details
     $stationQuery = "SELECT station_id, station_name, railway_zone, division, initial_date, updated_date
                   FROM station
                   WHERE station_id = ? AND railway_zone = ? AND division = ?";

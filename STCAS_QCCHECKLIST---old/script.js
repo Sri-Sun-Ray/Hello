@@ -1,4 +1,4 @@
-     let unsavedChanges=false;
+let unsavedChanges=false;
 const rowImages = new Map(); // Store images for each row
 // Delegated event listener: if an <input>, <select>, or <textarea> changes anywhere
 // in the document, set unsavedChanges=true.
@@ -136,9 +136,10 @@ async function showSection(section) {
   
 
   let backendSectionId=section;
-    if (["2.0","3.0","4.0","5.0","6.0","7.0"].includes(section)) {
+    if (["0.0","2.0","3.0","4.0","5.0","6.0","7.0"].includes(section)) {
     backendSectionId = parseInt(section, 10);
   }
+  console.log("This is section Id",backendSectionId);
   
   const exists = await checkExistingObservations(stationId, division, zone, backendSectionId);
 
@@ -5444,10 +5445,7 @@ async function checkAndHighlightSections(stationId, zone, division) {
 // Function to check if observations exist for a given section
 async function checkExistingObservations(stationId, division, zone, sectionId) {
   try {
-    if (!stationId || !division || !zone || !sectionId) {
-    console.error("Missing required parameters for checkExistingObservations:", { stationId, division, zone, sectionId });
-    return false;
-  }
+    console.log("This is section Id in function",sectionId);
     const requestData = { stationId, division, zone, sectionId };
     console.log("🚀 Sending request to check existing observations:", requestData);
 

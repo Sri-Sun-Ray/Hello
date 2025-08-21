@@ -978,7 +978,7 @@
       }
     }
 
-    async function getVersionedFileName(stationId, updateddate, completionStatus) {
+    async function getVersionedFileName(stationId, updatedDate, completionStatus) {
       try {
         const response = await fetch(`getNextVersion.php?station_id=${stationId}`);
         const data = await response.json();

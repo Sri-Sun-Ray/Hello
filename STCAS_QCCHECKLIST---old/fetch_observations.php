@@ -15,16 +15,16 @@ if ($conn->connect_error) {
     exit;
 }
 
-if (!isset($_GET['loco_id'])) {
-    echo json_encode(['status' => 'error', 'message' => 'Missing loco_id']);
+if (!isset($_GET['station_id'])) {
+    echo json_encode(['status' => 'error', 'message' => 'Missing station_id']);
     exit;
 }
 
-$locoId = $conn->real_escape_string($_GET['station_id']);
+$stationId = $conn->real_escape_string($_GET['station_id']);
 
 $tableNames = [
-    "verify_serial_numbers_of_equipment_as_per_ic", "loco_kavach",
-    "emi_filter_box", "rib_cab_input_box", "dmi_lp_ocip", "rfid_ps_unit",
+    "verify_serial_numbers_of_equipment_as_per_ic", "tower_and_rtu",
+    "station_tcas", "relay_installation_and_wiring", "smocip", "rfid_tags",
     
 ];
 
@@ -33,7 +33,7 @@ $observations = [];
 foreach ($tableNames as $tableName) {
     $sql = "SELECT S_no, observation_text, observation_status, remarks, created_at, updated_at FROM $tableName WHERE station_id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $locoId);
+    $stmt->bind_param("s", $stationId);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -41,8 +41,8 @@ foreach ($tableNames as $tableName) {
         $s_no = $row['S_no'];
 
         // Fetch associated images from `images` table for each S_no
-        $imgStmt = $conn->prepare("SELECT image_path FROM images WHERE loco_id = ? AND s_no = ?");
-        $imgStmt->bind_param("ss", $locoId, $s_no);
+        $imgStmt = $conn->prepare("SELECT image_path FROM images WHERE station_id = ? AND s_no = ?");
+        $imgStmt->bind_param("ss", $stationId, $s_no);
         $imgStmt->execute();
         $imgResult = $imgStmt->get_result();
 

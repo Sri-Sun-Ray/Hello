@@ -39,7 +39,7 @@ if ($result->num_rows > 0) {
 } else {
     // New loco → Insert first version 1
     $nextVersion = 1;
-    $insertSql = "INSERT INTO report_versions (loco_id, latest_version) VALUES (?, ?)";
+    $insertSql = "INSERT INTO report_versions (station_id, latest_version) VALUES (?, ?)";
     $insertStmt = $conn->prepare($insertSql);
     $insertStmt->bind_param("si", $locoId, $nextVersion);
     $insertStmt->execute();

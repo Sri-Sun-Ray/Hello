@@ -57,4 +57,5 @@ if (isset($_FILES['images']) && is_array($_FILES['images']['name'])) {
 } else {
     echo json_encode(["success" => false, "message" => "No files received."]);
 }
+
 ?>
