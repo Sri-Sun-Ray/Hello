@@ -93,28 +93,28 @@
     <a href="viewReports.php" id="go-to-report-btn" class="btn-link" style="display: none;">Go to Report</a>
   </div>
   <script>
-    const stationDetails = JSON.parse(sessionStorage.getItem('stationDetails'));
+    const stationDetails = JSON.parse(sessionStorage.getItem('stationInfo'));
     if (stationDetails) {
       const currentDate = new Date();
       const formattedCurrentDate = `${currentDate.getDate().toString().padStart(2, '0')}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getFullYear()}`;
-      document.getElementById("station-id").textContent = stationDetails.station_id || 'N/A';
-      document.getElementById("station-name").textContent = stationDetails.station_name || 'N/A';
+      document.getElementById("station-id").textContent = stationDetails.stationId || 'N/A';
+      document.getElementById("station-name").textContent = stationDetails.stationName || 'N/A';
       document.getElementById("zone").textContent = stationDetails.zone || 'N/A';
       document.getElementById("division").textContent = stationDetails.division || 'N/A';
-      document.getElementById("initial-date").textContent = formattedCurrentDate || 'N/A';
-      document.getElementById("updated-date").textContent = formattedCurrentDate || 'N/A';
+      document.getElementById("initial-date").textContent = stationDetails.initialDate || 'N/A';
+      document.getElementById("updated-date").textContent = stationDetails.updatedDate || 'N/A';
     } else {
       console.error('Station details not found in sessionStorage');
     }
 
     async function fetchObservations() {
-      let station_id = stationDetails?.station_id;
-      if (!station_id) {
+      let stationId = stationDetails?.stationId;
+      if (!stationId) {
         console.error("Station ID is missing.");
         return { status: 'error', message: 'Station ID is missing' };
       }
       try {
-        const response = await fetch(`fetch_observations.php?station_id=${station_id}`);
+        const response = await fetch(`fetch_observations.php?station_id=${stationId}`);
         const text = await response.text();
         console.log("Raw backend response:", text);
         let data;
@@ -1079,6 +1079,7 @@
         reportContainer.appendChild(reportItem);
       });
     }
+    
 
     document.addEventListener("DOMContentLoaded", fetchReports);
     async function uploadPDF(pdfBlob, fileName) {

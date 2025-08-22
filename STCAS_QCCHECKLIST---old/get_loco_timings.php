@@ -10,11 +10,11 @@ if ($conn->connect_error) {
 
 $stationID = trim($_GET['station_id'] ?? '');
 if (!$stationID) {
-    echo json_encode(["success" => false, "message" => "❌ Missing loco_id"]);
+    echo json_encode(["success" => false, "message" => "❌ Missing station_id"]);
     exit;
 }
 
-$sql = "SELECT start_time, completed_time FROM station WHERE station_Id = ?";
+$sql = "SELECT start_time, completed_time FROM station WHERE station_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $stationID);
 $stmt->execute();

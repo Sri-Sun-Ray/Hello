@@ -15,7 +15,7 @@ try {
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Fetch form data
-            $stationCode = $_POST['station-id']; // External station code
+            $stationId = $_POST['station-id']; // External station code
             $sectionID = $_POST['section-id'];
             $stationName = $_POST['station-name'];
             $zone = $_POST['zone'];
@@ -32,7 +32,7 @@ try {
 
             // Get the internal station.id for the given station_code
             $stationIdQuery = $pdo->prepare("SELECT id FROM station WHERE station_id = ?");
-            $stationIdQuery->execute([$stationCode]);
+            $stationIdQuery->execute([$stationId]);
             $stationRow = $stationIdQuery->fetch(PDO::FETCH_ASSOC);
 
             if (!$stationRow) {
@@ -51,7 +51,7 @@ try {
                 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())");
 
                 $stmt->execute([
-                   $internalStationId, $stationName, $zone, $division, $initialDate, $updatedDate,
+                   $stationId, $stationName, $zone, $division, $initialDate, $updatedDate,
                     htmlspecialchars($obs['observation_text']),
                     htmlspecialchars($obs['remarks']),
                     htmlspecialchars($obs['S_no']),
@@ -62,11 +62,11 @@ try {
                 // Update images in images table:
                 if (!empty($obs['image_paths']) && is_array($obs['image_paths'])) {
                     $deleteStmt = $pdo->prepare("DELETE FROM images WHERE station_id = ? AND s_no = ?");
-                    $deleteStmt->execute([$internalStationId, $obs['S_no']]);
+                    $deleteStmt->execute([$stationId, $obs['S_no']]);
 
                     foreach ($obs['image_paths'] as $imgPath) {
                         $imgStmt = $pdo->prepare("INSERT INTO images (entity_type, station_id, s_no, image_path, created_at) VALUES (?, ?, ?, ?, NOW())");
-                        $imgStmt->execute(['rfid_tags', $internalStationId, $obs['S_no'], $imgPath]);
+                        $imgStmt->execute(['rfid_tags', $stationId, $obs['S_no'], $imgPath]);
                     }
                 }
             }

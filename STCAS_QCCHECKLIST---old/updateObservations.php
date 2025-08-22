@@ -5,11 +5,11 @@ header('Content-Type: application/json');
 
 $tableNames = [
     'verify_serial_numbers_of_equipment_as_per_ic',
-    'loco_kavach',
-    'emi_filter_box',
-    'rib_cab_input_box',
-    'dmi_lp_ocip',
-    'rfid_ps_unit'
+    'tower_and_rtu',
+    'station_tcas',
+    'relay_installation_and_wiring',
+    'smocip',
+    'rfid_tags'
 ];
 
 $sectionIndex = $_POST['section_index'] ?? null;
@@ -117,7 +117,7 @@ try {
                 // Insert the new images.
                 foreach ($image_paths as $imgPath) {
                     $imgStmt = $pdo->prepare("INSERT INTO images (entity_type, station_id, s_no, image_path, created_at) VALUES (?, ?, ?, ?, NOW())");
-                    $imgStmt->execute(['radio_power', $locoId, $s_no, $imgPath]);
+                    $imgStmt->execute(['radio_power', $stationId, $s_no, $imgPath]);
                 }
             }
         } else {

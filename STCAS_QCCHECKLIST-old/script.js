@@ -346,7 +346,7 @@ async function showSection(section) {
         </thead>
         <tbody id="observations-tbody-2_0">
         <tr id="row-4">
-        <td>2.1</td>
+        <td>1.1</td>
       <td class="observation_text">Stationary TCAS unit</td>
       <td>
         <select id="status-dropdown" onchange="highlightSelect(this)">
@@ -380,7 +380,7 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-5">
-  <td>2.2</td>
+  <td>1.2</td>
   <td class="observation_text" style="padding-right: 10px;">
     Peripheral Processing Card 1
   <input 
@@ -434,7 +434,7 @@ async function showSection(section) {
   </td>
 </tr>
 <tr id="row-6">
-  <td>2.3</td>
+  <td>1.3</td>
   <td class="observation_text" style="padding-right: 10px;">
     Peripheral Processing Card 2
     <input 
@@ -484,7 +484,7 @@ async function showSection(section) {
   </td>
 </tr>
 <tr id="row-7">
-  <td>2.4</td>
+  <td>1.4</td>
   <td class="observation_text">
     Vital Computer Card 1
     <input 
@@ -533,7 +533,7 @@ async function showSection(section) {
   </td>
 </tr>
 <tr id="row-8">
-  <td>2.5</td>
+  <td>1.5</td>
    <td class="observation_text">
     Vital Computer Card 2<input 
   type="text" 
@@ -584,7 +584,7 @@ async function showSection(section) {
 </tr>
 
 <tr id="row-9">
-  <td>2.6</td>
+  <td>1.6</td>
    <td class="observation_text">
     Vital Computer Card 3<input 
   type="text" 
@@ -634,7 +634,7 @@ async function showSection(section) {
   </td>
 </tr>
 <tr id="row-10">
-  <td>2.7</td>
+  <td>1.7</td>
   <td class="observation_text">
      Voter Card 1<input 
   type="text" 
@@ -684,7 +684,7 @@ async function showSection(section) {
 </tr>
 
 <tr id="row-11">
-  <td>2.8</td>
+  <td>1.8</td>
   <td class="observation_text">
     Voter Card 2<input 
   type="text" 
@@ -734,7 +734,7 @@ async function showSection(section) {
 </tr>
 
 <tr id="row-12">
-  <td>2.9</td>
+  <td>1.9</td>
   <td class="observation_text">
    Vital Gateway Card 1 <input 
   type="text" 
@@ -786,7 +786,7 @@ async function showSection(section) {
 
           </tr>
           <tr id="row-13">
-            <td>2.10</td>
+            <td>1.10</td>
            <td class="observation_text">Vital Gateway Card 2
            <input 
   type="text" 
@@ -836,7 +836,7 @@ async function showSection(section) {
 
           </tr>
           <tr id="row-14">
-            <td >2.11</td>
+            <td >1.11</td>
            <td class="observation_text"> Integrated Data Logger Card (IDL)
            <input 
   type="text" 
@@ -888,7 +888,7 @@ async function showSection(section) {
 
           </tr>
           <tr id="row-15">
-            <td>2.12</td>
+            <td>1.12</td>
            <td class="observation_text"> Dual GSM Card
         <input 
   type="text" 
@@ -938,7 +938,7 @@ async function showSection(section) {
 
           </tr>
           <tr id="row-16">
-            <td>2.13</td>
+            <td>1.13</td>
            <td class="observation_text">
   Field Scanner Card 1
   <input 
@@ -991,7 +991,7 @@ async function showSection(section) {
 
           </tr>
           <tr id="row-17">
-            <td>2.14</td>
+            <td>1.14</td>
            <td class="observation_text">Field Scanner Card 2
           <input 
   type="text" 
@@ -1039,7 +1039,7 @@ async function showSection(section) {
 
           </tr>
           <tr id="row-18">
-            <td>2.15</td>
+            <td>1.15</td>
            <td class="observation_text">Field Scanner Card 3
           <input 
   type="text" 
@@ -1088,7 +1088,7 @@ async function showSection(section) {
 
           </tr>
           <tr id="row-19">
-            <td>2.16</td>
+            <td>1.16</td>
            <td class="observation_text">Field Scanner Card 4
            <input 
   type="text" 
@@ -1136,7 +1136,7 @@ async function showSection(section) {
 
           </tr>
           <tr id="row-20">
-            <td>2.17</td>
+            <td>1.17</td>
            <td class="observation_text">Field Scanner Card 5
           <input 
   type="text" 
@@ -1185,7 +1185,7 @@ async function showSection(section) {
 
           </tr>
           <tr id="row-21">
-            <td>2.18</td>
+            <td>1.18</td>
            <td class="observation_text">Field Scanner Card 6
           <input 
   type="text" 
@@ -1234,7 +1234,7 @@ async function showSection(section) {
           </tr>
 
           <tr id="row-22">
-            <td>2.19</td>
+            <td>1.19</td>
            <td class = "observation_text">Field Scanner Card 7
           <input 
   type="text" 
@@ -1283,7 +1283,7 @@ async function showSection(section) {
 
           
           <tr id="row-222">
-            <td>2.20</td>
+            <td>1.20</td>
            <td class = "observation_text">Field Scanner Card 8
           <input 
   type="text" 
@@ -1332,7 +1332,7 @@ async function showSection(section) {
 
           
           <tr id="row-223">
-            <td>2.21</td>
+            <td>1.21</td>
            <td class = "observation_text">SMOCIP Unit
           <input 
   type="text" 
@@ -1380,7 +1380,7 @@ async function showSection(section) {
           </tr>
 
             <tr id="row-224">
-            <td>2.22</td>
+            <td>1.22</td>
            <td class = "observation_text">Station Radio Power Supply card-1
           <input 
   type="text" 
@@ -1428,7 +1428,7 @@ async function showSection(section) {
           </tr>
 
             <tr id="row-225">
-            <td>2.23</td>
+            <td>1.23</td>
            <td class = "observation_text">Next Gen/. Cal Amp Radio Modem
           <input 
   type="text" 
@@ -1476,7 +1476,7 @@ async function showSection(section) {
           </tr>
 
            <tr id="row-226">
-            <td>2.24</td>
+            <td>1.24</td>
            <td class = "observation_text">Station Radio Power Supply card-1
           <input 
   type="text" 
@@ -1524,7 +1524,7 @@ async function showSection(section) {
           </tr>
 
            <tr id="row-227">
-            <td>2.25</td>
+            <td>1.25</td>
            <td class = "observation_text">GPS & GSM Antenna 1
           <input 
   type="text" 
@@ -1572,7 +1572,7 @@ async function showSection(section) {
           </tr>
 
            <tr id="row-228">
-            <td>2.26</td>
+            <td>1.26</td>
            <td class = "observation_text">GPS & GSM Antenna 2
           <input 
   type="text" 
@@ -1620,7 +1620,7 @@ async function showSection(section) {
           </tr>
 
           <tr id="row-2229">
-            <td>2.27</td>
+            <td>1.27</td>
            <td class = "observation_text">DPS Card 1
           <input 
   type="text" 
@@ -1668,7 +1668,7 @@ async function showSection(section) {
           </tr>
 
           <tr id="row-229">
-            <td>2.28</td>
+            <td>1.28</td>
            <td class = "observation_text">DPS Card 2
 
           <input 
@@ -1717,7 +1717,7 @@ async function showSection(section) {
           </tr>
 
           <tr id="row-230">
-            <td>2.29</td>
+            <td>1.29</td>
            <td class = "observation_text">EMI Filter 1
 
           <input 
@@ -1766,7 +1766,7 @@ async function showSection(section) {
           </tr>
 
           <tr id="row-231">
-            <td>2.30</td>
+            <td>1.30</td>
            <td class = "observation_text">EMI Filter 2
 
           <input 
@@ -1815,7 +1815,7 @@ async function showSection(section) {
           </tr>
 
             <tr id="row-232">
-            <td>2.31</td>
+            <td>1.31</td>
            <td class = "observation_text">Media Converter 1
 
           <input 
@@ -1864,7 +1864,7 @@ async function showSection(section) {
           </tr>
 
             <tr id="row-233">
-            <td>2.32</td>
+            <td>1.32</td>
            <td class = "observation_text">Media Converter 2
 
           <input 
@@ -1914,7 +1914,7 @@ async function showSection(section) {
 
           
             <tr id="row-234">
-            <td>2.33</td>
+            <td>1.33</td>
            <td class = "observation_text">Media Converter 3
 
           <input 
@@ -1963,7 +1963,7 @@ async function showSection(section) {
           </tr>
 
            <tr id="row-235">
-            <td>2.34</td>
+            <td>1.34</td>
            <td class = "observation_text">Cable Extender
 
           <input 
@@ -2012,7 +2012,7 @@ async function showSection(section) {
           </tr>
 
           <tr id="row-240">
-            <td>2.35</td>
+            <td>1.35</td>
            <td class = "observation_text">RIU-COM 1
 
           <input 
@@ -2061,7 +2061,7 @@ async function showSection(section) {
           </tr>
 
           <tr id="row-236">
-            <td>2.36</td>
+            <td>1.36</td>
            <td class = "observation_text">RIU-COM 2
 
           <input 
@@ -2111,7 +2111,7 @@ async function showSection(section) {
 
           
           <tr id="row-237">
-            <td>2.37</td>
+            <td>1.37</td>
            <td class = "observation_text">FIU Termination Card 1
 
           <input 
@@ -2161,7 +2161,7 @@ async function showSection(section) {
 
           
           <tr id="row-238">
-            <td>2.38</td>
+            <td>1.38</td>
            <td class = "observation_text">FIU Termination Card 2
 
           <input 
@@ -2212,7 +2212,7 @@ async function showSection(section) {
 
           
           <tr id="row-239">
-            <td>2.39</td>
+            <td>1.39</td>
            <td class = "observation_text">FIU Termination Card 3
 
           <input 
@@ -2262,7 +2262,7 @@ async function showSection(section) {
 
           
           <tr id="row-2390">
-            <td>2.40</td>
+            <td>1.40</td>
            <td class = "observation_text">FIU Termination Card 4
 
           <input 
@@ -2311,7 +2311,7 @@ async function showSection(section) {
           </tr>
 
           <tr id="row-2391">
-            <td>2.41</td>
+            <td>1.41</td>
            <td class = "observation_text">FIU Termination Card 5
 
           <input 
@@ -2361,7 +2361,7 @@ async function showSection(section) {
 
 
           <tr id="row-2392">
-            <td>2.42</td>
+            <td>1.42</td>
            <td class = "observation_text">FIU Termination Card 6
 
           <input 
@@ -2410,7 +2410,7 @@ async function showSection(section) {
           </tr>
 
           <tr id="row-2393">
-            <td>2.43</td>
+            <td>1.43</td>
            <td class = "observation_text">FIU Termination Card 7
 
           <input 
@@ -2460,7 +2460,7 @@ async function showSection(section) {
 
 
          <tr id="row-2394">
-            <td>2.44</td>
+            <td>1.44</td>
            <td class = "observation_text">FIU Termination Card 8
 
           <input 
@@ -2510,7 +2510,7 @@ async function showSection(section) {
 
 
         <tr id="row-2395">
-            <td>2.45</td>
+            <td>1.45</td>
            <td class = "observation_text">PDU Box
 
           <input 
@@ -2559,7 +2559,7 @@ async function showSection(section) {
           </tr>
 
          <tr id="row-2396">
-            <td>2.46</td>
+            <td>1.46</td>
            <td class = "observation_text">RTU 1
 
           <input 
@@ -2609,7 +2609,7 @@ async function showSection(section) {
 
         
         <tr id="row-2397">
-            <td>2.47</td>
+            <td>1.47</td>
            <td class = "observation_text">RTU 2
 
           <input 
@@ -2658,7 +2658,7 @@ async function showSection(section) {
           </tr>
 
         <tr id="row-2398">
-            <td>2.48</td>
+            <td>1.48</td>
            <td class = "observation_text">RADIO 1
 
           <input 
@@ -2708,7 +2708,7 @@ async function showSection(section) {
 
 
         <tr id="row-2399">
-            <td>2.49</td>
+            <td>1.49</td>
            <td class = "observation_text">RADIO 2
 
           <input 
@@ -2790,13 +2790,13 @@ async function showSection(section) {
         </thead>
         <tbody id="observations-tbody-3_0">
           <tr id="row-23">
-              <td>3.1</td>
+              <td>2.1</td>
               <td class="observation_text">Visual Checks</td>
               <td class="select">
                  <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Connected">Connected</option>
-                <option value="Not Connected">Not Connected</option>
+                <option value="Found Ok">Connected</option>
+                <option value="Found Not Ok">Not Connected</option>
               </select>
               </td>
               <td class="remarks">
@@ -2821,13 +2821,13 @@ async function showSection(section) {
 </div>
 </tr>
 <tr id="row-24">
-      <td>3.2</td>
-      <td class="observation_text">Verification of RF Antenna Fixing and LMR Cable Routing</td>
+      <td>2.2</td>
+      <td class="observation_text"><b>Verification of RF Antenna Fixing and LMR Cable Routing:</b>Verification of Antenna Fixing</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Available">Available</option>
-                <option value="Not Available">Not Available</option>
+                <option value="Available">Fixed</option>
+                <option value="Not Available">Not Fixed</option>
               </select>
       </td>
       <td class="remarks">
@@ -2853,13 +2853,13 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-25">
-      <td>3.3</td>
-      <td class="observation_text">Verification of Antenna Fixing</td>
+      <td>2.3</td>
+      <td class="observation_text"><b>Verification of RF Antenna Fixing and LMR Cable Routing:</b>Verify the RF Cable joining to Antenna</td>
       <td class="select">
      <select id="status-dropdown"  onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
+                <option value="Yes">Joined</option>
+                <option value="No">Not Joined</option>
               </select>
       </td>
       <td class="remarks">
@@ -2884,13 +2884,13 @@ async function showSection(section) {
 </div>
     </tr>
     <tr id="row-26">
-      <td>3.4</td>
-      <td class="observation_text">Verify the RF Cable joining to Antenna</td>
+      <td>2.4</td>
+      <td class="observation_text"><b>Verification of RF Antenna Fixing and LMR Cable Routing:</b>Tie the cables to die pole antenna by using stainless steel cable tie at four locations.</td>
       <td>
          <select id="status-dropdown"  onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
+                <option value="Yes">Cable ties implemented</option>
+                <option value="No">Cable ties not implemented</option>
               </select>
       </td>
       <td class="remarks">
@@ -2915,13 +2915,13 @@ async function showSection(section) {
 </div>
     </tr>
   <tr id="row-27">
-      <td>3.5</td>
-      <td class="observation_text">Tie the cables to die pole antenna by using stainless steel cable tie at four locations.</td>
+      <td>2.5</td>
+      <td class="observation_text"><b>Verification of RF Antenna Fixing and LMR Cable Routing:</b>LMR 600 cables routing by using feeder clamps.</td>
       <td>
          <select id="status-dropdown"  onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
+                <option value="Yes">Routing done</option>
+                <option value="No">Routing Not done</option>
               </select>
       </td>
       <td class="remarks">
@@ -2946,13 +2946,13 @@ async function showSection(section) {
 </div>
   </tr>
 <tr id="row-435">
-      <td>3.6</td>
-      <td class="observation_text">LMR 600 cables routing by using feeder clamps.
+      <td>2.6</td>
+      <td class="observation_text"><b>Installation of RTU Box and connections with identification:</b>Visual inspection, Identification and Radios functioning</td>
       <td>
          <select id="status-dropdown"  onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
+                <option value="Yes">Functioning</option>
+                <option value="No">Not Functioning</option>
               </select>
       </td>
       <td class="remarks">
@@ -2977,13 +2977,13 @@ async function showSection(section) {
 </div>
   </tr>
 <tr id="row-436">
-      <td>3.7</td>
-      <td class="observation_text">Installation of RTU Box and connections with identification</td>
+      <td>2.7</td>
+      <td class="observation_text"><b>Installation of RTU Box and connections with identification:</b>LMR cable fixing</td>
       <td>
          <select id="status-dropdown"  onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
+                <option value="Yes">Fixed</option>
+                <option value="No">Not Fixed</option>
               </select>
       </td>
       <td class="remarks">
@@ -3009,13 +3009,13 @@ async function showSection(section) {
   </tr>
 
     <tr id="row-28">
-      <td>3.8</td>
-      <td class="observation_text">Visual inspection, Identification and Radios functioning</td>
+      <td>2.8</td>
+      <td class="observation_text"><b>Installation of RTU Box and connections with identification:</b>Verification of RTU box Fixing on platform.</td>
       <td>
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Matching">Matching</option>
-          <option value="Not Matching">Not Matching</option>
+          <option value="Matching">Fixed</option>
+          <option value="Not Matching">Not Fixed</option>
         </select>
       </td>
       <td class="remarks">
@@ -3040,13 +3040,13 @@ async function showSection(section) {
 </div>
     </tr>
     <tr id="row-29">
-      <td>3.9</td>
-      <td class="observation_text">LMR cable fixing</td>
+      <td>2.9</td>
+      <td class="observation_text"><b>Installation of RTU Box and connections with identification:</b>Tie the cables to structure by using stainless steel cable ties.</td>
       <td class="select">
            <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Torquing done">Torquing done</option>
-          <option value="Torquing Not done">Torquing Not done</option>
+          <option value="Torquing done">Cable ties implemented</option>
+          <option value="Torquing Not done">Cable ties not implemented</option>
         </select>
       </td>
       <td class="remarks">
@@ -3071,13 +3071,13 @@ async function showSection(section) {
 </div>
     </tr>
     <tr id="row-30">
-      <td>3.10</td>
-      <td class="observation_text">Verification of RTU box Fixing on platform.</td>
+      <td>2.10</td>
+      <td class="observation_text"><b>Installation of RTU Box and connections with identification:</b>Radios power supply 110V</td>
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Connected">Connected</option>
-                <option value="Not Connected">Not Connected</option>
+                <option value="Connected">Voltage found Ok</option>
+                <option value="Not Connected">Voltage not Ok</option>
               </select>
       </td>
       <td class="remarks">
@@ -3102,13 +3102,13 @@ async function showSection(section) {
 </div>
     </tr>
     <tr id="row-31">
-      <td>3.11</td>
-      <td class="observation_text">Tie the cables to structure by using stainless steel cable ties.</td>
+      <td>2.11</td>
+      <td class="observation_text"><b>Installation of RTU Box and connections with identification:</b>Verification of RTU Earthing</td>
       <td>
          <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Earth Connected</option>
+          <option value="Routing Not Done">Earth not connected</option>
         </select>
       </td>
       <td class="remarks">
@@ -3133,13 +3133,13 @@ async function showSection(section) {
 </div>
     </tr>
     <tr id="row-32">
-      <td>3.12</td>
-      <td class="observation_text">Radios power supply 110V</td>
+      <td>2.12</td>
+      <td class="observation_text"><b>Verification of Tower:</b>Tower Foundation & Fencing</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Metal clamps implemented">Metal clamps implemented</option>
-          <option value="Metal clamps not implemented">Metal clamps not implemented</option>
+          <option value="Metal clamps implemented">Done</option>
+          <option value="Metal clamps not implemented">Not Done</option>
         </select>
       </td>
       <td class="remarks">
@@ -3164,13 +3164,13 @@ async function showSection(section) {
 </div>
     </tr>
     <tr id="row-33">
-      <td>3.13</td>
-      <td class ="observation_text">Verification of RTU Earthing</td>
+      <td>2.13</td>
+      <td class ="observation_text"><b>Verification of Tower:</b>Ladder Fixing</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Cables Connected">Cables Connected</option>
-          <option value="Cables Not Connected">Cables Not Connected</option>
+          <option value="Cables Connected">Fixed</option>
+          <option value="Cables Not Connected">Not Fixed</option>
         </select>
       </td>
       <td class="remarks">
@@ -3195,13 +3195,13 @@ async function showSection(section) {
 </div>
     </tr>
   <tr id="row-1333">
-      <td>3.14</td>
-      <td class ="observation_text">Verification of Tower</td>
+      <td>2.14</td>
+      <td class ="observation_text"><b>Verification of Tower:</b>GI Earthing strip routing</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
+          <option value="Yes">Routing Done</option>
+          <option value="No">Routing Not Done</option>
         </select>
       </td>
       <td class="remarks">
@@ -3226,13 +3226,13 @@ async function showSection(section) {
 </div>
     </tr>
  <tr id="row-2333">
-      <td>3.15</td>
-      <td class ="observation_text">Tower Foundation & Fencing</td>
+      <td>2.15</td>
+      <td class ="observation_text">Verification of Tower and RTU Earth pit arrangement with brazing.</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
+          <option value="Yes">Done</option>
+          <option value="No">Not Done</option>
         </select>
       </td>
       <td class="remarks">
@@ -3257,13 +3257,13 @@ async function showSection(section) {
 </div>
     </tr>
  <tr id="row-3333">
-      <td>3.16</td>
-      <td class ="observation_text">Ladder Fixing</td>
+      <td>2.16</td>
+      <td class ="observation_text">Earthing for Tower as per Spec. < 2Ω</td>
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Ok</option>
+          <option value="Routing Not Done">Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3289,142 +3289,13 @@ async function showSection(section) {
     </tr>
 
      <tr id="row-3334">
-      <td>3.17</td>
-      <td class ="observation_text">RTU Plat form entrance </td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-     <td>
-       <button class="add-image" onclick="showUploadOptions(3333)">Add Image</button>
-<div class="upload-options" id="upload-options-3333" style="display: none;">
-  <button class="add-image" onclick="startCamera(3333)">Camera</button>
-  <label for="file-input-3333" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-3333" accept="image/*" multiple onchange="displayImages(this, 3333)">
-</div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-3333"></div>
-      <!-- Camera Container -->
-<div id="camera-container-3333" style="display: none;">
-  <video id="camera-3333" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(3333)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(3333)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(3333)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-3333" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-
-
-    <tr id="row-3335">
-      <td>3.18</td>
-      <td class ="observation_text">GI Earthing strip routing </td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-     <td>
-       <button class="add-image" onclick="showUploadOptions(3333)">Add Image</button>
-<div class="upload-options" id="upload-options-3333" style="display: none;">
-  <button class="add-image" onclick="startCamera(3333)">Camera</button>
-  <label for="file-input-3333" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-3333" accept="image/*" multiple onchange="displayImages(this, 3333)">
-</div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-3333"></div>
-      <!-- Camera Container -->
-<div id="camera-container-3333" style="display: none;">
-  <video id="camera-3333" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(3333)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(3333)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(3333)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-3333" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-
-    <tr id="row-3336">
-      <td>3.19</td>
-      <td class ="observation_text">Verification of Tower and RTU Earth pit arrangement with brazing. </td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-     <td>
-       <button class="add-image" onclick="showUploadOptions(3333)">Add Image</button>
-<div class="upload-options" id="upload-options-3333" style="display: none;">
-  <button class="add-image" onclick="startCamera(3333)">Camera</button>
-  <label for="file-input-3333" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-3333" accept="image/*" multiple onchange="displayImages(this, 3333)">
-</div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-3333"></div>
-      <!-- Camera Container -->
-<div id="camera-container-3333" style="display: none;">
-  <video id="camera-3333" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(3333)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(3333)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(3333)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-3333" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-
-     <tr id="row-3337">
-      <td>3.20</td>
-      <td class ="observation_text">Earthing for Tower as per Spec. < 2Ω</td>
-      <td class="select">
-         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-     <td>
-       <button class="add-image" onclick="showUploadOptions(3333)">Add Image</button>
-<div class="upload-options" id="upload-options-3333" style="display: none;">
-  <button class="add-image" onclick="startCamera(3333)">Camera</button>
-  <label for="file-input-3333" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-3333" accept="image/*" multiple onchange="displayImages(this, 3333)">
-</div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-3333"></div>
-      <!-- Camera Container -->
-<div id="camera-container-3333" style="display: none;">
-  <video id="camera-3333" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(3333)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(3333)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(3333)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-3333" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-
-    <tr id="row-3338">
-      <td>3.21</td>
+      <td>2.17</td>
       <td class ="observation_text">Verification of Aviation Warning Lamp, Functioning and power supply 110V</td>
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Voltage Found Ok</option>
+          <option value="Routing Not Done">Voltage Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3448,7 +3319,6 @@ async function showSection(section) {
   <canvas id="canvas-3333" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
-
 
 
         </tbody>
@@ -3484,13 +3354,13 @@ async function showSection(section) {
         </thead>
         <tbody id="observations-tbody-4_0">
           <tr id="row-34">
-      <td>4.1</td>
+      <td>3.1</td>
       <td class="observation_text">Visual Checks (Ex.Equipment labels, External appearance, Dents, Shade, Rust, Cable entries at STCAS to be closed properly with rubber gaskets/grommets in STCAS)</td>
        <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Fixed">Fixed</option>
-          <option value="Not Fixed">Not Fixed</option>
+          <option value="Fixed">Found Ok</option>
+          <option value="Not Fixed">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3517,7 +3387,7 @@ async function showSection(section) {
 
 
     <tr id="row-35">
-      <td>4.2</td>
+      <td>3.2</td>
       <td class="observation_text">Verification of equipment placement and cable routing as per Relay Room Layout.</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
@@ -3549,13 +3419,13 @@ async function showSection(section) {
     </tr>
 
      <tr id="row-351">
-      <td>4.3</td>
-      <td class="observation_text">Verification of Connections as per Power Supply Diagram  cum Load Calculation</td>
+      <td>3.3</td>
+      <td class="observation_text"><b>Verification of Connections as per Power Supply Diagram  cum Load Calculation:</b>Verification of Cable size and connectivity as per diagram</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Found Ok</option>
+          <option value="Routing Not Done">Found Not OK</option>
         </select>
       </td>
       <td class="remarks">
@@ -3581,13 +3451,13 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-352">
-      <td>4.4</td>
-      <td class="observation_text">Verification of Cable size and connectivity as per diagram</td>
+      <td>3.4</td>
+      <td class="observation_text"><b>Verification of Connections as per Power Supply Diagram  cum Load Calculation:</b>Implementation of Ferrule Lug 0.75mm</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Implemented</option>
+          <option value="Routing Not Done">Not Implemeneted</option>
         </select>
       </td>
       <td class="remarks">
@@ -3614,13 +3484,13 @@ async function showSection(section) {
 
 
     <tr id="row-353">
-      <td>4.5</td>
-      <td class="observation_text">Implementation of Ferrule Lug 0.75mm</td>
+      <td>3.5</td>
+      <td class="observation_text"><b>Verification of Connections as per Power Supply Diagram  cum Load Calculation:</b>Implementation of Lug 2.5Sqmm</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Implemented</option>
+          <option value="Routing Not Done">Not Implemeneted</option>
         </select>
       </td>
       <td class="remarks">
@@ -3647,13 +3517,13 @@ async function showSection(section) {
 
 
     <tr id="row-354">
-      <td>4.6</td>
-      <td class="observation_text">Implementation of Lug 2.5Sqmm</td>
+      <td>3.6</td>
+      <td class="observation_text"><b>Verification of Connections as per Power Supply Diagram  cum Load Calculation:</b>Implementation of Media Converter</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Implemented</option>
+          <option value="Routing Not Done">Not Implemented</option>
         </select>
       </td>
       <td class="remarks">
@@ -3680,13 +3550,13 @@ async function showSection(section) {
 
 
     <tr id="row-355">
-      <td>4.7</td>
-      <td class="observation_text">Implementation of Media Converter</td>
+      <td>3.7</td>
+      <td class="observation_text"><b>Verification of Connections as per Power Supply Diagram  cum Load Calculation:</b>Verification of 48V SMPS Charger & Battery Installation</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Installed</option>
+          <option value="Routing Not Done">Not Installed</option>
         </select>
       </td>
       <td class="remarks">
@@ -3712,13 +3582,13 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-356">
-      <td>4.8</td>
-      <td class="observation_text">Verification of 48V SMPS Charger & Battery Installation</td>
+      <td>3.8</td>
+      <td class="observation_text"><b>Verification of Connections as per Power Supply Diagram  cum Load Calculation:</b>MCB 2P Installed in IPS room </td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Rating as per Diagram:</option>
+          <option value="Routing Not Done">Actual Rating:</option>
         </select>
       </td>
       <td class="remarks">
@@ -3744,13 +3614,13 @@ async function showSection(section) {
     </tr>
 
      <tr id="row-357">
-      <td>4.9</td>
-      <td class="observation_text">MCB 2P Installed in IPS room</td>
+      <td>3.9</td>
+      <td class="observation_text">TCAS system I/P110V DC supply</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Voltage Found Ok</option>
+          <option value="Routing Not Done">Voltage Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3776,13 +3646,13 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-358">
-      <td>4.10</td>
-      <td class="observation_text">TCAS system I/P110V DC supply</td>
+      <td>3.10</td>
+      <td class="observation_text">Cards Functional Checking as per ATR</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Voltage Found Ok</option>
+          <option value="Routing Not Done">Voltage Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3808,13 +3678,13 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-359">
-      <td>4.11</td>
-      <td class="observation_text">Cards Functional Checking as per ATR</td>
+      <td>3.11</td>
+      <td class="observation_text">Review of PCCL Report</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">PCCL Done</option>
+          <option value="Routing Not Done">PCCL Not Done</option>
         </select>
       </td>
       <td class="remarks">
@@ -3840,13 +3710,13 @@ async function showSection(section) {
     </tr>
 
      <tr id="row-360">
-      <td>4.12</td>
-      <td class="observation_text">Review of PCCL Report</td>
+      <td>3.12</td>
+      <td class="observation_text">Earth Resistance of STCAS is ≤ 1Ω ( to be followed as per PCCL)</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Found Ok</option>
+          <option value="Routing Not Done">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3872,13 +3742,13 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-361">
-      <td>4.13</td>
-      <td class="observation_text">Earth Resistance of STCAS is ≤ 1Ω ( to be followed as per PCCL)</td>
+      <td>3.13</td>
+      <td class="observation_text"><b>Verification of PDU Box fixing and wiring:</b>Identification for Fuse, MCB’s etc.</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Identification Done</option>
+          <option value="Routing Not Done">Identification Not Done</option>
         </select>
       </td>
       <td class="remarks">
@@ -3904,8 +3774,8 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-362">
-      <td>4.14</td>
-      <td class="observation_text">Verification of PDU Box fixing and wiring.</td>
+      <td>3.14</td>
+      <td class="observation_text"><b>Verification of PDU Box fixing and wiring:</b>Verification of cable  routing</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
@@ -3936,13 +3806,13 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-363">
-      <td>4.15</td>
-      <td class="observation_text">Identification for Fuse, MCB’s etc.</td>
+      <td>3.15</td>
+      <td class="observation_text"><b>Verification of PDU Box fixing and wiring:</b>Implementation of glands/ grommets.</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Implemented</option>
+          <option value="Routing Not Done">Not Implemeneted</option>
         </select>
       </td>
       <td class="remarks">
@@ -3969,13 +3839,13 @@ async function showSection(section) {
 
 
     <tr id="row-364">
-      <td>4.16</td>
-      <td class="observation_text">Verification of cable  routing</td>
+      <td>3.16</td>
+      <td class="observation_text"><b>Verification of PDU Box fixing and wiring:</b>Earthing</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Connected</option>
+          <option value="Routing Not Done">Not Connected</option>
         </select>
       </td>
       <td class="remarks">
@@ -4001,13 +3871,13 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-365">
-      <td>4.17</td>
-      <td class="observation_text">Implementation of glands/ grommets.</td>
+      <td>3.17</td>
+      <td class="observation_text"><b>Verification of PDU Box fixing and wiring:</b>Verification of Voltage </td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Found Ok</option>
+          <option value="Routing Not Done">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -4034,13 +3904,13 @@ async function showSection(section) {
 
 
      <tr id="row-366">
-      <td>4.18</td>
-      <td class="observation_text">Earthing</td>
+      <td>3.18</td>
+      <td class="observation_text"><b>Verification of PDU Box fixing and wiring:</b>Verification of Fuse Ratings as per PSD Rating Table</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Found Ok</option>
+          <option value="Routing Not Done">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -4066,13 +3936,13 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-367">
-      <td>4.19</td>
-      <td class="observation_text">Verification of Voltage </td>
+      <td>3.19</td>
+      <td class="observation_text"><b>Verification of PDU Box fixing and wiring:</bVerification of MCB Ratings as per PSD Rating Table </td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Found ok</option>
+          <option value="Routing Not Done">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -4099,13 +3969,13 @@ async function showSection(section) {
 
 
     <tr id="row-368">
-      <td>4.20</td>
-      <td class="observation_text">Verification of Fuse Ratings as per PSD Rating Table </td>
+      <td>3.20</td>
+      <td class="observation_text"><b>Verification of DC-DC Converter installation:</b>Identification</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Done</option>
+          <option value="Routing Not Done">Not Done</option>
         </select>
       </td>
       <td class="remarks">
@@ -4132,13 +4002,13 @@ async function showSection(section) {
 
 
      <tr id="row-369">
-      <td>4.21</td>
-      <td class="observation_text">Verification of MCB Ratings as per PSD Rating Table</td>
+      <td>3.21</td>
+      <td class="observation_text"><b>Verification of DC-DC Converter installation:</b>Earthing </td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Connected</option>
+          <option value="Routing Not Done"> Not Connected</option>
         </select>
       </td>
       <td class="remarks">
@@ -4164,13 +4034,13 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-370">
-      <td>4.22</td>
-      <td class="observation_text">Verification of DC-DC Converter installation </td>
+      <td>3.22</td>
+      <td class="observation_text"><b>Verification of DC-DC Converter installation:</b>Implementation of glands/ grommets. </td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Implemented</option>
+          <option value="Routing Not Done">Not Implemented</option>
         </select>
       </td>
       <td class="remarks">
@@ -4196,13 +4066,13 @@ async function showSection(section) {
     </tr>
 
      <tr id="row-371">
-      <td>4.23</td>
-      <td class="observation_text">Identification </td>
+      <td>3.23</td>
+      <td class="observation_text"><b>Verification of DC-DC Converter installation:</b>Voltage Input and Output </td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Found Ok</option>
+          <option value="Routing Not Done">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -4228,77 +4098,13 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-372">
-      <td>4.24</td>
-      <td class="observation_text">Implementation of glands/ grommets.</td>
-        <td class = "select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
-<div class="upload-options" id="upload-options-35" style="display: none;">
-  <button class="add-image" onclick="startCamera(35)">Camera</button>
-  <label for="file-input-35" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
-</div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-35"></div>
-      <!-- Camera Container -->
-<div id="camera-container-35" style="display: none;">
-  <video id="camera-35" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-
-    <tr id="row-373">
-      <td>4.25</td>
-      <td class="observation_text">Voltage Input and Output</td>
-        <td class = "select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
-<div class="upload-options" id="upload-options-35" style="display: none;">
-  <button class="add-image" onclick="startCamera(35)">Camera</button>
-  <label for="file-input-35" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
-</div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-35"></div>
-      <!-- Camera Container -->
-<div id="camera-container-35" style="display: none;">
-  <video id="camera-35" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-
-     <tr id="row-374">
-      <td>4.26</td>
+      <td>3.24</td>
       <td class="observation_text">Verification of GPS / GSM Antenna Fixing & Wiring</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing Done</option>
-          <option value="Routing Not Done">Routing Not Done</option>
+          <option value="Routing Done">Found Ok</option>
+          <option value="Routing Not Done">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -4323,6 +4129,7 @@ async function showSection(section) {
 </div>
     </tr>
 
+   
 
         </tbody>
       </table>
@@ -4356,13 +4163,13 @@ async function showSection(section) {
         </thead>
         <tbody id="observations-tbody-5_0">
           <tr id="row-36">
-      <td>5.1</td>
+      <td>4.1</td>
       <td class="observation_text">Visual Checks (Ferrules/ Stickering to be done for easily identification of cables).</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
+          <option value="Yes">Found Ok</option>
+          <option value="No">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -4388,13 +4195,15 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-37">
-      <td>5.2</td>
+      <td>4.2</td>
       <td class="observation_text">Total Qty of Relay panels and repeater relays used.</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
+          <option value="Yes">Panel Qty as per PSD:</option>
+          <option value="No">Actual:</option>
+          <option value="Repeater relays Qty as per PSD">Repeater relays Qty as per PSD:</option>
+          <option value="Actual:">Actual:</option>
         </select>
       </td>
       <td class="remarks">
@@ -4419,13 +4228,13 @@ async function showSection(section) {
 </div>
     </tr>
     <tr id="row-38">
-      <td>5.3</td>
+      <td>4.3</td>
       <td class="observation_text">Verification of Relay rack and interfaces are connected as per relay wiring drawing.</td>
       <td class="select">
         <select id="status-dropdown"  onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
+          <option value="Yes">Connected</option>
+          <option value="No">Not Connected</option>
         </select>
       </td>
       <td class="remarks">
@@ -4450,13 +4259,13 @@ async function showSection(section) {
 </div>
     </tr>
     <tr id="row-39">
-      <td>5.4</td>
+      <td>4.4</td>
       <td class="observation_text">Verify slow blowing fuse placement and Fuse rating (2A)</td>
       <td class="select">
            <select id="status-dropdown"  onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
+          <option value="Yes">Found Ok</option>
+          <option value="No">Found Not Ok</option>
         </select>     
       </td>
       <td class="remarks">
@@ -4481,13 +4290,13 @@ async function showSection(section) {
 </div>
     </tr>
 <tr id="row-1339">
-      <td>5.5</td>
+      <td>4.5</td>
       <td class="observation_text">Verification of Relay Contact 24V supply (18VDA to 26VDA) </td>
       <td class="select">
           <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing done</option>
-          <option value="Routing Not Done">Routing Not done</option>
+          <option value="Routing Done">Found Ok</option>
+          <option value="Routing Not Done">Found Not Ok</option>
         </select>     
       </td>
       <td class="remarks">
@@ -4513,7 +4322,7 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-40">
-      <td>5.6</td>
+      <td>4.6</td>
       <td class="observation_text">Verification of Data Logger connectivity</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
@@ -4581,13 +4390,13 @@ async function showSection(section) {
         </thead>
         <tbody id="observations-tbody-6_0">
           <tr id="row-41">
-      <td>6.1</td>
+      <td>5.1</td>
       <td class="observation_text">Visual Checks </td>
        <td class="select">
        <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Available">Available</option>
-                <option value="Not Available">Not Available</option>
+                <option value="Available">Found Ok</option>
+                <option value="Not Available">Found Not Ok</option>
               </select>
       </td>
       <td class="remarks">
@@ -4613,13 +4422,13 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-42">
-      <td>6.2</td>
+      <td>5.2</td>
       <td class="observation_text">Verification of SMOCIP Unit fixing, Connectivity & Fibre Splicing and Key on off position</td>
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
+          <option value="Yes">Found Ok</option>
+          <option value="No">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -4644,13 +4453,13 @@ async function showSection(section) {
 </div>
     </tr>
     <tr id="row-43">
-      <td>6.3</td>
+      <td>5.3</td>
       <td class="observation_text">SMOCIP Health Status</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Torquing done">Torquing done</option>
-          <option value="Torquing Not done">Torquing Not done</option>
+          <option value="Torquing done">Found ok</option>
+          <option value="Torquing Not done">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -4675,13 +4484,13 @@ async function showSection(section) {
 </div>
     </tr>
     <tr id="row-44">
-      <td>6.4</td>
+      <td>5.4</td>
       <td class="observation_text">SMOCIP Earthing</td>
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
+          <option value="Yes">Connected</option>
+          <option value="No">Not Connected</option>
         </select>
       </td>
       <td class="remarks">
@@ -4706,13 +4515,13 @@ async function showSection(section) {
 </div>
     </tr>
     <tr id="row-45">
-      <td>6.5</td>
+      <td>5.5</td>
       <td class="observation_text">Checksum verification as per FAT Report.</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Applied">Applied</option>
-          <option value="Not Applied">Not Applied</option>
+          <option value="Applied">Matching</option>
+          <option value="Not Applied">Not Matching</option>
         </select>
       </td>
       <td class="remarks">
@@ -4769,13 +4578,12 @@ async function showSection(section) {
         </thead>
         <tbody id="observations-tbody-7_0">
           <tr id="row-51">
-      <td>7.1</td>
+      <td>6.1</td>
       <td class="observation_text">Visual Checks (Cracks, Shade, No oil, Center Placement, Play and Tag Number & ABS location on TAG )</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Torquing done">Torquing done</option>
-          <option value="Torquing Not done">Torquing Not done</option>
+          <option value="Torquing done">Details in annexure -A</option>
         </select>
       </td>
       <td class="remarks">
@@ -4801,14 +4609,13 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-52">
-      <td>7.2</td>
+      <td>6.2</td>
       <td class="observation_text">Verification of RFID TAG fixing
 Fixing proper Brackets (Point sleeper Bracket & Normal Sleeper Bracket) as per drawing no 5 16 67 0490,106, CC Apran TCAS/2021_02_15 & RDSO Drawing No. SDO/S&T/TCAS/008</td>
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
+          <option value="Yes">Details in annexure -A</option>
         </select>
       </td>
       <td class="remarks">
@@ -4833,13 +4640,12 @@ Fixing proper Brackets (Point sleeper Bracket & Normal Sleeper Bracket) as per d
 </div>
     </tr>
     <tr id="row-53">
-      <td>7.3</td>
+      <td>6.3</td>
       <td class="observation_text">Verification of Tag Program  as per RFID Tag layout</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Routing done</option>
-          <option value="Routing Not Done">Routing Not done</option>
+          <option value="Routing Done">Details in annexure -B</option>
         </select>
       </td>
       <td class="remarks">
@@ -4864,13 +4670,12 @@ Fixing proper Brackets (Point sleeper Bracket & Normal Sleeper Bracket) as per d
       </div>
     </tr>
     <tr id="row-54">
-      <td>7.4</td>
+      <td>6.4</td>
       <td class="observation_text">Verification of RFID Tag Placement</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Locked">Locked</option>
-          <option value="Not Locked">Not Locked</option>
+          <option value="Locked">Details in annexure -A</option>
         </select>
       </td>
       <td class="remarks">
@@ -5784,7 +5589,8 @@ function handleBarcodeScan(rowId, barcodeValue) {
 
 // Enable update button if any changes occur
 function enableUpdateButton() {
-  document.getElementById("update-button").disabled = false;
+  const btn = document.getElementById("update-btn") || document.getElementById("update-button");
+  if (btn) btn.disabled = false;
 }
 
 // Function to track changes in inputs (used for enabling the update button)
@@ -5793,8 +5599,17 @@ function trackChanges(element, isFile = false) {
   let currentValue = isFile ? element.files.length > 0 : element.value;
   
   if (initialValue != currentValue) {
-    document.getElementById("update-button").disabled = false;
+    const btn = document.getElementById("update-btn") || document.getElementById("update-button");
+    if (btn) btn.disabled = false;
+    unsavedChanges = true;
   }
+}
+
+// Explicit helper used in inline handlers to flag unsaved state
+function markDataAsUnsaved() {
+  unsavedChanges = true;
+  const btn = document.getElementById("update-btn") || document.getElementById("update-button");
+  if (btn) btn.disabled = false;
 }
 
 // Function to delete an image
@@ -5927,6 +5742,10 @@ function getDetails() {
       // Hide Save button and show Update button when Get Details is clicked
       document.getElementById('save-btn').style.display = 'none';
       document.getElementById('update-btn').style.display = 'inline-block'; // Show Update button
+      // After details are reloaded, consider state clean
+      unsavedChanges = false;
+      const btn = document.getElementById('update-btn');
+      if (btn) btn.disabled = true;
     },
     error: function (xhr, status, error) {
       console.error("❌ Error fetching data from server:", status, error);
@@ -5966,8 +5785,8 @@ function displayImagesWithDelete(images, rowId) {
 async function updateObservation(section) {
   // 1) Section mapping (optional index)
   const sectionMapping = {
-    "2_0": 1,  "3_0": 2,  "4_0": 3,
-    "5_0": 4,  "6_0": 5,  "7_0": 6
+    "2_0": 0,  "3_0": 1,  "4_0": 2,
+    "5_0": 3,  "6_0": 4,  "7_0": 5
   };
 
   // 2) Section‐level fields
@@ -6084,6 +5903,9 @@ async function updateObservation(section) {
     if (data.success) {
       alert("✅ Observations updated successfully!");
       unsavedChanges = false;
+      // Disable update button after successful save
+      const btn = document.getElementById('update-btn') || document.getElementById('update-button');
+      if (btn) btn.disabled = true;
       getDetails();
     } else {
       alert(`Error from server: ${data.message}`);

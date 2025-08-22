@@ -2795,8 +2795,8 @@ async function showSection(section) {
               <td class="select">
                  <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Found Ok">Connected</option>
-                <option value="Found Not Ok">Not Connected</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
               </select>
               </td>
               <td class="remarks">
@@ -2826,8 +2826,8 @@ async function showSection(section) {
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Available">Fixed</option>
-                <option value="Not Available">Not Fixed</option>
+                <option value="Fixed">Fixed</option>
+                <option value="Not Fixed">Not Fixed</option>
               </select>
       </td>
       <td class="remarks">
@@ -2858,8 +2858,8 @@ async function showSection(section) {
       <td class="select">
      <select id="status-dropdown"  onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Yes">Joined</option>
-                <option value="No">Not Joined</option>
+                <option value="Joined">Joined</option>
+                <option value="Not Joined">Not Joined</option>
               </select>
       </td>
       <td class="remarks">
@@ -2889,8 +2889,8 @@ async function showSection(section) {
       <td>
          <select id="status-dropdown"  onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Yes">Cable ties implemented</option>
-                <option value="No">Cable ties not implemented</option>
+                <option value="Cable ties implemented">Cable ties implemented</option>
+                <option value="Cable ties not implemented">Cable ties not implemented</option>
               </select>
       </td>
       <td class="remarks">
@@ -2920,8 +2920,8 @@ async function showSection(section) {
       <td>
          <select id="status-dropdown"  onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Yes">Routing done</option>
-                <option value="No">Routing Not done</option>
+                <option value="Routing done">Routing done</option>
+                <option value="Routing Not done">Routing Not done</option>
               </select>
       </td>
       <td class="remarks">
@@ -2951,8 +2951,8 @@ async function showSection(section) {
       <td>
          <select id="status-dropdown"  onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Yes">Functioning</option>
-                <option value="No">Not Functioning</option>
+                <option value="Functioning">Functioning</option>
+                <option value="Not Functioning">Not Functioning</option>
               </select>
       </td>
       <td class="remarks">
@@ -2982,8 +2982,8 @@ async function showSection(section) {
       <td>
          <select id="status-dropdown"  onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Yes">Fixed</option>
-                <option value="No">Not Fixed</option>
+                <option value="Fixed">Fixed</option>
+                <option value="Not Fixed">Not Fixed</option>
               </select>
       </td>
       <td class="remarks">
@@ -3013,9 +3013,9 @@ async function showSection(section) {
       <td class="observation_text"><b>Installation of RTU Box and connections with identification:</b>Verification of RTU box Fixing on platform.</td>
       <td>
         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Matching">Fixed</option>
-          <option value="Not Matching">Not Fixed</option>
+        <option value="Select">Select</option>
+                <option value="Fixed">Fixed</option>
+                <option value="Not Fixed">Not Fixed</option>
         </select>
       </td>
       <td class="remarks">
@@ -3045,8 +3045,8 @@ async function showSection(section) {
       <td class="select">
            <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Torquing done">Cable ties implemented</option>
-          <option value="Torquing Not done">Cable ties not implemented</option>
+                <option value="Cable ties implemented">Cable ties implemented</option>
+                <option value="Cable ties not implemented">Cable ties not implemented</option>
         </select>
       </td>
       <td class="remarks">
@@ -3076,8 +3076,8 @@ async function showSection(section) {
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Connected">Voltage found Ok</option>
-                <option value="Not Connected">Voltage not Ok</option>
+                <option value="Voltage found Ok">Voltage found Ok</option>
+                <option value="Voltage found not Ok">Voltage found not Ok</option>
               </select>
       </td>
       <td class="remarks">
@@ -3107,8 +3107,8 @@ async function showSection(section) {
       <td>
          <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Earth Connected</option>
-          <option value="Routing Not Done">Earth not connected</option>
+          <option value="Earth Connected">Earth Connected</option>
+          <option value="Earth not connected">Earth not connected</option>
         </select>
       </td>
       <td class="remarks">
@@ -3138,8 +3138,8 @@ async function showSection(section) {
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Metal clamps implemented">Done</option>
-          <option value="Metal clamps not implemented">Not Done</option>
+          <option value="Done"></option>
+          <option value="Not Done">Not Done</option>
         </select>
       </td>
       <td class="remarks">
@@ -3169,8 +3169,8 @@ async function showSection(section) {
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Cables Connected">Fixed</option>
-          <option value="Cables Not Connected">Not Fixed</option>
+                <option value="Fixed">Fixed</option>
+                <option value="Not Fixed">Not Fixed</option>
         </select>
       </td>
       <td class="remarks">
@@ -3200,8 +3200,8 @@ async function showSection(section) {
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Routing Done</option>
-          <option value="No">Routing Not Done</option>
+                <option value="Routing done">Routing done</option>
+                <option value="Routing Not done">Routing Not done</option>
         </select>
       </td>
       <td class="remarks">
@@ -3231,8 +3231,8 @@ async function showSection(section) {
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Done</option>
-          <option value="No">Not Done</option>
+          <option value="Done"></option>
+          <option value="Not Done">Not Done</option>
         </select>
       </td>
       <td class="remarks">
@@ -3262,8 +3262,8 @@ async function showSection(section) {
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Ok</option>
-          <option value="Routing Not Done">Not Ok</option>
+          <option value="Ok">Ok</option>
+          <option value="Not Ok">Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3294,8 +3294,8 @@ async function showSection(section) {
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Voltage Found Ok</option>
-          <option value="Routing Not Done">Voltage Found Not Ok</option>
+                <option value="Voltage found Ok">Voltage found Ok</option>
+                <option value="Voltage found not Ok">Voltage found not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3359,8 +3359,8 @@ async function showSection(section) {
        <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Fixed">Found Ok</option>
-          <option value="Not Fixed">Found Not Ok</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3424,8 +3424,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Found Ok</option>
-          <option value="Routing Not Done">Found Not OK</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3456,8 +3456,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Implemented</option>
-          <option value="Routing Not Done">Not Implemeneted</option>
+          <option value="Implemented">Implemented</option>
+          <option value="Not Implemeneted">Not Implemeneted</option>
         </select>
       </td>
       <td class="remarks">
@@ -3488,9 +3488,9 @@ async function showSection(section) {
       <td class="observation_text"><b>Verification of Connections as per Power Supply Diagram  cum Load Calculation:</b>Implementation of Lug 2.5Sqmm</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Implemented</option>
-          <option value="Routing Not Done">Not Implemeneted</option>
+           <option value="Select">Select</option>
+          <option value="Implemented">Implemented</option>
+          <option value="Not Implemeneted">Not Implemeneted</option>
         </select>
       </td>
       <td class="remarks">
@@ -3521,9 +3521,9 @@ async function showSection(section) {
       <td class="observation_text"><b>Verification of Connections as per Power Supply Diagram  cum Load Calculation:</b>Implementation of Media Converter</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Implemented</option>
-          <option value="Routing Not Done">Not Implemented</option>
+           <option value="Select">Select</option>
+          <option value="Implemented">Implemented</option>
+          <option value="Not Implemeneted">Not Implemeneted</option>
         </select>
       </td>
       <td class="remarks">
@@ -3555,8 +3555,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Installed</option>
-          <option value="Routing Not Done">Not Installed</option>
+          <option value="Installed">Installed</option>
+          <option value="Not Installed">Not Installed</option>
         </select>
       </td>
       <td class="remarks">
@@ -3587,8 +3587,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Rating as per Diagram:</option>
-          <option value="Routing Not Done">Actual Rating:</option>
+          <option value="Rating as per Diagram:">Rating as per Diagram:</option>
+          <option value="Actual Rating:">Actual Rating:</option>
         </select>
       </td>
       <td class="remarks">
@@ -3618,9 +3618,9 @@ async function showSection(section) {
       <td class="observation_text">TCAS system I/P110V DC supply</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Voltage Found Ok</option>
-          <option value="Routing Not Done">Voltage Found Not Ok</option>
+           <option value="Select">Select</option>
+                <option value="Voltage found Ok">Voltage found Ok</option>
+                <option value="Voltage found not Ok">Voltage found not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3651,8 +3651,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Voltage Found Ok</option>
-          <option value="Routing Not Done">Voltage Found Not Ok</option>
+                <option value="Voltage found Ok">Voltage found Ok</option>
+                <option value="Voltage found not Ok">Voltage found not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3683,8 +3683,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">PCCL Done</option>
-          <option value="Routing Not Done">PCCL Not Done</option>
+          <option value="PCCL Done">PCCL Done</option>
+          <option value="PCCL Not Done">PCCL Not Done</option>
         </select>
       </td>
       <td class="remarks">
@@ -3715,8 +3715,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Found Ok</option>
-          <option value="Routing Not Done">Found Not Ok</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3747,8 +3747,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Identification Done</option>
-          <option value="Routing Not Done">Identification Not Done</option>
+          <option value="Identification Done">Identification Done</option>
+          <option value="Identification Not Done">Identification Not Done</option>
         </select>
       </td>
       <td class="remarks">
@@ -3811,8 +3811,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Implemented</option>
-          <option value="Routing Not Done">Not Implemeneted</option>
+          <option value="Implemented">Implemented</option>
+          <option value="Not Implemeneted">Not Implemeneted</option>
         </select>
       </td>
       <td class="remarks">
@@ -3844,8 +3844,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Connected</option>
-          <option value="Routing Not Done">Not Connected</option>
+          <option value="Connected">Connected</option>
+          <option value="Not Connected">Not Connected</option>
         </select>
       </td>
       <td class="remarks">
@@ -3876,8 +3876,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Found Ok</option>
-          <option value="Routing Not Done">Found Not Ok</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3908,9 +3908,9 @@ async function showSection(section) {
       <td class="observation_text"><b>Verification of PDU Box fixing and wiring:</b>Verification of Fuse Ratings as per PSD Rating Table</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Found Ok</option>
-          <option value="Routing Not Done">Found Not Ok</option>
+         <option value="Select">Select</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3941,8 +3941,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Found ok</option>
-          <option value="Routing Not Done">Found Not Ok</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3974,8 +3974,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Done</option>
-          <option value="Routing Not Done">Not Done</option>
+          <option value="Done"></option>
+          <option value="Not Done">Not Done</option>
         </select>
       </td>
       <td class="remarks">
@@ -4006,9 +4006,9 @@ async function showSection(section) {
       <td class="observation_text"><b>Verification of DC-DC Converter installation:</b>Earthing </td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Connected</option>
-          <option value="Routing Not Done"> Not Connected</option>
+           <option value="Select">Select</option>
+          <option value="Connected">Connected</option>
+          <option value="Not Connected">Not Connected</option>
         </select>
       </td>
       <td class="remarks">
@@ -4039,8 +4039,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Implemented</option>
-          <option value="Routing Not Done">Not Implemented</option>
+          <option value="Implemented">Implemented</option>
+          <option value="Not Implemeneted">Not Implemeneted</option>
         </select>
       </td>
       <td class="remarks">
@@ -4070,9 +4070,9 @@ async function showSection(section) {
       <td class="observation_text"><b>Verification of DC-DC Converter installation:</b>Voltage Input and Output </td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Found Ok</option>
-          <option value="Routing Not Done">Found Not Ok</option>
+         <option value="Select">Select</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -4102,9 +4102,9 @@ async function showSection(section) {
       <td class="observation_text">Verification of GPS / GSM Antenna Fixing & Wiring</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Routing Done">Found Ok</option>
-          <option value="Routing Not Done">Found Not Ok</option>
+         <option value="Select">Select</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -4168,8 +4168,8 @@ async function showSection(section) {
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Found Ok</option>
-          <option value="No">Found Not Ok</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -4200,9 +4200,9 @@ async function showSection(section) {
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Panel Qty as per PSD:</option>
-          <option value="No">Actual:</option>
-          <option value="Repeater relays Qty as per PSD">Repeater relays Qty as per PSD:</option>
+          <option value="Panel Qty as per PSD:">Panel Qty as per PSD:</option>
+          <option value="Actual:">Actual:</option>
+          <option value="Repeater relays Qty as per PSD:">Repeater relays Qty as per PSD:</option>
           <option value="Actual:">Actual:</option>
         </select>
       </td>
@@ -4233,8 +4233,8 @@ async function showSection(section) {
       <td class="select">
         <select id="status-dropdown"  onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Connected</option>
-          <option value="No">Not Connected</option>
+          <option value="Connected">Connected</option>
+          <option value="Not Connected">Not Connected</option>
         </select>
       </td>
       <td class="remarks">
@@ -4263,9 +4263,9 @@ async function showSection(section) {
       <td class="observation_text">Verify slow blowing fuse placement and Fuse rating (2A)</td>
       <td class="select">
            <select id="status-dropdown"  onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Yes">Found Ok</option>
-          <option value="No">Found Not Ok</option>
+         <option value="Select">Select</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
         </select>     
       </td>
       <td class="remarks">
@@ -4295,8 +4295,8 @@ async function showSection(section) {
       <td class="select">
           <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing Done">Found Ok</option>
-          <option value="Routing Not Done">Found Not Ok</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
         </select>     
       </td>
       <td class="remarks">
@@ -4395,8 +4395,8 @@ async function showSection(section) {
        <td class="select">
        <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
-                <option value="Available">Found Ok</option>
-                <option value="Not Available">Found Not Ok</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
               </select>
       </td>
       <td class="remarks">
@@ -4427,8 +4427,8 @@ async function showSection(section) {
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Found Ok</option>
-          <option value="No">Found Not Ok</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -4458,8 +4458,8 @@ async function showSection(section) {
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Torquing done">Found ok</option>
-          <option value="Torquing Not done">Found Not Ok</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -4489,8 +4489,8 @@ async function showSection(section) {
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Yes">Connected</option>
-          <option value="No">Not Connected</option>
+          <option value="Connected">Connected</option>
+          <option value="Not Connected">Not Connected</option>
         </select>
       </td>
       <td class="remarks">
@@ -4520,8 +4520,8 @@ async function showSection(section) {
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Applied">Matching</option>
-          <option value="Not Applied">Not Matching</option>
+          <option value="Matching">Matching</option>
+          <option value="Not Matching">Not Matching</option>
         </select>
       </td>
       <td class="remarks">
@@ -4832,67 +4832,6 @@ function showUploadOptions(rowId) {
     uploadOptions.style.display === "none" ? "block" : "none";
 }
 
-function highlightSelect(selectElement) {
-  selectElement.style.backgroundColor = ""; // default
-
-  const value = selectElement.value;
-  if (
-    value === "Not Available" ||
-    value === "No" ||
-    value === "Not Connected" ||
-    value === "Not Secured" ||
-    value === "Not Fixed" ||
-    value === "Not Applied" ||
-    value === "Routing Not Done" ||
-    value === "Torquing Not done" ||
-    value === "Not Matching" ||
-    value === "Not ok" ||
-    value === "Not Installed"
-  ) {
-    selectElement.style.backgroundColor = "red";
-  } else if (
-    value === "Available" ||
-    value === "Yes" ||
-    value === "Secured" ||
-    value === "Fixed" ||
-    value === "Applied" ||
-    value === "Routing Done" ||
-    value === "Torquing done" ||
-    value === "Matching" ||
-    value === "Installed" ||
-    value === "Verified and ok" ||
-    value === "Not Applicable" ||
-    value === "Connected"
-  ) {
-    selectElement.style.backgroundColor = "green";
-  } else if (value === "Positioning done") {
-    selectElement.style.backgroundColor = "green";
-  } else if (value === "Positioning Not done") {
-    selectElement.style.backgroundColor = "red";
-  } else if (value === "Earthing Done") {
-    selectElement.style.backgroundColor = "green";
-  } else if (value === "Earthing not done") {
-    selectElement.style.backgroundColor = "red";
-  } else if (value === "Installed") {
-    selectElement.style.backgroundColor = "yellow";
-  } else if (value === "Welding done") {
-    selectElement.style.backgroundColor = "green";
-  } else if (value === "Welding not done") {
-    selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "Locked") {
-    selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Not Locked") {
-    selectElement.style.backgroundColor = "red";
-  }else if (selectElement.value === "Metal clamps implemented") {
-    selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Metal clamps not implemented") {
-    selectElement.style.backgroundColor = "red";
-  }else if (selectElement.value === "Cables Connected") {
-    selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Cables Not Connected") {
-    selectElement.style.backgroundColor = "red";
-  }
-}
 
 // ---------------------------------------------------------------------------
 // The "completeData" function
@@ -5647,11 +5586,7 @@ function toggleNotInstalledOption(inputElement) {
   }
 }
 
-// Example dummy function for the select change event
-function highlightSelect(selectElement) {
-  // Dummy function; add your highlighting code here if needed.
-  console.log("Dropdown changed to:", selectElement.value);
-}
+
 // Function to format observation description
 function formatDescription(observationText) {
   let normalized = observationText.trim();
@@ -5938,20 +5873,26 @@ function getDropdownOptions(sno, observationStatus) {
     return defaultOption;
   }  
 const specificOptions = {
-    "2.1": ["Present", "Not Present"],
-"2.38,2.39,2.40,2.41,2.42,2.43,2.44,2.45,2.46,2.47,2.48,2.49" : ["Matching", "Not Matching", "Not Installed", "Not Applicable"],    "2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,2.10,2.11,2.12,2.13,2.14,2.15,2.16,2.17,2.18,2.19,2.20,2.21,2.22,2.23,2.24,2.25,2.26,2.27,2.28,2.29,2.30,2.31,2.32,2.33,2.34,2.35,2.36,2.37": ["Matching", "Not Matching", "Not Installed"],
-    "3.6": ["Matching", "Not Matching"],
-    "3.3,3.4,3.5,3.12,6.2,6.4,7.2,3.12,3.13,3.14,3.15,3.16,3.17,3.18,3.19,3.20,3.21,5.1,5.2,5.3,5.4": ["Yes", "No"],
-    "3.1,3.8,5.6": ["Connected", "Not Connected"],
-    "3.2,6.1": ["Available", "Not Available"],
-    "6.5": ["Applied", "Not Applied"],
-    "4.2,7.3,3.9,5.5": ["Routing Done", "Routing Not Done"],
-    "4.1,4.3,4.4,4.5,4.6,4.7,4.8,4.9,4.10,4.11,4.12,4.13,4.14,4.15,4.16,4.17,4.18,4.19,4.20,4.21,4.22,4.23,4.24,4.25,4.26": ["Fixed", "Not Fixed"],
-    "6.3,7.1,3.7": ["Torquing done", "Torquing Not done"],
-    "7.4":["Locked" , "Not Locked"],
-    "3.11" :["Cables Connected", "Cables Not Connected"],
-    "3.10" : ["Metal clamps implemented","Metal clamps not implemented"]
-    
+    "1.1": ["Present", "Not Present"],
+"1.38,1.39,1.40,1.41,1.42,1.43,1.44,1.45,1.46,1.47,1.48,1.49" : ["Matching", "Not Matching", "Not Installed", "Not Applicable"],    "1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22,1.23,1.24,1.25,1.26,1.27,1.28,1.29,1.30,1.31,1.32,1.33,1.34,1.35,1.36,1.37": ["Matching", "Not Matching", "Not Installed"],
+    "2.1,3.1,3.3,3.12,3.17,3.23,3.24,4.1,4.4,4.5,3.18,3.19,5.1,5.2,5.3" : ["Found Ok","Found Not Ok"],
+    "3.4,3.5,3.6,3.15,3.22" : ["Implemented","Not Implemeneted"],
+    "2.2,2.7,2.8,2.13" : ["Fixed","Not Fixed"],
+    "3.16,3.21,4.3,4.6,5.4": ["Connected","Not Connected"],
+    "2.5,2.14,3.2,3.14" : ["Routing done", "Routing Not done"],
+    "2.10,2.17,3.9,3.10" : ["Voltage found Ok" , "Voltage found not Ok"],
+    "2.12,2.15,3.20" : ["Done","Not Done"],
+    "2.16": ["Ok","Not Ok"],
+    "3.11": ["PCCL Done","PCCL Not Done"],
+    "2.11": ["Earth Connected","Earth not connected"],
+    "2.6": ["Functioning","Not Functioning"],
+    "5.5": ["Matching","Not Matching"],
+    "3.13": ["Identification Done","Identification Not Done"],
+    "2.4,2.9": ["Cable ties implemented","Cable ties not implemented"],
+    "2.3":["Joined","Not Joined"],
+    "3.7": ["Installed","Not Installed"],
+    "3.8":["Rating as per Diagram:","Actual Rating:"],
+    "4.2": ["Panel Qty as per PSD:","Actual:","Repeater relays Qty as per PSD:","Actual:"],
   };
 
 
@@ -6510,94 +6451,89 @@ function uploadImages(files) {
   });
 }
 function highlightSelect(selectElement) {
-  if (selectElement.value === "Not Available") {
+  if (selectElement.value === "Not Present") {
     selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "Available") {
-    selectElement.style.backgroundColor = "green";
   } else if (selectElement.value === "Present") {
     selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Not Present") {
-    selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "Yes") {
+  } else if (selectElement.value === "Matching") {
     selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "No") {
+  } else if (selectElement.value === "Not Matching") {
     selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "Applied") {
+  } else if (selectElement.value === "Found Ok") {
     selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Not Applied") {
+  } else if (selectElement.value === "Not Installed") {
     selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "Routing Done") {
-    selectElement.style.backgroundColor = "Green";
-  } else if (selectElement.value === "Routing Not Done") {
+  } else if (selectElement.value === "Implemented") {
+    selectElement.style.backgroundColor = "green";
+  } else if (selectElement.value === "Not Applicable") {
     selectElement.style.backgroundColor = "red";
   } else if (selectElement.value === "Fixed") {
+    selectElement.style.backgroundColor = "Green";
+  } else if (selectElement.value === "Found Not Ok") {
+    selectElement.style.backgroundColor = "red";
+  } else if (selectElement.value === "Connected") {
+    selectElement.style.backgroundColor = "green";
+  } else if (selectElement.value === "Not Implemeneted") {
+    selectElement.style.backgroundColor = "red";
+  } else if (selectElement.value === "Routing done") {
     selectElement.style.backgroundColor = "green";
   } else if (selectElement.value === "Not Fixed") {
     selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "Secured") {
+  } else if (selectElement.value === "Voltage found Ok") {
     selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Not Secured") {
+  } else if (selectElement.value === "Not Connected") {
+    selectElement.style.backgroundColor = "yellow";
+  } else if (selectElement.value === "Done") {
+    selectElement.style.backgroundColor = "green";
+  } else if (selectElement.value === "Voltage found not Ok") {
+    selectElement.style.backgroundColor = "red";
+  } else if (selectElement.value === "Ok") {
+    selectElement.style.backgroundColor = "green";
+  } else if (selectElement.value === "Not Done") {
+    selectElement.style.backgroundColor = "red";
+  }else if (selectElement.value === "Routing Not done") {
+    selectElement.style.backgroundColor = "red";
+  }  else if (selectElement.value === "PCCL Done") {
+    selectElement.style.backgroundColor = "green";
+  } else if (selectElement.value === "Not Ok") {
+    selectElement.style.backgroundColor = "red";
+  } else if (selectElement.value === "Earth Connected") {
+    selectElement.style.backgroundColor = "green";
+  } else if (selectElement.value === "PCCL Not Done") {
+    selectElement.style.backgroundColor = "red";
+  } else if (selectElement.value === "Functioning") {
+    selectElement.style.backgroundColor = "green";
+  } else if (selectElement.value === "Earth not connected") {
+    selectElement.style.backgroundColor = "red";
+  } else if (selectElement.value === "Identification Done") {
+    selectElement.style.backgroundColor = "green";
+  } else if (selectElement.value === "Cable ties implemented") {
+    selectElement.style.backgroundColor = "green";
+  } else if (selectElement.value === "Not Functioning") {
+    selectElement.style.backgroundColor = "red";
+  } else if (selectElement.value === "Joined") {
+    selectElement.style.backgroundColor = "Green";
+  } else if (selectElement.value === "Identification Not Done") {
     selectElement.style.backgroundColor = "red";
   } else if (selectElement.value === "Installed") {
     selectElement.style.backgroundColor = "green";
+  } else if (selectElement.value === "Cable ties not implemented") {
+    selectElement.style.backgroundColor = "red";
+  } else if (selectElement.value === "Rating as per Diagram:") {
+    selectElement.style.backgroundColor = "green";
+  } else if (selectElement.value === "Not Joined") {
+    selectElement.style.backgroundColor = "red";
+  } else if (selectElement.value === "Actual Rating:") {
+    selectElement.style.backgroundColor = "green";
   } else if (selectElement.value === "Not Installed") {
-    selectElement.style.backgroundColor = "yellow";
-  } else if (selectElement.value === "Connected") {
-    selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Not Connected") {
     selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "Aligned") {
+  }else if (selectElement.value === "Panel Qty as per PSD:") {
     selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Not Aligned") {
-    selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "Torquing done") {
+  } 
+  else if (selectElement.value === "Actual:") {
     selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Torquing Not done") {
-    selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "Positioning done") {
+  } else if (selectElement.value === "Repeater relays Qty as per PSD:") {
     selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Positioning Not done") {
-    selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "Configured") {
-    selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Not Configured") {
-    selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "NA") {
-    selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Welding done") {
-    selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Welding not done") {
-    selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "Matching") {
-    selectElement.style.backgroundColor = "Green";
-  } else if (selectElement.value === "Not Matching") {
-    selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "Coating done") {
-    selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Coating Not done") {
-    selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "Earthing done") {
-    selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Earthing Not done") {
-    selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "Locked") {
-    selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Not Locked") {
-    selectElement.style.backgroundColor = "red";
-  }else if (selectElement.value === "Metal clamps implemented") {
-    selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Metal clamps not implemented") {
-    selectElement.style.backgroundColor = "red";
-  }else if (selectElement.value === "Cables Connected") {
-    selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Cables Not Connected") {
-    selectElement.style.backgroundColor = "red";
-  } else if (selectElement.value === "Not Applicable") {
-    selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Verified and ok") {
-    selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Not ok") {
-    selectElement.style.backgroundColor = "red";
   } else {
     selectElement.style.backgroundColor = "";
   }
