@@ -92,13 +92,22 @@
   </div>
   <div id="observations-container"></div>
   <div class="btn-container">
-    <button id="back-btn" onclick="window.history.back()">Back</button>
+    <button id="back-btn">Back</button>
     <button id="convert-pdf-btn" onclick="createNewReport()">Convert to PDF</button>
     <div id="success-message" style="display: none; color: green; margin-top: 10px;">
       PDF successfully created! Click <strong>Go to Report</strong> to view.
     </div>
     <a href="viewReports.php" id="go-to-report-btn" class="btn-link" style="display: none;">Go to Report</a>
   </div>
+  <script>
+  document.getElementById("back-btn").addEventListener("click",function(e){
+      e.preventDefault();
+      // Navigate directly to create.html instead of using browser history
+      window.location.href = "create.html#0.0";
+  });
+  </script>
+
+  </script>
   <script>
     const stationDetails = JSON.parse(sessionStorage.getItem('stationInfo'));
     if (stationDetails) {
@@ -825,13 +834,13 @@
           pdf.autoTable({
             startY: finalY,
             margin: { right: 10 },
-            head: [["S.No", "Description", "Status", "Remarks", ...(sectionId === "1" ? [] : ["Image"])]],
+            head: [["S.No", "Description", "Status", "Remarks", ...(sectionId === "0" ? [] : ["Image"])]],
             body: rows.map(r => [
               r.S_no,
               r.Description,
               r.Status,
               r.Remarks,
-              ...(sectionId === "1" ? [] : [{ content: "", raw: r.imageBase64, styles: { minCellHeight: r.calculatedHeight } }])
+              ...(sectionId === "0" ? [] : [{ content: "", raw: r.imageBase64, styles: { minCellHeight: r.calculatedHeight } }])
             ]),
             theme: "grid",
             showHead: 'everyPage',
@@ -856,13 +865,6 @@
               lineColor: [0, 0, 0],
               valign: 'middle',
               textColor: [0, 0, 0]
-            },
-            columnStyles: {
-              0: { cellWidth: sectionId === "1" ? 25 : 22, halign: 'center' }, // S.No centered
-              1: { cellWidth: sectionId === "1" ? 65 : 56, halign: 'left' }, // Description
-              2: { cellWidth: sectionId === "1" ? 30 : 26, halign: 'left' }, // Status
-              3: { cellWidth: sectionId === "1" ? 65 : 56, halign: 'left' }, // Remarks
-              4: { cellWidth: sectionId === "1" ? 0 : 25, halign: 'right' } // Image
             },
             didParseCell: function (data) {
               if (data.row.section === 'body' && data.column.index === 2) {

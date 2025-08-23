@@ -7,7 +7,7 @@ document.addEventListener("change", function (event) {
     unsavedChanges = true;
   }
 });
-
+const k=0
 // Variables to store station info from session or none
 let stationId = "";
 let stationName = "";
@@ -26,11 +26,20 @@ function updateDivisionNames() {
   const divisionSelect = document.getElementById("division");
   const selectedZone = zoneSelect.value;
 
+  console.log("updateDivisionNames called with zone:", selectedZone);
+
   // Store the current division value to restore it if possible
   const currentDivision = divisionSelect.value;
+  console.log("Current division value:", currentDivision);
 
   // Clear existing options
   divisionSelect.innerHTML = '<option value="" disabled selected>Select</option>';
+
+  // If no zone is selected, don't populate divisions
+  if (!selectedZone) {
+    console.log("No zone selected, returning early");
+    return;
+  }
 
   // Define all divisions with their corresponding zones
   const divisions = [
@@ -73,7 +82,11 @@ function updateDivisionNames() {
   if (filteredDivisions.length === 0) {
     divisionSelect.value = "";
   }
+  
+  console.log("updateDivisionNames completed. Final division value:", divisionSelect.value);
 }
+
+
 
 // In showSection, decide if it's okay to switch sections, and if so, highlight the new button.
 async function showSection(section) {
@@ -97,7 +110,7 @@ async function showSection(section) {
     newActiveBtn.classList.add("active");
   }
 
-  console.log("Showing section:", section);
+
 
   const mainContent = document.getElementById("main-content");
   const currentDate = new Date().toISOString().split("T")[0];
@@ -105,9 +118,12 @@ async function showSection(section) {
   const storedLocal = localStorage.getItem("stationDetails");
   const storedSession = sessionStorage.getItem("stationInfo");
 
+  console.log("Stored session data:", storedSession);
+
   let stationInfo = {};
   if (storedSession) {
     stationInfo = JSON.parse(storedSession);
+    console.log("Parsed station info:", stationInfo);
   } else {
     stationInfo = {
       stationId: "",
@@ -117,9 +133,10 @@ async function showSection(section) {
       initialDate: "",
       updatedDate: ""
     };
+    console.log("No stored session data, using default station info");
   }
 
-  console.log("stationInfo is:", stationInfo);
+
 
   /*const stationId = document.getElementById("station-id")?.value;
   const division = document.getElementById("division")?.value;
@@ -133,7 +150,7 @@ async function showSection(section) {
     if (["0.0","2.0","3.0","4.0","5.0","6.0","7.0"].includes(section)) {
     backendSectionId = parseInt(section, 10);
   }
-  console.log("This is section Id",backendSectionId);
+
   
   const exists = await checkExistingObservations(stationId, division, zone, backendSectionId);
 
@@ -168,12 +185,35 @@ async function showSection(section) {
 
   const zoneElem = document.getElementById("zone");
   if (zoneElem) {
+    // Temporarily remove the onchange event to prevent updateDivisionNames from being called
+    const originalOnChange = zoneElem.getAttribute('onchange');
+    zoneElem.removeAttribute('onchange');
+    
     zoneElem.value = stationInfo.zone || "";
-  }
-
-  const divisionElem = document.getElementById("division");
-  if (divisionElem) {
-    divisionElem.value = stationInfo.division || "";
+    
+    // If zone is set, update division dropdown and then set division value
+    if (stationInfo.zone) {
+      updateDivisionNames();
+      // Set division value after a short delay to ensure dropdown is populated
+      setTimeout(() => {
+        const divisionElem = document.getElementById("division");
+        if (divisionElem && stationInfo.division) {
+          divisionElem.value = stationInfo.division;
+          console.log("Setting division value to:", stationInfo.division);
+        }
+      }, 50);
+    }
+    
+    // Restore the onchange event
+    if (originalOnChange) {
+      zoneElem.setAttribute('onchange', originalOnChange);
+    }
+  } else {
+    // If zone is not set, still try to set division value
+    const divisionElem = document.getElementById("division");
+    if (divisionElem) {
+      divisionElem.value = stationInfo.division || "";
+    }
   }
 
   const initialDateElem = document.getElementById("initial-date");
@@ -197,7 +237,7 @@ async function showSection(section) {
   const stationDetailsHTML = `
     <div id="form-container">
       <section>
-        <form id="stationForm" action="connect.php" method="POST">
+        <form id="stationForm" action="connect.php" method="POST" onsubmit="event.preventDefault(); return false;">
           <table class="detail-box station-table">
             <tr>
               <td><strong>Station ID:</strong><input type="text" id="station-id" placeholder="Enter the Station ID" value="${stationInfo ? stationInfo.stationId : ""}"></td>
@@ -256,15 +296,11 @@ async function showSection(section) {
   `;
 
   mainContent.innerHTML = stationDetailsHTML;
+  console.log(k);
 
-  // Update division dropdown based on stored zone value
-  if (stationInfo.zone) {
-    updateDivisionNames();
-    const divisionSelect = document.getElementById("division");
-    if (divisionSelect && stationInfo.division) {
-      divisionSelect.value = stationInfo.division;
-    }
-  }
+  // Note: Division dropdown is already populated in the HTML template above
+  // and the zone value is already set, so updateDivisionNames() will be called
+  // automatically when the zone dropdown's onchange event fires
 
   setTimeout(() => {
     const initialDateInput = document.getElementById("initial-date");
@@ -274,7 +310,6 @@ async function showSection(section) {
       const month = String(dateValue.getMonth() + 1).padStart(2, "0");
       const day = String(dateValue.getDate()).padStart(2, "0");
       initialDateInput.value = `${year}-${month}-${day}`;
-      console.log("Initial date set to:", `${day}-${month}-${year}`);
     } else {
       console.error('Input with id="initial-date" not found.');
     }
@@ -288,7 +323,6 @@ async function showSection(section) {
       const month = String(dateValue.getMonth() + 1).padStart(2, "0");
       const day = String(dateValue.getDate()).padStart(2, "0");
       updatedDateInput.value = `${year}-${month}-${day}`;
-      console.log("Updated date set to:", `${day}-${month}-${year}`);
     } else {
       console.error('Input with id="updated-date" not found.');
     }
@@ -4726,14 +4760,18 @@ function logout() {
 // Event listener for dynamic shed name update
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  
   function initDivisionLogic() {
     // Attempt to get the newly loaded or dynamically injected selects
     const zoneSelect = document.getElementById("zone");
     const divisionSelect = document.getElementById("division");
 
+
+
     // If they don't exist yet (because the form is injected later), re-check soon
     if (!divisionSelect || !zoneSelect) {
-      console.log("Waiting for #zone and #division to appear...");
+      
       setTimeout(initDivisionLogic, 100);
       return;
     }
@@ -4748,7 +4786,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!zoneSelect || !divisionSelect) return;
 
       const selectedZone = zoneSelect.value;
-      console.log("Selected Zone:", selectedZone);
+
 
       // Reset to a single 'Select' placeholder
       divisionSelect.innerHTML = '<option value="" disabled selected>Select</option>';
@@ -4766,10 +4804,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // If a division is already selected (e.g. from session), update immediately
     window.updateDivisionNames();
+    
   }
 
   // Try to attach logic now; if the elements aren't there, we'll retry
   initDivisionLogic();
+
+
 });
 
 
@@ -4911,7 +4952,7 @@ async function saveStationInfo(section) {
     });
 
     const data = await response.json();
-    console.log("Response:", data);
+ 
 
     if (data.success) {
       showModal("Station info saved successfully!");
@@ -5005,9 +5046,9 @@ async function checkAndHighlightSections(stationId, zone, division) {
 // Function to check if observations exist for a given section
 async function checkExistingObservations(stationId, division, zone, sectionId) {
   try {
-    console.log("This is section Id in function",sectionId);
+
     const requestData = { stationId, division, zone, sectionId };
-    console.log("🚀 Sending request to check existing observations:", requestData);
+
 
     const response = await fetch("checkObservations.php", {
       method: "POST",
@@ -5018,7 +5059,7 @@ async function checkExistingObservations(stationId, division, zone, sectionId) {
     if (!response.ok) throw new Error("Network response was not ok");
 
     const data = await response.json();
-    console.log("✅ Response from checkObservations.php:", data);
+
 
     return data.exists;
   } catch (error) {
@@ -5957,64 +5998,7 @@ function onlyOneChecked(target, name) {
   });
 }
 
-// Event listener to load default station info (if any) when the page is loaded
-document.addEventListener("DOMContentLoaded", function () {
-  // 🔹 Restore Station Details
-  const stationDetails = JSON.parse(sessionStorage.getItem("stationDetails") || "{}");
-  if (stationDetails && Object.keys(stationDetails).length > 0) {
-    if (document.getElementById("station-id")) {
-      document.getElementById("station-id").value = stationDetails.station_id || "";
-    }
-    if (document.getElementById("station-name")) {
-      document.getElementById("station-name").value = stationDetails.station_name || "";
-    }
-    if (document.getElementById("zone")) {
-      document.getElementById("zone").value = stationDetails.railway_zone || "";
-    }
-    if (document.getElementById("division")) {
-      document.getElementById("division").value = stationDetails.division || "";
-    }
-    if (document.getElementById("initial-date")) {
-      document.getElementById("initial-date").value = stationDetails.initial_date || "";
-    }
-    if (document.getElementById("updated-date")) {
-      document.getElementById("updated-date").value = stationDetails.updated_date || "";
-    }
-  }
 
-  // 🔹 Restore Observations
-  const observationsData = JSON.parse(sessionStorage.getItem("observationsData") || "[]");
-  if (Array.isArray(observationsData) && observationsData.length > 0) {
-    observationsData.forEach(obs => {
-      // Find row by S_no (your table must use `row-S_no` as id or similar)
-      const row = document.querySelector(`#observations-section-${obs.section_id} tr[data-sno="${obs.S_no}"]`);
-      if (row) {
-        // Restore remarks
-        const remarksField = row.querySelector(".remarks textarea");
-        if (remarksField) remarksField.value = obs.remarks || "";
-
-        // Restore status
-        const statusField = row.querySelector("select");
-        if (statusField) statusField.value = obs.observation_status || "Select";
-
-        // Restore images (if any container exists)
-        if (obs.images && obs.images.length > 0) {
-          const imgContainer = row.querySelector(".image-preview");
-          if (imgContainer) {
-            imgContainer.innerHTML = ""; // clear old previews
-            obs.images.forEach(img => {
-              const imgEl = document.createElement("img");
-              imgEl.src = img;
-              imgEl.style.width = "100px";
-              imgEl.style.height = "auto";
-              imgContainer.appendChild(imgEl);
-            });
-          }
-        }
-      }
-    });
-  }
-});
 
 function showUploadOptions(rowId) {
   const uploadBox = document.getElementById(`upload-options-${rowId}`);

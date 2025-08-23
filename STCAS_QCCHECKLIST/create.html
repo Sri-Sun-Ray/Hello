@@ -98,41 +98,37 @@ if (isset($_SESSION['station_id'])) {
   
 
   <!-- Your additional scripts (for handling station info fetching, etc.) -->
+  <!-- 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      // If you don't want to prefill based on a query parameter, skip this part
-      const stationId = urlParams.get("station_id");
-      if (stationId) {
-        // Optionally remove these lines if you always want a fresh form
-        localStorage.setItem("selectedStationId", stationId);
-        // Fetch and fill details if desired. Otherwise, don't populate:
-        // fetch(`getReportById.php?station_id=${stationId}`)
-        //   .then(response => response.json())
-        //   .then(data => { /* populate form fields if needed */ })
-        //   .catch(error => console.error("Fetch error:", error));
-      } else {
-        // No query parameter - ensure stored data is not used.
-        localStorage.removeItem("stationDetails");
+      function checkingValues(){
+    const stationInfo=JSON.parse(sessionStorage.getItem("stationInfo"));
+    if(!stationInfo){
+      console.log("Not Working");
+    }else{
+      if(document.getElementById("station-name").value===""){
+        console.log("Whast Happening");
       }
+    }
+  }
+   checkingValues();
     });
-</script>
+</script>-->
 <script>
  window.addEventListener('load', function() {
-  // Clear only the keys specific to the form data.
+  // Only clear fields if no station info exists in sessionStorage
+  const stationInfo = sessionStorage.getItem("stationInfo");
   
-  localStorage.removeItem("selectedStationId");
-  localStorage.removeItem("stationDetails");
-  // Do not remove "user_id" so that the user id remains stored.
-
-  // Clear form fields explicitly
-  const fieldIds = ["station-id", "station-name", "zone", "division", "initial-date", "updated-date"];
-  fieldIds.forEach(id => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.value = "";
-    }
-  });
+  if (!stationInfo) {
+    // Clear form fields explicitly only if no station info exists
+    const fieldIds = ["station-id", "station-name", "zone", "division", "initial-date", "updated-date"];
+    fieldIds.forEach(id => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.value = "";
+      }
+    });
+  }
 
   // Check the URL hash to show the default section if present.
   const hash = window.location.hash; // e.g., "#0.0"
@@ -201,83 +197,7 @@ window.addEventListener("beforeunload", beforeUnloadHandler);
   <!-- Additional scripts (for station info handling, etc.) -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      const stationId = urlParams.get("station_id");
-      if (stationId) {
-        localStorage.setItem("selectedStationId", stationId);
-        // Set current date if necessary.
-        const initialDateElem = document.getElementById("initial-date");
-        if (initialDateElem) {
-          const now = new Date();
-          const year = now.getFullYear();
-          const month = String(now.getMonth() + 1).padStart(2, "0");
-          const day = String(now.getDate()).padStart(2, "0");
-          initialDateElem.value = `${year}-${month}-${day}`;
-        }
-        const updateDateElem = document.getElementById("updated-date");
-        if (updateDateElem) {
-          const now = new Date();
-          const year = now.getFullYear();
-          const month = String(now.getMonth() + 1).padStart(2, "0");
-          const day = String(now.getDate()).padStart(2, "0");
-          updateDateElem.value = `${year}-${month}-${day}`;
-        }
-        fetch(`getReportById.php?station_id=${stationId}`)
-          .then(response => response.json())
-          .then(data => {
-            if (data.success) {
-              const stationInfo = data.data.stationDetails;
-              if (stationInfo) {
-                localStorage.setItem("stationDetails", JSON.stringify(stationInfo));
-                const stationIdElem = document.getElementById("station-id");
-                if (stationIdElem) stationIdElem.value = stationInfo.stationId || "";
-                const stationNameElem = document.getElementById("station-name");
-                if (stationNameElem) stationNameElem.value = stationInfo.stationName || "";
-                const zoneElem = document.getElementById("zone");
-                if (zoneElem) zoneElem.value = stationInfo.zone || "";
-                const divisionElem = document.getElementById("division");
-                if (divisionElem) divisionElem.value = stationInfo.division || "";
-                const initialDateElem=document.getElementById("initial-date");
-                if (initialDateElem) initialDateElem.value=stationInfo.initialDate || "";
-                const updateDateElem=document.getElementById("updated-date");
-                if (updateDateElem) updateDateElem.value=stationInfo.updatedDate || "";
-              }
-            } else {
-              console.error("Error fetching report details:", data.message);
-            }
-          })
-          .catch(error => console.error("Fetch error:", error));
-      } else {
-        localStorage.removeItem("stationDetails");
-        const stored = localStorage.getItem("stationDetails");
-        if (stored) {
-          const stationInfo = JSON.parse(stored);
-          const stationIdElem = document.getElementById("station-id");
-          if (stationIdElem) stationIdElem.value = stationInfo.stationID || "";
-          const stationNameElem = document.getElementById("station-name");
-          if (stationNameElem) stationNameElem.value = stationInfo.stationName || "";
-          const zoneElem = document.getElementById("zone");
-          if (zoneElem) zoneElem.value = stationInfo.zone || "";
-          const divisionElem = document.getElementById("division");
-          if (divisionElem) divisionElem.value = stationInfo.division || "";
-          const initialDateElem = document.getElementById("initial-date");
-          if (initialDateElem && stationInfo.initialDate) {
-            const d = new Date(stationInfo.initialDate);
-            const year = d.getFullYear();
-            const month = String(d.getMonth() + 1).padStart(2, "0");
-            const day = String(d.getDate()).padStart(2, "0");
-            initialDateElem.value = `${year}-${month}-${day}`;
-          }
-          const updateDateElem = document.getElementById("updated-date");
-          if (updateDateElem && stationInfo.updatedDate) {
-            const d = new Date(stationInfo.updatedDate);
-            const year = d.getFullYear();
-            const month = String(d.getMonth() + 1).padStart(2, "0");
-            const day = String(d.getDate()).padStart(2, "0");
-            updateDateElem.value = `${year}-${month}-${day}`;
-          }
-        }
-      }
+     
     });
   </script>
 

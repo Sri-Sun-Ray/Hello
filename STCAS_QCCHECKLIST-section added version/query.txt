@@ -1,0 +1,20 @@
+CREATE TABLE `relay_installation_and_wiring` (
+  `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=235,
+  `station_id` int(11) NOT NULL,
+  `section_id` varchar(50) NOT NULL,
+  `station_name` varchar(255) NOT NULL,
+  `railway_zone` varchar(10) NOT NULL,
+  `division` varchar(255) NOT NULL,
+  `initial_date` date NOT NULL,
+  `updated_date` date NOT NULL,
+  `observation_text` varchar(255) DEFAULT NULL,
+  `remarks` text NOT NULL,
+  `S_no` varchar(50) NOT NULL,
+  `observation_status` varchar(255) DEFAULT NULL,
+  `image_paths` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`image_paths`)),
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `fk_station_tcas_station_id` (`station_id`),
+  CONSTRAINT `fk_station_tcas_station_id` FOREIGN KEY (`station_id`) REFERENCES `station` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
