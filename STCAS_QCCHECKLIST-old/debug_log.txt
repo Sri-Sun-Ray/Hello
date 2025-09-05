@@ -25801,3 +25801,352 @@ Received Data: Array
 )
 
 Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 8.0
+)
+
+Received Section ID: 8
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 8.0
+)
+
+Received Section ID: 8
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 0
+)
+
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 7
+)
+
+Received Section ID: 7
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 8.0
+)
+
+Received Section ID: 8
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 7
+)
+
+Received Section ID: 7
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 7
+)
+
+Received Section ID: 7
+Received Data: Array
+(
+    [stationId] => 342
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 8.0
+)
+
+Received Section ID: 8
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 3534354
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 8.0
+)
+
+Received Section ID: 8
+Received Data: Array
+(
+    [stationId] => 3534354
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 3534354
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 3534354
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 8.0
+)
+
+Received Section ID: 8

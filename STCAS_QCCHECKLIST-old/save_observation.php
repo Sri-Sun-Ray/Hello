@@ -33,6 +33,7 @@ $table_mapping = [
     5 => "rib_cab_input_box",
     6 => "dmi_lp_ocip",
     7 => "rfid_ps_unit",
+    8 => "rfid_ps_unit",
 ];
 
 if (!isset($table_mapping[$section_id])) {

@@ -52,7 +52,6 @@ $tableNames = [
     5 => 'relay_installation_and_wiring',
     6 => 'smocip',
     7 => 'rfid_tags',
-    8 => 'rfid_ps_unit',
 ];
 
 // Check if the provided section ID is valid

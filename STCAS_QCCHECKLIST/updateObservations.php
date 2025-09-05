@@ -9,8 +9,7 @@ $tableNames = [
     'station_tcas',
     'relay_installation_and_wiring',
     'smocip',
-    'rfid_tags',
-    'rfid_ps_unit'
+    'rfid_tags'
 ];
 
 $sectionIndex = $_POST['section_index'] ?? null;

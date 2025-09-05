@@ -4820,6 +4820,73 @@ Fixing proper Brackets (Point sleeper Bracket & Normal Sleeper Bracket) as per d
       </div>
     ;`
   }  
+  else if (section === "8.0") {
+    // For all other sections, add Save Observation button
+    mainContent.innerHTML += `
+      <h3 class="section-heading">RFID PS Unit Observations</h3>
+      <div class="table-container"> 
+      <table class="observations" id="observations-section-8_0">
+        <thead>
+          <tr>
+            <th>S_No</th>
+            <th>Tag_No</th>
+            <th>Observation</th>
+            <th>Remarks/Comments</th>
+            <th>Image</th>
+          </tr>
+        </thead>
+        <tbody id="observations-tbody-8_0">
+          <tr id="row-951">
+      <td>7.1</td>
+      <td class="tag_no" style="width: 20%;"><input type="text" id="tag-no-951" placeholder="enter tag no" style="width: 100%; box-sizing: border-box;"></td>
+      <td class="select">
+        <select id="status-dropdown" onchange="highlightSelect(this)">
+          <option value="Select">Select</option>
+          <option value="Torquing done">Details in annexure -A</option>
+        </select>
+      </td>
+      <td class="remarks" style="width: 40%;">
+        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20" style="width: 100%; box-sizing: border-box;"></textarea><br>
+      </td>
+      <td>
+       <button class="add-image" onclick="showUploadOptions(951)">Add Image</button>
+<div class="upload-options" id="upload-options-951" style="display: none;">
+  <button class="add-image" onclick="startCamera(951)">Camera</button>
+  <label for="file-input-951" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-951" accept="image/*" multiple onchange="displayImages(this, 951)">
+</div>
+<!-- Container for multiple images --> 
+<div id="image-container-951"></div>
+<!-- Camera Container -->
+<div id="camera-container-951" style="display: none;">
+  <video id="camera-951" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(951)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(951)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(951)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-951" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+</div>
+    </tr>
+    <tr class="add-row-placeholder" id="add-row-8_0">
+      <td colspan="5" style="text-align: left;">
+        <button type="button" class="add-row" onclick="addRowSection8()">Add Row</button>
+      </td>
+    </tr>
+     </tbody>
+      </table>
+      </div>
+      <div class="action-buttons">
+        <!-- New UPDATE button: -->
+      <button type="button" 
+              id="update-btn" 
+              style="background-color: blue; color: white; display:none;" 
+              onclick="updateObservation('8_0')">
+        Update
+      </button>
+        <button type="button" id= "save-btn" style = "display: inline-block;"  onclick="if(validateMandatoryImages('8_0')) { saveObservation('8_0'); }">Save</button>
+         <button id="get-details-btn" onclick="getDetails()">Get Details</button>
+      </div>
+    ;`
+  }  
 
 }
 
@@ -5182,20 +5249,27 @@ async function saveObservation(section) {
   let anyDropdownSelected = false;
 
   for (const row of rows) {
+    // Skip the Add Row placeholder if present
+    if (row.classList.contains('add-row-placeholder')) continue;
     const S_no = row.querySelector("td:first-child")?.innerText.trim() || "";
     const obsField = row.querySelector(".observation_text");
 
-    if (!obsField) {
+    if (!obsField && section !== "8_0") {
       alert(`❌ Missing description field for S.No ${S_no}`);
       if (saveBtn) saveBtn.disabled = false;
       return;
     }
 
-    const clone = obsField.cloneNode(true);
-    clone.querySelectorAll("input").forEach(i => i.remove());
-    const descriptionHtml = clone.innerHTML.trim();
+    let descriptionHtml = "";
+    if (obsField) {
+      const clone = obsField.cloneNode(true);
+      clone.querySelectorAll("input").forEach(i => i.remove());
+      descriptionHtml = clone.innerHTML.trim();
+    } else if (section === "8_0") {
+      descriptionHtml = "Tag_No:";
+    }
 
-    if (!descriptionHtml || descriptionHtml.toUpperCase() === "N/A") {
+    if ((!descriptionHtml || descriptionHtml.toUpperCase() === "N/A") && section !== "8_0") {
       alert(`⚠️ Description cannot be empty or "N/A" for S.No ${S_no}`);
       if (saveBtn) saveBtn.disabled = false;
       return;
@@ -5261,7 +5335,9 @@ async function saveObservation(section) {
   }
 
   try {
-    const response = await fetch(`section${section}.php`, {
+    // Handle section 8.0 specially since it has a dot in the name
+    const phpFile = section === "8.0" ? "section8_0.php" : `section${section}.php`;
+    const response = await fetch(phpFile, {
       method: "POST",
       body: formData,
     });
@@ -5834,7 +5910,7 @@ async function updateObservation(section) {
   // 1) Section mapping (optional index)
   const sectionMapping = {
     "2_0": 0,  "3_0": 1,  "4_0": 2,
-    "5_0": 3,  "6_0": 4,  "7_0": 5
+    "5_0": 3,  "6_0": 4,  "7_0": 5,  "8_0": 6
   };
 
   // 2) Section‐level fields
@@ -5875,6 +5951,12 @@ async function updateObservation(section) {
 
     // 5a) Text, barcode (for 2_0), remarks, status
     let observationText = row.querySelector(".observation_text")?.textContent.trim() || "";
+    if (section === "8_0") {
+      const tagInput = row.querySelector("td:nth-child(2) input[type='text']");
+      const tagVal = tagInput ? tagInput.value.trim() : "";
+      observationText = tagVal ? `Tag_No: ${tagVal}` : "";
+      if (tagVal) hasChanges = true;
+    }
     let barcodeValue    = "";
     if (section === "2_0") {
       const bcInput = row.querySelector("input[name='barcode_kavach_main_unit']");
@@ -6640,6 +6722,66 @@ function validateMandatoryImages(sectionID) {
     return false;
   }
   return true;
+}
+
+// Add new row for section 8.0 (RFID PS Unit Observations)
+function addRowSection8() {
+  const sectionId = "8_0";
+  const tbody = document.getElementById(`observations-tbody-${sectionId}`);
+  if (!tbody) return;
+
+  // Determine next S_no: find last numeric s_no in existing rows
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+  const sNos = rows
+    .map(tr => parseFloat(tr.cells?.[0]?.textContent))
+    .filter(n => !isNaN(n));
+  const base = 7.0; // continue after 7.x as per first row 7.1
+  const nextIndex = sNos.length ? Math.max(...sNos) + 0.1 : base + 0.1;
+  const nextSno = nextIndex.toFixed(1);
+
+  // Create a unique rowId using sno without dot
+  const rowId = nextSno.replace(".", "");
+
+  // Build row HTML
+  const tr = document.createElement("tr");
+  tr.id = `row-${rowId}`;
+  tr.innerHTML = `
+      <td>${nextSno}</td>
+      <td class="tag_no" style="width: 20%;"><input type="text" id="tag-no-${rowId}" placeholder="enter tag no" style="width: 100%; box-sizing: border-box;"></td>
+      <td class="select">
+        <select onchange="highlightSelect(this)">
+          <option value="Select">Select</option>
+          <option value="Torquing done">Details in annexure -A</option>
+        </select>
+      </td>
+      <td class="remarks" style="width: 40%;">
+        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20" style="width: 100%; box-sizing: border-box;"></textarea><br>
+      </td>
+      <td>
+        <button class="add-image" onclick="showUploadOptions(${rowId})">Add Image</button>
+        <div class="upload-options" id="upload-options-${rowId}" style="display: none;">
+          <button class="add-image" onclick="startCamera(${rowId})">Camera</button>
+          <label for="file-input-${rowId}" class="upload-label">Upload from Device</label>
+          <input type="file" id="file-input-${rowId}" accept="image/*" multiple onchange="displayImages(this, ${rowId})">
+        </div>
+        <div id="image-container-${rowId}"></div>
+        <div id="camera-container-${rowId}" style="display: none;">
+          <video id="camera-${rowId}" width="100%" height="auto" autoplay></video>
+          <button class="add-image" onclick="captureImage(${rowId})">Capture Image</button>
+          <button class="add-image" onclick="stopCamera(${rowId})">Stop Camera</button>
+          <button class="reverse-camera" onclick="switchCamera(${rowId})">🔄 Switch Camera</button>
+          <canvas id="canvas-${rowId}" style="display: none;"></canvas>
+        </div>
+      </td>
+  `;
+
+  // Insert before the add-row placeholder if it exists, else append
+  const addRowPlaceholder = document.getElementById(`add-row-${sectionId}`);
+  if (addRowPlaceholder) {
+    tbody.insertBefore(tr, addRowPlaceholder);
+  } else {
+    tbody.appendChild(tr);
+  }
 }
 
 
