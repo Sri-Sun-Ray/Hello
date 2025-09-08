@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");
 
-// Validate we have a 'loco_id' parameter
+// Validate we have a 'station_id' parameter
 if (!isset($_GET['station_id']) || empty($_GET['station_id'])) {
     echo json_encode([
         'success' => false,
@@ -20,11 +20,11 @@ try {
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
 
-    // Fetch the locomotive details from the 'loco' table using loco_id
+    // Fetch the station details
     $stmt = $pdo->prepare("
         SELECT station_id, station_name, railway_zone, division, section_name, initial_date, updated_date 
         FROM station
-        WHERE station_Id = :stationId
+        WHERE station_id = :stationId
     ");
     $stmt->execute([':stationId' => $stationId]);
     $stationDetails = $stmt->fetch();
@@ -37,25 +37,24 @@ try {
         exit;
     }
 
-    // Transform the keys into a more JavaScript-friendly format
+    // Transform keys into JS-friendly format
     $transformed = [
-        'stationID'          => $stationDetails['station_Id'],
-        'stationName'        => $stationDetails['station_Name'],
-        'zone'       => $stationDetails['zone'],
-        'division' => $stationDetails['division'],
+        'stationId'   => $stationDetails['station_id'],
+        'stationName' => $stationDetails['station_name'],
+        'zone'        => $stationDetails['railway_zone'],
+        'division'    => $stationDetails['division'],
         'sectionName' => $stationDetails['section_name'],
-        'initialDate'        => $stationDetails['initial_date'],
-        'UpdatedDate'  => $stationDetails['updated_date']
+        'initialDate' => $stationDetails['initial_date'],
+        'updateDate'  => $stationDetails['updated_date']
     ];
 
-    // Return the JSON response
     echo json_encode([
         'success' => true,
         'data' => [
             'stationDetails' => $transformed
         ]
     ]);
-    
+
 } catch (PDOException $e) {
     echo json_encode([
         'success' => false,

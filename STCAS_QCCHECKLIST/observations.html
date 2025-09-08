@@ -10,40 +10,44 @@
   <script src="libs/jspdf.umd.min.js"></script>
   <script src="libs/jspdf.plugin.autotable.min.js"></script>
   <script>
-    function formatDescription(description) {
-      return (
-        (description || "")
-          .replace(/<[^>]*>/g, "")
-          .trim()
-          .replace(/\s+/g, " ")
-          .replace(/:+(?=\s*\d)/g, "")
-          .replace(/:+$/, "")
-          .replace(/ (\d+)$/, " - $1")
-      );
-    }
+      function formatDescription(description) {
+  if (!description) return "";
+  // Convert &lt;b&gt; into <b> etc.
+  const txt = document.createElement("textarea");
+  txt.innerHTML = description;
+  return txt.value;
+}
+function decodeHtmlEntities(str) {
+  if (!str) return "";
+  const txt = document.createElement("textarea");
+  txt.innerHTML = str;
+  return txt.value;
+}
 
    const specificOptions = {
     "1.1": ["Present", "Not Present"],
-"1.38,1.39,1.40,1.41,1.42,1.43,1.44,1.45,1.46,1.47,1.48,1.49,1.50" : ["Matching", "Not Matching", "Not Installed", "Not Applicable"],    "1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22,1.23,1.24,1.25,1.26,1.27,1.28,1.29,1.30,1.31,1.32,1.33,1.34,1.35,1.36,1.37": ["Matching", "Not Matching", "Not Installed"],
-    "2.1,3.1,3.3,3.12,3.17,3.23,3.24,4.1,4.4,4.5,3.18,3.19,5.1,5.2,5.3,4.2" : ["Found Ok","Found Not Ok"],
+    "1.38,1.39,1.40,1.41,1.42,1.43,1.50,1.44,1.45,1.46,1.47,1.48,1.49" : ["Matching", "Not Matching", "Not Installed", "Not Applicable"],    "1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22,1.23,1.24,1.25,1.26,1.27,1.28,1.29,1.30,1.31,1.32,1.33,1.34,1.35,1.36,1.37": ["Matching", "Not Matching", "Not Installed"],
+    "2.1,3.1,3.3,3.12,3.17,3.23,3.24,4.1,4.5,3.18,3.19,5.1,5.3,5.4,6.1,6.2,6.3,6.4" : ["Found Ok","Found Not Ok"],
     "3.4,3.5,3.6,3.15,3.22" : ["Implemented","Not Implemeneted"],
     "2.2,2.7,2.8,2.13" : ["Fixed","Not Fixed"],
-    "3.16,3.21,4.3,4.6,5.4": ["Connected","Not Connected"],
-    "2.5,2.14,2.2,3.14" : ["Routing done", "Routing Not done"],
+    "3.16,3.21,4.3,5.2,5.5": ["Connected","Not Connected"],
+    "2.5,2.14,3.2,3.14,3.25" : ["Routing done", "Routing Not done"],
     "2.10,2.17,3.9,3.10" : ["Voltage found Ok" , "Voltage found not Ok"],
     "2.12,2.15,3.20" : ["Done","Not Done"],
-    "2.16": ["Ok","Not Ok"],
+    "2.16,5.7,5.8,4.4,2.18": ["Ok","Not Ok"],
     "3.11": ["PCCL Done","PCCL Not Done"],
     "2.11": ["Earth Connected","Earth not connected"],
-    "2.6": ["Functioning","Not Functioning"],
-    "5.5": ["Matching","Not Matching"],
+    "5.6": ["Matching","Not Matching"],
     "3.13": ["Identification Done","Identification Not Done"],
     "2.4,2.9": ["Cable ties implemented","Cable ties not implemented"],
     "2.3":["Joined","Not Joined"],
     "3.7": ["Installed","Not Installed"],
     "3.8":["Rating as per Diagram:","Actual Rating:"],
-    
+    "4.2": ["Quantity Matched","Quantity Not Matched"],
+    "4.6":["Connected","Not Connected","Not Applicable"],
+    "4.7,2.6":["Yes","No"],
   };
+
 
 
   </script>
@@ -60,9 +64,9 @@
     .red { color: red; font-weight: bold; }
     .btn-container { margin: 20px 0; text-align: center; }
     .btn-container button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
-    .station-details table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-    .station-details td { padding: 15px; border: 1px solid black; text-align: left; width: 10%; }
-    .station-details strong { font-weight: bold; }
+    .loco-details table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    .loco-details td { padding: 15px; border: 1px solid black; text-align: left; width: 10%; }
+    .loco-details strong { font-weight: bold; }
     .eye-icon { margin-left: 10px; cursor: pointer; color: #007bff; font-size: 18px; }
     .btn-container { display: flex; justify-content: space-between; align-items: center; margin: 20px; }
     #back-btn { background-color: #f44336; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease; }
@@ -77,7 +81,7 @@
 </head>
 <body>
   <h1>Observations</h1>
-  <div class="station-details">
+  <div class="loco-details">
     <h2>Station Details</h2>
     <table>
       <tr>
@@ -179,7 +183,7 @@
         grouped[section].push(obs);
       });
       let closedPoints = 0;
-      const totalPoints = 177;
+      const totalPoints = 106;
       Object.keys(grouped).sort((a, b) => Number(a) - Number(b)).forEach(section => {
         const sectionRows = grouped[section];
         if (section !== "1" && section !== "2") {
@@ -251,11 +255,10 @@
             case 'Joined':
             case 'Installed':
             case 'Rating as per Diagram:':
-            case 'Actual Rating:':
+            case 'Quantity Matched':
             case 'Panel Qty as per PSD:':
             case 'Actual:':
             case 'Repeater relays Qty as per PSD:':
-            case 'Identification Done':
               statusColor = 'green';
               closedPoints++;
               break;
@@ -280,6 +283,7 @@
             case 'Cable ties not implemented':
             case 'Not Joined':
             case 'Not Installed':
+            case 'Quantity Not Matched':
               statusColor = 'red';
               break;
             default:
@@ -470,10 +474,10 @@
         pdf.setFontSize(12);
         pdf.text("Electronics Group", pdf.internal.pageSize.width / 2, finalY + 12, { align: "center" });
         pdf.setFont("helvetica", "bold");
-        pdf.text("In-Process QC CheckList for Onboard Kavach Installation", pdf.internal.pageSize.width / 2, finalY + 20, { align: "center" });
+        pdf.text("In-Process QC Checklist for Stationary Kavach Installation", pdf.internal.pageSize.width / 2, finalY + 20, { align: "center" });
         pdf.setFont("helvetica", "normal");
         pdf.text(`QC Engineer Name: ${employeeName}`, 10, finalY + 26);
-        pdf.text("v1.1", pdf.internal.pageSize.width - 10, finalY + 26, { align: "right" });
+        pdf.text("v1.0", pdf.internal.pageSize.width - 10, finalY + 26, { align: "right" });
         pdf.line(10, finalY + 28, pdf.internal.pageSize.width - 10, finalY + 28);
         finalY += 30;
 
@@ -529,7 +533,7 @@
           finalY = 10;
         }
 
-        const totalPointsFixed = 177;
+        const totalPointsFixed = 106;
         const closedPoints = observationsArray.filter(obs =>
           ["Available", "Present", "Yes", "Routing Done", "Fixed", "Secured", "Installed", "Connected", "Aligned", "Torquing done", "Positioning done", "Configured", "Welding done", "Earthing done", "Matching", "Not Applicable", "Coating done", "Applied", "Cables Connected", "Metal clamps implemented", "Locked","Verified and ok"].includes(obs.observation_status.trim())
         ).length;
@@ -841,7 +845,7 @@
             head: [["S.No", "Description", "Status", "Remarks", ...(sectionId === "0" ? [] : ["Image"])]],
             body: rows.map(r => [
               r.S_no,
-              r.Description,
+              decodeHtmlEntities(String(r.Description || "").replace(/<\/?b>/g, "")),
               r.Status,
               r.Remarks,
               ...(sectionId === "0" ? [] : [{ content: "", raw: r.imageBase64, styles: { minCellHeight: r.calculatedHeight } }])
@@ -870,6 +874,13 @@
               valign: 'middle',
               textColor: [0, 0, 0]
             },
+            columnStyles: {
+    0: { cellWidth: 20, halign: 'center' },   // S.No
+    1: { cellWidth: 50, halign: 'left' },     // Description (reduced)
+    2: { cellWidth: 25, halign: 'left' },     // Status
+    3: { cellWidth: 35, halign: 'left' },     // Remarks
+    4: { cellWidth: 50, halign: 'center' }    // Image (increased)
+  },
             didParseCell: function (data) {
               if (data.row.section === 'body' && data.column.index === 2) {
                 const statusText = String(data.cell.raw).trim();
@@ -971,7 +982,7 @@
           pdf.setPage(i)
             .setFont("helvetica", "normal")
             .setFontSize(10);
-          pdf.text("EG-IC-FT-34 Rev3", 10, pdf.internal.pageSize.height - 10);
+          pdf.text("EG-IC-FT-33 Rev4", 10, pdf.internal.pageSize.height - 10);
           pdf.text(
             `Page ${i} of ${totalPagesFinal}`,
             pdf.internal.pageSize.width - 10,

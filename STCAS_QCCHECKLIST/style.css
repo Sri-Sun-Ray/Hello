@@ -215,16 +215,29 @@ table.detail-box tr {
     color: black;
 }
 
-/* Form input fields */
-input[type="text"], input[type="date"], input[type="file"] {
-    width: 100%;
-    padding: 4px;  /* Reduced padding to match row height */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 25px; /* Smaller font size for better compactness */
-    height: 20px; /* Match row height */
+input[type="text"],
+input[type="date"],
+select {
+    width: 100%;              /* Full width of table cell */
+    height: 35px;             /* Same height for all */
+    padding: 6px 10px;        /* Equal padding */
+    font-size: 14px;          /* Font size consistent */
+    border: 1px solid #ccc;   /* Uniform border */
+    border-radius: 4px;       /* Rounded corners */
+    box-sizing: border-box;   /* Prevent overflow */
+    background-color: #fff;   /* White background */
+    appearance: none;         /* Remove browser default styles */
+    -webkit-appearance: none; /* Safari/Chrome */
+    -moz-appearance: none;    /* Firefox */
 }
 
+/* Optional: Add a small custom dropdown arrow */
+select {
+    background: #fff url("data:image/svg+xml;utf8,<svg fill='black' height='12' width='12' xmlns='http://www.w3.org/2000/svg'><path d='M2 4 L6 8 L10 4 Z'/></svg>") no-repeat right 10px center;
+    background-size: 12px;
+    padding-right: 25px; /* Space for arrow */
+    cursor: pointer;
+}
 /* Section name field specific styling */
 #section-name {
     font-size: 18px; /* Slightly smaller font for better fit */
@@ -298,6 +311,34 @@ textarea {
     resize: none; /* Disable resizing to maintain consistent height */
 }
 
+/* Inline numeric inputs in observation rows */
+.observation_text input[type="number"] {
+    width: 48%;
+    display: inline-block;
+    margin: 2px 1%;
+    padding: 6px;
+    font-size: 14px;
+}
+
+/* Grid layout for labeled observation status inputs (e.g., S.No 4.2) */
+.input-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 8px;
+    align-items: center;
+}
+.input-grid label {
+    font-size: 14px;
+    color: #333;
+}
+.input-grid input[type="text"] {
+    width: 100%;
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
 /* Style for document verification heading */
 
 #observations-section-1_0 {
@@ -310,7 +351,7 @@ textarea {
 }
 #observations-section-10_0 {
     margin-top: 10px;  /* Adjust as needed */
-    margin-bottom: 150px;  /* Adjust as needed */
+    margin-bottom: 150px;  /* Adjust as needed *// 
 }
 #observations-section-16_0 {
     margin-top: 10px;  /* Adjust as needed */
@@ -390,13 +431,7 @@ img {
 }
 
 /* Select input styling */
-select {
-    padding: 4px;  /* Reduced padding */
-    font-size: 10px; /* Smaller font size */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    height: 20px; /* Match row height */
-}
+
 
 #status-dropdown {
     padding: 2px; /* Reduce padding */
@@ -414,7 +449,7 @@ select {
   
   th {
     text-align: center; /* Centers the text horizontally */
-    vertical-align: middle; /* Centers the text vertically (optional) */
+    vertical-align: middle; /* Centers the text vertically (optional) */  
   }
 /* File input styling */
 input[type="file"] {
@@ -1067,20 +1102,5 @@ select, textarea {
     background-color: #45a049; /* Darker shade on hover */
 }
 
-.input-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* 2x2 layout */
-  gap: 5px;
-}
 
-.input-grid input {
-  padding: 5px;
-  font-size: 14px; /* normal input text size */
-}
-
-/* Make placeholder smaller */
-.input-grid input::placeholder {
-  font-size: 10px;
-  color: gray;
-}
   

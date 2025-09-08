@@ -48,7 +48,7 @@ try {
     $tableNames = [
         'verify_serial_numbers_of_equipment_as_per_ic',
         'tower_and_rtu', 'station_tcas', 'relay_installation_and_wiring', 'smocip',
-        'rfid_tags', 'rfid_ps_unit'
+        'rfid_tags'
     ];
 
     $observations = [];

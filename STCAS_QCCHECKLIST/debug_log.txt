@@ -1,1164 +1,21 @@
 Received Data: Array
 (
-    [stationId] => 
-    [division] => 
-    [zone] => 
+    [stationId] => 874521
+    [division] => Mumbai
+    [zone] => CR
     [sectionId] => 0
 )
 
 Received Section ID: 0
 Received Data: Array
 (
-    [stationId] => 
-    [division] => 
-    [zone] => 
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
+    [stationId] => 874521
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 2
 )
 
 Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 7845
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
 Received Data: Array
 (
     [stationId] => 
@@ -1179,304 +36,7 @@ Received Data: Array
 Received Section ID: 0
 Received Data: Array
 (
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 345345
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 
-    [division] => 
-    [zone] => 
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 
-    [division] => 
-    [zone] => 
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 693487
+    [stationId] => 7845665
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 2
@@ -1485,25 +45,16 @@ Received Data: Array
 Received Section ID: 2
 Received Data: Array
 (
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Data: Array
-(
-    [stationId] => 693487
+    [stationId] => 7845665
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 0
 )
 
 Received Section ID: 0
-Received Section ID: 0
 Received Data: Array
 (
-    [stationId] => 693487
+    [stationId] => 7845665
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 2
@@ -1512,7 +63,7 @@ Received Data: Array
 Received Section ID: 2
 Received Data: Array
 (
-    [stationId] => 693487
+    [stationId] => 7845665
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 0
@@ -1521,7 +72,7 @@ Received Data: Array
 Received Section ID: 0
 Received Data: Array
 (
-    [stationId] => 693487
+    [stationId] => 7845665
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 2
@@ -1530,7 +81,7 @@ Received Data: Array
 Received Section ID: 2
 Received Data: Array
 (
-    [stationId] => 693487
+    [stationId] => 7845665
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 3
@@ -1539,7 +90,7 @@ Received Data: Array
 Received Section ID: 3
 Received Data: Array
 (
-    [stationId] => 693487
+    [stationId] => 7845665
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 4
@@ -1548,7 +99,7 @@ Received Data: Array
 Received Section ID: 4
 Received Data: Array
 (
-    [stationId] => 693487
+    [stationId] => 7845665
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 5
@@ -1557,7 +108,7 @@ Received Data: Array
 Received Section ID: 5
 Received Data: Array
 (
-    [stationId] => 693487
+    [stationId] => 7845665
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 6
@@ -1566,1938 +117,7 @@ Received Data: Array
 Received Section ID: 6
 Received Data: Array
 (
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 693487
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 
-    [division] => 
-    [zone] => 
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 2541254
-    [division] => Nagpur
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 
-    [division] => 
-    [zone] => 
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 
-    [division] => 
-    [zone] => 
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Data: Array
-(
-    [stationId] => 84587
-    [division] => Bhusawal
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 
-    [division] => 
-    [zone] => 
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 
-    [division] => 
-    [zone] => 
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 687878
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 
-    [division] => 
-    [zone] => 
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 0
-)
-
-Received Section ID: 0
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 2
-)
-
-Received Section ID: 2
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
-)
-
-Received Section ID: 3
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 4
-)
-
-Received Section ID: 4
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 3585875
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 3585875
+    [stationId] => 7845665
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 7
@@ -3524,25 +144,52 @@ Received Data: Array
 Received Section ID: 0
 Received Data: Array
 (
-    [stationId] => 3687
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
+    [stationId] => 2434
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 2
 )
 
-Received Section ID: 7
+Received Section ID: 2
 Received Data: Array
 (
-    [stationId] => 3687
-    [division] => Mumbai
-    [zone] => CR
+    [stationId] => 2434
+    [division] => Howrah-COO
+    [zone] => ER
     [sectionId] => 0
 )
 
 Received Section ID: 0
 Received Data: Array
 (
-    [stationId] => 3687
+    [stationId] => 2434
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => dfgfdg
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 2
@@ -3551,61 +198,89 @@ Received Data: Array
 Received Section ID: 2
 Received Data: Array
 (
-    [stationId] => 3687
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 3
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
 )
 
-Received Section ID: 3
+Received Section ID: 0
+Received Section ID: 0
 Received Data: Array
 (
-    [stationId] => 3687
-    [division] => Mumbai
+    [stationId] => dfgdg
+    [division] => Bhusawal
     [zone] => CR
-    [sectionId] => 4
+    [sectionId] => 2
 )
 
-Received Section ID: 4
+Received Section ID: 2
 Received Data: Array
 (
-    [stationId] => 3687
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 5
-)
-
-Received Section ID: 5
-Received Data: Array
-(
-    [stationId] => 3687
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 6
-)
-
-Received Section ID: 6
-Received Data: Array
-(
-    [stationId] => 3687
-    [division] => Mumbai
-    [zone] => CR
-    [sectionId] => 7
-)
-
-Received Section ID: 7
-Received Data: Array
-(
-    [stationId] => 3687
-    [division] => Mumbai
-    [zone] => CR
+    [stationId] => 
+    [division] => 
+    [zone] => 
     [sectionId] => 0
 )
 
 Received Section ID: 0
 Received Data: Array
 (
-    [stationId] => 3687
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => fdsfsd
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => dfffdfh
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 68547854
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 2
@@ -3614,7 +289,25 @@ Received Data: Array
 Received Section ID: 2
 Received Data: Array
 (
-    [stationId] => 3687
+    [stationId] => 68547854
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 68547854
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 68547854
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 3
@@ -3623,7 +316,7 @@ Received Data: Array
 Received Section ID: 3
 Received Data: Array
 (
-    [stationId] => 3687
+    [stationId] => 68547854
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 4
@@ -3632,7 +325,7 @@ Received Data: Array
 Received Section ID: 4
 Received Data: Array
 (
-    [stationId] => 3687
+    [stationId] => 68547854
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 5
@@ -3641,7 +334,7 @@ Received Data: Array
 Received Section ID: 5
 Received Data: Array
 (
-    [stationId] => 3687
+    [stationId] => 68547854
     [division] => Mumbai
     [zone] => CR
     [sectionId] => 6
@@ -3650,8 +343,1691 @@ Received Data: Array
 Received Section ID: 6
 Received Data: Array
 (
-    [stationId] => 3687
+    [stationId] => 68547854
     [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 7
+)
+
+Received Section ID: 7
+Received Data: Array
+(
+    [stationId] => 68547854
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 354
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 354
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 354
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 354
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => sfd
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => dvzb
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => dvzb
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => dvzb
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => dvzb
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => dvzb
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => dvzb
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => dvzb
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => vdxf
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => vdxf
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => vdxf
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => vdxf
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => vdxf
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => vdxf
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => vdxf
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 0
+)
+
+Received Data: Array
+(
+    [stationId] => vdxf
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => vdxf
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => vdxf
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => vdxf
+    [division] => Howrah-COO
+    [zone] => ER
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 63
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 63
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 63
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 63
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 63
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 63
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 63
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 63
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 7
+)
+
+Received Section ID: 7
+Received Data: Array
+(
+    [stationId] => 63
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 63
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 8.0
+)
+
+Received Section ID: 8
+Received Data: Array
+(
+    [stationId] => 63
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 9.0
+)
+
+Received Section ID: 9
+Received Data: Array
+(
+    [stationId] => 63
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 8.0
+)
+
+Received Section ID: 8
+Received Data: Array
+(
+    [stationId] => 63
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 9.0
+)
+
+Received Section ID: 9
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 8.0
+)
+
+Received Section ID: 8
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 9.0
+)
+
+Received Section ID: 9
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 7
+)
+
+Received Section ID: 7
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 7
+)
+
+Received Section ID: 7
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 7
+)
+
+Received Section ID: 7
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 7854120
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 7854129
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 7854129
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 7
+)
+
+Received Section ID: 7
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Data: Array
+(
+    [stationId] => 789654
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 785694
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 7
+)
+
+Received Section ID: 7
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 7878787887
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 7878787887
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 7878787887
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 8.0
+)
+
+Received Section ID: 8
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 7
+)
+
+Received Section ID: 7
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 7
+)
+
+Received Section ID: 7
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 789554
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 789554
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 789554
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 789554
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 789554
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 7
+)
+
+Received Section ID: 7
+Received Data: Array
+(
+    [stationId] => 7845
+    [division] => Mumbai
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 
+    [division] => 
+    [zone] => 
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 8520
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 8520
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 8520
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 8520
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 8520
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 8520
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 8520
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 8520
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 7
+)
+
+Received Section ID: 7
+Received Data: Array
+(
+    [stationId] => 8520
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 0
+)
+
+Received Section ID: 0
+Received Data: Array
+(
+    [stationId] => 8520
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 2
+)
+
+Received Section ID: 2
+Received Data: Array
+(
+    [stationId] => 8520
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 3
+)
+
+Received Section ID: 3
+Received Data: Array
+(
+    [stationId] => 8520
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 4
+)
+
+Received Section ID: 4
+Received Data: Array
+(
+    [stationId] => 8520
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 5
+)
+
+Received Section ID: 5
+Received Data: Array
+(
+    [stationId] => 8520
+    [division] => Nagpur
+    [zone] => CR
+    [sectionId] => 6
+)
+
+Received Section ID: 6
+Received Data: Array
+(
+    [stationId] => 8520
+    [division] => Nagpur
     [zone] => CR
     [sectionId] => 7
 )

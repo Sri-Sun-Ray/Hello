@@ -1083,4 +1083,7 @@ select, textarea {
   font-size: 10px;
   color: gray;
 }
+#difference{
+    font-style: italic;
+}
   
