@@ -194,7 +194,54 @@ window.addEventListener("beforeunload", beforeUnloadHandler);
 
 
   </script>
+  
+  <!-- Additional scripts (for station info handling, etc.) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      
+      const urlParams=new URLSearchParams(window.location.search);
+      const stationId=urlParams.get("station_id");
+      if(stationId){
+      localStorage.setItem("selectedStationId",stationId);
+      fetch(`getReportById.php?station_id=${stationId}`)
+      .then(response=>response.json())
+      .then(data=>{
+       if (data.success) {
+  const stationInfo = data.data.stationDetails;
+  if (stationInfo) {
+    localStorage.setItem("stationDetails", JSON.stringify(stationInfo));
 
+    const stationIdElem = document.getElementById("station-id");
+    if (stationIdElem) stationIdElem.value = stationInfo.stationID || "";
+
+    const stationNameElem = document.getElementById("station-name");
+    if (stationNameElem) stationNameElem.value = stationInfo.stationName || "";
+
+    const zoneElem = document.getElementById("zone");
+    if (zoneElem) zoneElem.value = stationInfo.zone || "";
+
+    const divisionElem = document.getElementById("division");
+    if (divisionElem) divisionElem.value = stationInfo.division || "";
+
+    const sectionNameElem = document.getElementById("section-name");
+    if (sectionNameElem) sectionNameElem.value = stationInfo.sectionName || "";
+
+    const initialDateElem = document.getElementById("initial-date");
+    if (initialDateElem) initialDateElem.value = stationInfo.initialDate || "";
+
+    const updateDateElem = document.getElementById("updated-date");
+    if (updateDateElem) updateDateElem.value = stationInfo.updateDate || "";
+  }
+}
+
+      else{
+        console.error("Error Fetching report Details:",data.message);
+      }
+      })
+      .catch(error=>console.error("Fetch error:",error));
+    }
+    });
+  </script>
 
 <div id="messageBox" style="color: green; font-weight: bold; margin-top: 10px;"></div>
 

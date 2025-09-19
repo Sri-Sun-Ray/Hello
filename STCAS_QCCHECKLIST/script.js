@@ -83,7 +83,7 @@ function updateDivisionNames() {
   if (filteredDivisions.length === 0) {
     divisionSelect.value = "";
   }
-  
+
   console.log("updateDivisionNames completed. Final division value:", divisionSelect.value);
 }
 
@@ -148,14 +148,14 @@ async function showSection(section) {
   const stationId=stationInfo.stationId;
   const division=stationInfo.division;
   const zone=stationInfo.zone;
-  
+
 
   let backendSectionId=section;
     if (["0.0","2.0","3.0","4.0","5.0","6.0","7.0"].includes(section)) {
     backendSectionId = parseInt(section, 10);
   }
 
-  
+
   const exists = await checkExistingObservations(stationId, division, zone, backendSectionId);
 
   setTimeout(() => {
@@ -164,7 +164,7 @@ async function showSection(section) {
       const saveBtn = actionButtons.querySelector('#save-btn');
       const getDetailsBtn = actionButtons.querySelector('#get-details-btn');
       const updateBtn = actionButtons.querySelector('#update-btn');
-      
+
       if (exists) {
         if (saveBtn) saveBtn.style.display = 'none';
         if (getDetailsBtn) getDetailsBtn.style.display = 'inline-block';
@@ -192,9 +192,9 @@ async function showSection(section) {
     // Temporarily remove the onchange event to prevent updateDivisionNames from being called
     const originalOnChange = zoneElem.getAttribute('onchange');
     zoneElem.removeAttribute('onchange');
-    
+
     zoneElem.value = stationInfo.zone || "";
-    
+
     // If zone is set, update division dropdown and then set division value
     if (stationInfo.zone) {
       updateDivisionNames();
@@ -207,7 +207,7 @@ async function showSection(section) {
         }
       }, 50);
     }
-    
+
     // Restore the onchange event
     if (originalOnChange) {
       zoneElem.setAttribute('onchange', originalOnChange);
@@ -342,11 +342,11 @@ async function showSection(section) {
   if (section === "0.0") {
     let saveBtnDisplay = "inline-block";
     let getDetailsBtnDisplay = "none";
-    
+
     // Check if we came from the Edit button in viewReports.php
     const urlParams = new URLSearchParams(window.location.search);
     const stationIdFromUrl = urlParams.get('station_id');
-    
+
     // If we came from the Edit button, show Get Details and hide Save
     if (stationIdFromUrl) {
       saveBtnDisplay = "none";
@@ -417,9 +417,9 @@ async function showSection(section) {
            <option value="Not Present">Not Present</option>
         </select>
       </td>
-      <td class="remarks" style="padding-right: 10px;">
-    <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; padding: 5px; font-size: 14px;"></textarea><br>
-  </td>
+      <td class ="remarks">
+        <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
+      </td>
       <td style="padding-right: 10px;">
     <button class="add-image" onclick="showUploadOptions(4)" style="margin-left: 10px; padding: 5px 10px; font-size: 14px; cursor: pointer;">Add Image</button>
     <div class="upload-options" id="upload-options-4" style="display: none;">
@@ -715,7 +715,7 @@ async function showSection(section) {
 />
   </td>
   <td class="select">
-    <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+    <select id="status-dropdown" onchange="highlightSelect(this)">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
       <option value="Not Matching">Not Matching</option>
@@ -723,7 +723,7 @@ async function showSection(section) {
     </select>
   </td>
   <td class="remarks">
-    <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+    <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
   </td>
   <td>
     <button class="add-image" onclick="showUploadOptions(10)">Add Image</button>
@@ -765,7 +765,7 @@ async function showSection(section) {
 />
   </td>
   <td class="select">
-    <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+    <select id="status-dropdown" onchange="highlightSelect(this)">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
       <option value="Not Matching">Not Matching</option>
@@ -773,7 +773,7 @@ async function showSection(section) {
     </select>
   </td>
   <td class="remarks">
-    <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+    <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
   </td>
   <td>
     <button class="add-image" onclick="showUploadOptions(11)">Add Image</button>
@@ -816,7 +816,7 @@ async function showSection(section) {
   
   </td>
   <td class="select">
-    <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+    <select id="status-dropdown" onchange="highlightSelect(this)">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
       <option value="Not Matching">Not Matching</option>
@@ -824,7 +824,7 @@ async function showSection(section) {
     </select>
   </td>
   <td class="remarks">
-    <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+    <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
   </td>
   <td>
     <button class="add-image" onclick="showUploadOptions(12)">Add Image</button>
@@ -868,7 +868,7 @@ async function showSection(section) {
            
           </td>
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -876,7 +876,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
               <td>
        <button class="add-image" onclick="showUploadOptions(13)">Add Image</button>
@@ -919,7 +919,7 @@ async function showSection(section) {
 
         
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -927,7 +927,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
              <td>
        <button class="add-image" onclick="showUploadOptions(14)">Add Image</button>
@@ -969,7 +969,7 @@ async function showSection(section) {
 />  
 
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -977,7 +977,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
           <td>
        <button class="add-image" onclick="showUploadOptions(15)">Add Image</button>
@@ -1022,7 +1022,7 @@ async function showSection(section) {
 </td>
 
             <td class="select">
-             <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+             <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1030,7 +1030,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
             <td>
        <button class="add-image" onclick="showUploadOptions(16)">Add Image</button>
@@ -1071,7 +1071,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1079,7 +1079,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
             <td>
        <button class="add-image" onclick="showUploadOptions(17)">Add Image</button>
@@ -1119,7 +1119,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1127,7 +1127,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(18)">Add Image</button>
@@ -1168,7 +1168,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1176,7 +1176,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(19)">Add Image</button>
@@ -1216,7 +1216,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1224,7 +1224,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
             <td>
        <button class="add-image" onclick="showUploadOptions(20)">Add Image</button>
@@ -1265,7 +1265,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1273,7 +1273,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
             <td>
        <button class="add-image" onclick="showUploadOptions(21)">Add Image</button>
@@ -1314,7 +1314,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1322,7 +1322,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(22)">Add Image</button>
@@ -1363,7 +1363,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1371,7 +1371,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(222)">Add Image</button>
@@ -1412,7 +1412,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1420,7 +1420,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(223)">Add Image</button>
@@ -1460,7 +1460,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1468,7 +1468,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(224)">Add Image</button>
@@ -1508,7 +1508,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1516,7 +1516,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(225)">Add Image</button>
@@ -1556,7 +1556,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1564,7 +1564,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(226)">Add Image</button>
@@ -1604,7 +1604,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1612,24 +1612,24 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
-       <button class="add-image" onclick="showUploadOptions(2257865435764)">Add Image</button>
-<div class="upload-options" id="upload-options-2257865435764" style="display: none;">
-  <button class="add-image" onclick="startCamera(2257865435764)">Camera</button>
-  <label for="file-input-2257865435764" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-2257865435764" accept="image/*" multiple onchange="displayImages(this, 2257865435764)">
+       <button class="add-image" onclick="showUploadOptions(225)">Add Image</button>
+<div class="upload-options" id="upload-options-225" style="display: none;">
+  <button class="add-image" onclick="startCamera(225)">Camera</button>
+  <label for="file-input-225" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-225" accept="image/*" multiple onchange="displayImages(this, 225)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-2257865435764"></div>
+      <div id="image-container-225"></div>
       <!-- Camera Container -->
-<div id="camera-container-2257865435764" style="display: none;">
-  <video id="camera-2257865435764" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(2257865435764)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(2257865435764)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(2257865435764)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-2257865435764" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-225" style="display: none;">
+  <video id="camera-225" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(225)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(225)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(225)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-225" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
           </tr>
 
@@ -1652,7 +1652,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1660,7 +1660,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(227)">Add Image</button>
@@ -1700,7 +1700,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1708,7 +1708,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(228)">Add Image</button>
@@ -1748,7 +1748,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1756,7 +1756,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(2229)">Add Image</button>
@@ -1797,7 +1797,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1805,7 +1805,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(229)">Add Image</button>
@@ -1846,7 +1846,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1854,7 +1854,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(230)">Add Image</button>
@@ -1895,7 +1895,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1903,7 +1903,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(231)">Add Image</button>
@@ -1944,7 +1944,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1952,7 +1952,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(232)">Add Image</button>
@@ -1993,7 +1993,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2001,7 +2001,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(233)">Add Image</button>
@@ -2043,7 +2043,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2051,7 +2051,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(234)">Add Image</button>
@@ -2092,7 +2092,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2100,7 +2100,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(235)">Add Image</button>
@@ -2141,7 +2141,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2149,7 +2149,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(240)">Add Image</button>
@@ -2190,7 +2190,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2198,7 +2198,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(236)">Add Image</button>
@@ -2240,7 +2240,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2248,7 +2248,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(237)">Add Image</button>
@@ -2290,7 +2290,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2299,7 +2299,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(238)">Add Image</button>
@@ -2340,7 +2340,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2349,7 +2349,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(239)">Add Image</button>
@@ -2390,7 +2390,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2399,7 +2399,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(2390)">Add Image</button>
@@ -2439,7 +2439,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2448,7 +2448,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(2391)">Add Image</button>
@@ -2489,7 +2489,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2498,7 +2498,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(2392)">Add Image</button>
@@ -2538,7 +2538,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2547,7 +2547,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(2393)">Add Image</button>
@@ -2588,7 +2588,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2597,7 +2597,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(2394)">Add Image</button>
@@ -2638,7 +2638,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2647,7 +2647,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(2395)">Add Image</button>
@@ -2687,7 +2687,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2696,7 +2696,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(2396)">Add Image</button>
@@ -2737,7 +2737,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2746,7 +2746,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(2397)">Add Image</button>
@@ -2786,7 +2786,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2795,7 +2795,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(2398)">Add Image</button>
@@ -2836,7 +2836,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2845,7 +2845,7 @@ async function showSection(section) {
               </select>
             </td>
             <td class="remarks">
-              <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; height: 50px; padding: 5px; font-size: 14px; margin-bottom: 10px;"></textarea><br>
+              <textarea placeholder="Verify with IC" rows="2" cols="20"></textarea><br>
             </td>
            <td>
        <button class="add-image" onclick="showUploadOptions(2399)">Add Image</button>
@@ -3249,7 +3249,7 @@ async function showSection(section) {
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Done">Done</option>
+          <option value="Done"></option>
           <option value="Not Done">Not Done</option>
         </select>
       </td>
@@ -3342,7 +3342,7 @@ async function showSection(section) {
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Done">Done</option>
+          <option value="Done"></option>
           <option value="Not Done">Not Done</option>
         </select>
       </td>
@@ -3444,21 +3444,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
      <td>
-       <button class="add-image" onclick="showUploadOptions(3334)">Add Image</button>
-<div class="upload-options" id="upload-options-3334" style="display: none;">
-  <button class="add-image" onclick="startCamera(3334)">Camera</button>
-  <label for="file-input-3334" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-3334" accept="image/*" multiple onchange="displayImages(this, 3334)">
+       <button class="add-image" onclick="showUploadOptions(3333)">Add Image</button>
+<div class="upload-options" id="upload-options-3333" style="display: none;">
+  <button class="add-image" onclick="startCamera(3333)">Camera</button>
+  <label for="file-input-3333" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-3333" accept="image/*" multiple onchange="displayImages(this, 3333)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-3334"></div>
+      <div id="image-container-3333"></div>
       <!-- Camera Container -->
-<div id="camera-container-3334" style="display: none;">
-  <video id="camera-3334" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(3334)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(3334)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(3334)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-3334" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-3333" style="display: none;">
+  <video id="camera-3333" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(3333)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(3333)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(3333)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-3333" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -3534,8 +3534,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing done">Routing Done</option>
-          <option value="Routing Not done">Routing Not Done</option>
+          <option value="Routing Done">Routing Done</option>
+          <option value="Routing Not Done">Routing Not Done</option>
         </select>
       </td>
       <td class="remarks">
@@ -3574,21 +3574,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(351)">Add Image</button>
-<div class="upload-options" id="upload-options-351" style="display: none;">
-  <button class="add-image" onclick="startCamera(351)">Camera</button>
-  <label for="file-input-351" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-351" accept="image/*" multiple onchange="displayImages(this, 351)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-351"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-351" style="display: none;">
-  <video id="camera-351" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(351)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(351)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(351)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-351" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -3606,21 +3606,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(352)">Add Image</button>
-<div class="upload-options" id="upload-options-352" style="display: none;">
-  <button class="add-image" onclick="startCamera(352)">Camera</button>
-  <label for="file-input-352" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-352" accept="image/*" multiple onchange="displayImages(this, 352)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-352"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-352" style="display: none;">
-  <video id="camera-352" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(352)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(352)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(352)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-352" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -3639,21 +3639,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(353)">Add Image</button>
-<div class="upload-options" id="upload-options-353" style="display: none;">
-  <button class="add-image" onclick="startCamera(353)">Camera</button>
-  <label for="file-input-353" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-353" accept="image/*" multiple onchange="displayImages(this, 353)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-353"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-353" style="display: none;">
-  <video id="camera-353" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(353)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(353)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(353)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-353" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -3672,21 +3672,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(354)">Add Image</button>
-<div class="upload-options" id="upload-options-354" style="display: none;">
-  <button class="add-image" onclick="startCamera(354)">Camera</button>
-  <label for="file-input-354" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-354" accept="image/*" multiple onchange="displayImages(this, 354)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-354"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-354" style="display: none;">
-  <video id="camera-354" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(354)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(354)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(354)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-354" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -3705,21 +3705,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(355)">Add Image</button>
-<div class="upload-options" id="upload-options-355" style="display: none;">
-  <button class="add-image" onclick="startCamera(355)">Camera</button>
-  <label for="file-input-355" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-355" accept="image/*" multiple onchange="displayImages(this, 355)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-355"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-355" style="display: none;">
-  <video id="camera-355" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(355)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(355)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(355)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-355" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -3737,21 +3737,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(356)">Add Image</button>
-<div class="upload-options" id="upload-options-356" style="display: none;">
-  <button class="add-image" onclick="startCamera(356)">Camera</button>
-  <label for="file-input-356" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-356" accept="image/*" multiple onchange="displayImages(this, 356)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-356"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-356" style="display: none;">
-  <video id="camera-356" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(356)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(356)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(356)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-356" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -3769,21 +3769,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(357)">Add Image</button>
-<div class="upload-options" id="upload-options-357" style="display: none;">
-  <button class="add-image" onclick="startCamera(357)">Camera</button>
-  <label for="file-input-357" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-357" accept="image/*" multiple onchange="displayImages(this, 357)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-357"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-357" style="display: none;">
-  <video id="camera-357" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(357)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(357)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(357)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-357" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -3801,21 +3801,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(358)">Add Image</button>
-<div class="upload-options" id="upload-options-358" style="display: none;">
-  <button class="add-image" onclick="startCamera(358)">Camera</button>
-  <label for="file-input-358" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-358" accept="image/*" multiple onchange="displayImages(this, 358)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
       <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-358" style="display: none;">
-  <video id="camera-358" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(358)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(358)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(358)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-358" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -3833,21 +3833,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(359)">Add Image</button>
-<div class="upload-options" id="upload-options-359" style="display: none;">
-  <button class="add-image" onclick="startCamera(359)">Camera</button>
-  <label for="file-input-359" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-359" accept="image/*" multiple onchange="displayImages(this, 359)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-359"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-359" style="display: none;">
-  <video id="camera-359" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(359)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(359)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(359)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-359" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -3865,21 +3865,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(360)">Add Image</button>
-<div class="upload-options" id="upload-options-360" style="display: none;">
-  <button class="add-image" onclick="startCamera(360)">Camera</button>
-  <label for="file-input-360" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-360" accept="image/*" multiple onchange="displayImages(this, 360)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
       <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-360" style="display: none;">
-  <video id="camera-360" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(360)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(360)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(360)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-360" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -3897,21 +3897,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(361)">Add Image</button>
-<div class="upload-options" id="upload-options-361" style="display: none;">
-  <button class="add-image" onclick="startCamera(361)">Camera</button>
-  <label for="file-input-361" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-361" accept="image/*" multiple onchange="displayImages(this, 361)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-361"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-361" style="display: none;">
-  <video id="camera-361" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(361)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(361)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(361)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-361" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -3921,29 +3921,29 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing done">Routing Done</option>
-          <option value="Routing Not done">Routing Not Done</option>
+          <option value="Routing Done">Routing Done</option>
+          <option value="Routing Not Done">Routing Not Done</option>
         </select>
       </td>
       <td class="remarks">
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(362)">Add Image</button>
-<div class="upload-options" id="upload-options-362" style="display: none;">
-  <button class="add-image" onclick="startCamera(362)">Camera</button>
-  <label for="file-input-362" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-362" accept="image/*" multiple onchange="displayImages(this, 362)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-362"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-362" style="display: none;">
-  <video id="camera-362" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(362)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(362)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(362)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-362" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -3961,21 +3961,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(363)">Add Image</button>
-<div class="upload-options" id="upload-options-363" style="display: none;">
-  <button class="add-image" onclick="startCamera(363)">Camera</button>
-  <label for="file-input-363" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-363" accept="image/*" multiple onchange="displayImages(this, 363)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-363"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-363" style="display: none;">
-  <video id="camera-363" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(363)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(363)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(363)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-363" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -3994,21 +3994,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(364)">Add Image</button>
-<div class="upload-options" id="upload-options-364" style="display: none;">
-  <button class="add-image" onclick="startCamera(364)">Camera</button>
-  <label for="file-input-364" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-364" accept="image/*" multiple onchange="displayImages(this, 364)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-364"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-364" style="display: none;">
-  <video id="camera-364" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(364)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(364)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(364)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-364" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -4026,21 +4026,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(365)">Add Image</button>
-<div class="upload-options" id="upload-options-365" style="display: none;">
-  <button class="add-image" onclick="startCamera(365)">Camera</button>
-  <label for="file-input-365" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-365" accept="image/*" multiple onchange="displayImages(this, 365)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-365"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-365" style="display: none;">
-  <video id="camera-365" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(365)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(365)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(365)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-365" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -4059,21 +4059,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(366)">Add Image</button>
-<div class="upload-options" id="upload-options-366" style="display: none;">
-  <button class="add-image" onclick="startCamera(366)">Camera</button>
-  <label for="file-input-366" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-366" accept="image/*" multiple onchange="displayImages(this, 366)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-366"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-366" style="display: none;">
-  <video id="camera-366" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(366)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(366)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(366)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-366" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -4091,21 +4091,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(367)">Add Image</button>
-<div class="upload-options" id="upload-options-367" style="display: none;">
-  <button class="add-image" onclick="startCamera(367)">Camera</button>
-  <label for="file-input-367" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-367" accept="image/*" multiple onchange="displayImages(this, 367)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-367"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-367" style="display: none;">
-  <video id="camera-367" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(367)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(367)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(367)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-367" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -4116,7 +4116,7 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Done">Done</option>
+          <option value="Done"></option>
           <option value="Not Done">Not Done</option>
         </select>
       </td>
@@ -4124,21 +4124,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(368)">Add Image</button>
-<div class="upload-options" id="upload-options-368" style="display: none;">
-  <button class="add-image" onclick="startCamera(368)">Camera</button>
-  <label for="file-input-368" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-368" accept="image/*" multiple onchange="displayImages(this, 368)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-368"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-368" style="display: none;">
-  <video id="camera-368" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(368)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(368)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(368)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-368" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -4157,25 +4157,25 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(369)">Add Image</button>
-<div class="upload-options" id="upload-options-369" style="display: none;">
-  <button class="add-image" onclick="startCamera(369)">Camera</button>
-  <label for="file-input-369" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-369" accept="image/*" multiple onchange="displayImages(this, 369)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-369"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-369" style="display: none;">
-  <video id="camera-369" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(369)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(369)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(369)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-369" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
-    <tr id="row-3699">
+    <tr id="row-370">
       <td>3.22</td>
       <td class="observation_text"><b>Verification of DC-DC Converter installation:</b>Implementation of glands/ grommets. </td>
         <td class = "select">
@@ -4189,25 +4189,23 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(3699)">Add Image</button>
-<div class="upload-options" id="upload-options-3699" style="display: none;">
-  <button class="add-image" onclick="startCamera(3699)">Camera</button>
-  <label for="file-input-3699" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-3699" accept="image/*" multiple onchange="displayImages(this, 3699)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-3699"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-3699" style="display: none;">
-  <video id="camera-3699" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(3699)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(3699)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(3699)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-3699" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
-
-   
 
      <tr id="row-371">
       <td>3.23</td>
@@ -4223,21 +4221,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(371)">Add Image</button>
-<div class="upload-options" id="upload-options-371" style="display: none;">
-  <button class="add-image" onclick="startCamera(371)">Camera</button>
-  <label for="file-input-371" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-371" accept="image/*" multiple onchange="displayImages(this, 371)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-371"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-371" style="display: none;">
-  <video id="camera-371" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(371)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(371)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(371)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-371" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -4255,21 +4253,21 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(372)">Add Image</button>
-<div class="upload-options" id="upload-options-372" style="display: none;">
-  <button class="add-image" onclick="startCamera(372)">Camera</button>
-  <label for="file-input-372" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-372" accept="image/*" multiple onchange="displayImages(this, 372)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-372"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-372" style="display: none;">
-  <video id="camera-372" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(372)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(372)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(372)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-372" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 <tr id="row-3720">
@@ -4278,29 +4276,29 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Routing done">Routing Done</option>
-          <option value="Routing Not done">Routing Not Done</option>
+          <option value="Routing Done">Routing Done</option>
+          <option value="Routing Not Done">Routing Not Done</option>
         </select>
       </td>
       <td class="remarks">
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(3720)">Add Image</button>
-<div class="upload-options" id="upload-options-3720" style="display: none;">
-  <button class="add-image" onclick="startCamera(3720)">Camera</button>
-  <label for="file-input-3720" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-3720" accept="image/*" multiple onchange="displayImages(this, 3720)">
+       <button class="add-image" onclick="showUploadOptions(35)">Add Image</button>
+<div class="upload-options" id="upload-options-35" style="display: none;">
+  <button class="add-image" onclick="startCamera(35)">Camera</button>
+  <label for="file-input-35" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-35" accept="image/*" multiple onchange="displayImages(this, 35)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-3720"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
-<div id="camera-container-3720" style="display: none;">
-  <video id="camera-3720" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(3720)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(3720)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(3720)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-3720" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-35" style="display: none;">
+  <video id="camera-35" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(35)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(35)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(35)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-35" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
 
@@ -4845,8 +4843,7 @@ Counter shall be incremented by one .</td>
   <button class="reverse-camera" onclick="switchCamera(45)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
   <canvas id="canvas-45" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
-    </tr>
-  
+    </tr>  
     </tbody>
       </table>
       </div>
@@ -4863,164 +4860,45 @@ Counter shall be incremented by one .</td>
       </div>
     ;`
   } else if (section === "7.0") {
-    // For all other sections, add Save Observation button
-    mainContent.innerHTML += `
-      <h3 class="section-heading">RFID tags</h3>
-      <div class="table-container"> 
+  mainContent.innerHTML += `
+    <h3 class="section-heading">RFI tags</h3>
+   <!-- Upload & Extract Section -->
+<div>
+    <button onclick="chooseAndUploadFile()">Upload File</button>
+    <button onclick="extractExcelTags()">Extract TAG_ID</button>
+
+    <!-- Allow .db files now -->
+    <input type="file" id="supporting-file-7_0" name="supportingFile" accept=".db" style="display:none;" />
+
+    <div id="uploaded-file-container"></div>
+</div>
+
+
+    <div class="table-container"> 
       <table class="observations" id="observations-section-7_0">
         <thead>
           <tr>
             <th>S_No</th>
-            <th>Description</th>
+            <th>Description (TAG_ID)</th>
             <th>Observation</th>
             <th>Remarks/Comments</th>
             <th>Image</th>
           </tr>
         </thead>
         <tbody id="observations-tbody-7_0">
-          <tr id="row-51">
-      <td>6.1</td>
-      <td class="observation_text">Visual Checks (Cracks, Shade, No oil, Center Placement, Play and Tag Number & ABS location on TAG )</td>
-       <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-                <option value="Found Ok">Found Ok</option>
-                <option value="Found Not Ok">Found Not Ok</option>
-        </select>
-      </td>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(51)">Add Image</button>
-<div class="upload-options" id="upload-options-51" style="display: none;">
-  <button class="add-image" onclick="startCamera(51)">Camera</button>
-  <label for="file-input-51" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-51" accept="image/*" multiple onchange="displayImages(this, 51)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-51"></div>
-<!-- Camera Container -->
-<div id="camera-container-51" style="display: none;">
-  <video id="camera-51" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(51)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(51)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(51)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-51" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-
-    <tr id="row-52">
-      <td>6.2</td>
-      <td class="observation_text">Verification of RFID TAG fixing
-Fixing proper Brackets (Point sleeper Bracket & Normal Sleeper Bracket) as per drawing no 5 16 67 0490,106, CC Apran TCAS/2021_02_15 & RDSO Drawing No. SDO/S&T/TCAS/008</td>
-       <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-                <option value="Found Ok">Found Ok</option>
-                <option value="Found Not Ok">Found Not Ok</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(52)">Add Image</button>
-<div class="upload-options" id="upload-options-52" style="display: none;">
-  <button class="add-image" onclick="startCamera(52)">Camera</button>
-  <label for="file-input-52" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-52" accept="image/*" multiple onchange="displayImages(this, 52)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-52"></div>
-<!-- Camera Container -->
-<div id="camera-container-52" style="display: none;">
-  <video id="camera-52" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(52)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(52)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(52)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-52" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-    <tr id="row-53">
-      <td>6.3</td>
-      <td class="observation_text">Verification of Tag Program  as per RFID Tag layout</td>
-       <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-                <option value="Found Ok">Found Ok</option>
-                <option value="Found Not Ok">Found Not Ok</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(53)">Add Image</button>
-       <div class="upload-options" id="upload-options-53" style="display: none;">
-       <button class="add-image" onclick="startCamera(53)">Camera</button>
-       <label for="file-input-53" class="upload-label">Upload from Device</label>
-       <input type="file" id="file-input-53" accept="image/*" multiple onchange="displayImages(this, 53)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-53"></div>
-      <!-- Camera Container -->
-      <div id="camera-container-53" style="display: none;">
-      <video id="camera-53" width="100%" height="auto" autoplay></video>
-      <button class="add-image" onclick="captureImage(53)">Capture Image</button>
-      <button class="add-image" onclick="stopCamera(53)">Stop Camera</button>
-      <button class="reverse-camera" onclick="switchCamera(53)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-      <canvas id="canvas-53" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-      </div>
-    </tr>
-    <tr id="row-54">
-      <td>6.4</td>
-      <td class="observation_text">Verification of RFID Tag Placement</td>
-       <td class="select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-                <option value="Found Ok">Found Ok</option>
-                <option value="Found Not Ok">Found Not Ok</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(54)">Add Image</button>
-<div class="upload-options" id="upload-options-54" style="display: none;">
-  <button class="add-image" onclick="startCamera(54)">Camera</button>
-  <label for="file-input-54" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-54" accept="image/*" multiple onchange="displayImages(this, 54)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-54"></div>
-<!-- Camera Container -->
-<div id="camera-container-54" style="display: none;">
-  <video id="camera-54" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(54)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(54)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(54)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-54" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-       </tr>
-     </tbody>
+          <!-- Rows will be filled after extracting TAG_IDs -->
+        </tbody>
       </table>
-      </div>
-      <div class="action-buttons">
-        <!-- New UPDATE button: -->
-      <button type="button" 
-              id="update-btn" 
-              style="background-color: blue; color: white; display:none;" 
-              onclick="updateObservation('7_0')">
-        Update
-      </button>
-        <button type="button" id= "save-btn" style = "display: inline-block;"  onclick="if(validateMandatoryImages('7_0')) { saveObservation('7_0'); }">Save</button>
-         <button id="get-details-btn" onclick="getDetails()">Get Details</button>
-      </div>
-    ;`
-  } 
+    </div>
+
+    <div class="action-buttons">
+      <button type="button" id="update-btn" style="background-color: blue; color: white; display:none;" onclick="updateObservation('7_0')">Update</button>
+      <button type="button" id="save-btn" style="display: inline-block;" onclick="if(validateMandatoryImages('7_0')) { saveObservation('7_0'); }">Save</button>
+      <button id="get-details-btn" onclick="getDetails()">Get Details</button>
+    </div>
+  `;
+}
+
  else if (section === "8.0") {
     // For all other sections, add Save Observation button
     mainContent.innerHTML += `
@@ -5088,7 +4966,7 @@ Fixing proper Brackets (Point sleeper Bracket & Normal Sleeper Bracket) as per d
          <button id="get-details-btn-8_0" onclick="getDetails()">Get Details</button>
       </div>
     ;`
-  }   
+  }
 
   else if (section === "9.0") {
   // For RFID Tag Distance Observations
@@ -5162,9 +5040,144 @@ Fixing proper Brackets (Point sleeper Bracket & Normal Sleeper Bracket) as per d
   `;
 }
 
-
-
 }
+
+// Trigger file chooser and auto upload
+// Trigger file chooser, upload DB file, and convert to Excel
+function chooseAndUploadFile() {
+    let fileInput = document.getElementById("supporting-file-7_0");
+    fileInput.click();
+
+    fileInput.onchange = function () {
+        let file = fileInput.files[0];
+        if (!file) return;
+
+        let formData = new FormData();
+        formData.append("dbFile", file);
+
+        // STEP 1: Upload DB file
+        fetch("Db File Converter/upload.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(res => res.text())
+        .then(uploadResult => {
+            document.getElementById("uploaded-file-container").innerText = uploadResult;
+
+            if (uploadResult.includes("uploaded")) {
+                // STEP 2: Call export.php to convert to Excel
+                let dbFileName = file.name;
+                let exportFormData = new FormData();
+                exportFormData.append("dbFile", dbFileName);
+
+                return fetch("Db File Converter/export.php", {
+                    method: "POST",
+                    body: exportFormData
+                });
+            } else {
+                throw new Error("DB Upload failed");
+            }
+        })
+        .then(res => res.text())
+        .then(exportResult => {
+            // STEP 3: Move the Excel file into /uploads/files (handled in export.php)
+            document.getElementById("uploaded-file-container").innerHTML +=
+                "<br>" + exportResult;
+
+            alert("DB converted to Excel. Now you can extract TAG_ID.");
+        })
+        .catch(err => console.error("Error:", err));
+    };
+}
+
+// Upload Excel to server (PHP handles saving)
+function uploadSupportingFile7() {
+    let fileInput = document.getElementById("supporting-file-7_0");
+    let file = fileInput.files[0];
+    if (!file) {
+        alert("Please select a file first.");
+        return;
+    }
+
+    let formData = new FormData();
+    formData.append("supportingFile", file);
+
+    fetch("upload_Excelfile.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("uploaded-file-container").innerHTML = data;
+    })
+    .catch(error => console.error("Error:", error));
+}
+async function extractExcelTags() {
+    const excelUrl = "uploads/files/database.xlsx"; // relative path from your HTML file
+
+    const response = await fetch(excelUrl);
+    if (!response.ok) {
+        alert("Excel file not found. Please export DB to Excel first.");
+        return;
+    }
+
+    const arrayBuffer = await response.arrayBuffer();
+    const data = new Uint8Array(arrayBuffer);
+    const workbook = XLSX.read(data, { type: "array" });
+
+    const tbody = document.getElementById("observations-tbody-7_0");
+    tbody.innerHTML = ""; // clear old rows
+
+    workbook.SheetNames.forEach(sheetName => {
+        const sheet = workbook.Sheets[sheetName];
+        const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+        if (rows.length === 0) return;
+
+        const headerRow = rows[0];
+        const uidIndex = headerRow.indexOf("UID");
+        if (uidIndex === -1) return;
+
+        rows.slice(1).forEach(row => {
+            const uid = row[uidIndex];
+            if (uid) {
+                const displayIndex = tbody.rows.length + 1;
+                tbody.innerHTML += `
+                  <tr id="row-${displayIndex}">
+                    <td>${displayIndex}</td>
+                    <td class="observation_text">${uid}</td>
+                    <td class="select">
+                      <select onchange="highlightSelect(this)">
+                        <option value="Select">Select</option>
+                        <option value="Found Ok">Found Ok</option>
+                        <option value="Found Not Ok">Found Not Ok</option>
+                      </select>
+                    </td>
+                    <td class="remarks">
+                      <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea>
+                    </td>
+                    <td>
+                      <button class="add-image" onclick="showUploadOptions(${displayIndex})">Add Image</button>
+                      <div class="upload-options" id="upload-options-${displayIndex}" style="display: none;">
+                        <button class="add-image" onclick="startCamera(${displayIndex})">Camera</button>
+                        <label for="file-input-${displayIndex}" class="upload-label">Upload from Device</label>
+                        <input type="file" id="file-input-${displayIndex}" accept="image/*" multiple onchange="displayImages(this, ${displayIndex})">
+                      </div>
+                      <div id="image-container-${displayIndex}"></div>
+                      <div id="camera-container-${displayIndex}" style="display: none;">
+                        <video id="camera-${displayIndex}" width="100%" height="auto" autoplay></video>
+                        <button class="add-image" onclick="captureImage(${displayIndex})">Capture Image</button>
+                        <button class="add-image" onclick="stopCamera(${displayIndex})">Stop Camera</button>
+                        <button class="reverse-camera" onclick="switchCamera(${displayIndex})">🔄 Switch Camera</button>
+                        <canvas id="canvas-${displayIndex}" style="display: none;"></canvas>
+                      </div>
+                    </td>
+                  </tr>
+                `;
+            }
+        });
+    });
+}
+
 
 // Function to handle the logout
 function logout() {
@@ -5175,7 +5188,7 @@ function logout() {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  
+
   function initDivisionLogic() {
     // Attempt to get the newly loaded or dynamically injected selects
     const zoneSelect = document.getElementById("zone");
@@ -5185,7 +5198,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // If they don't exist yet (because the form is injected later), re-check soon
     if (!divisionSelect || !zoneSelect) {
-      
+
       setTimeout(initDivisionLogic, 100);
       return;
     }
@@ -5218,7 +5231,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // If a division is already selected (e.g. from session), update immediately
     window.updateDivisionNames();
-    
+
   }
 
   // Try to attach logic now; if the elements aren't there, we'll retry
@@ -5373,7 +5386,7 @@ async function saveStationInfo(section) {
     });
 
     const data = await response.json();
- 
+
 
     if (data.success) {
       showModal("Station info saved successfully!");
@@ -5507,7 +5520,7 @@ async function saveObservation(section) {
     return;
   }
 
-  
+
 
   const formData = new FormData();
   formData.append("station-id", stationId);
@@ -5676,8 +5689,8 @@ function populateStationDetails(stationDetails) {
   console.log("Normalized station Info to be stored:",normalizedStationInfo);
 
   sessionStorage.setItem("stationInfo",JSON.stringify(normalizedStationInfo));
-  console.log("Stored in sessionStorage under 'stationInfo':",sessionStorage.getItem("stationInfo")); 
-  
+  console.log("Stored in sessionStorage under 'stationInfo':",sessionStorage.getItem("stationInfo"));
+
    // Populate the form fields
   const stationIdInput = document.getElementById("station-id");
   const stationNameInput = document.getElementById("station-name");
@@ -5993,7 +6006,7 @@ function enableUpdateButton() {
 function trackChanges(element, isFile = false) {
   let initialValue = element.getAttribute("data-initial");
   let currentValue = isFile ? element.files.length > 0 : element.value;
-  
+
   if (initialValue != currentValue) {
     const btn = document.getElementById("update-btn") || document.getElementById("update-button");
     if (btn) btn.disabled = false;
@@ -6072,7 +6085,7 @@ function getDetails() {
   let division = document.getElementById("division").value.trim();
   let sectionName = document.getElementById("section-name").value.trim();
 
-   
+
   if (!stationId || !zone || !division || !sectionName) {
     alert("Please fill in all the fields.");
     return;
@@ -6088,7 +6101,7 @@ function getDetails() {
       "zone": zone,
       "division": division,
       "section-name": sectionName,
-      
+
     },
     dataType: "json",
     success: async function (response) {
@@ -6100,7 +6113,7 @@ function getDetails() {
         return;
       }
 
-      
+
       console.log("🚂 Station Details Found:", response.stationDetails);
       populateStationDetails(response.stationDetails);
 
@@ -6134,7 +6147,7 @@ function getDetails() {
           }
         });
       }, 500);
-      
+
       await checkAndHighlightSections(stationId, zone, division);
 
       // Hide Save button and show Update button when Get Details is clicked
@@ -6172,7 +6185,7 @@ function displayImagesWithDelete(images, rowId) {
       imageContainer.innerHTML += imgHTML;
     });
   }
-} 
+}
 
 
 /**
@@ -6338,11 +6351,11 @@ function enableSectionButtons(sectionID) {
 function getDropdownOptions(sno, observationStatus) {
   let isSelected = !observationStatus || observationStatus.trim() === "" || observationStatus.trim() === "Select";
   let defaultOption = `<option value="Select" ${isSelected ? "selected" : ""}>Select</option>`;
-  
+
   if (!sno || typeof sno !== "string") {
     console.error("Invalid S_no value:", sno);
     return defaultOption;
-  }  
+  }
 const specificOptions = {
    "1.1": ["Present", "Not Present"],
     "1.38,1.39,1.40,1.41,1.42,1.43,1.50,1.44,1.45,1.46,1.47,1.48,1.49" : ["Matching", "Not Matching", "Not Installed", "Not Applicable"],    "1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22,1.23,1.24,1.25,1.26,1.27,1.28,1.29,1.30,1.31,1.32,1.33,1.34,1.35,1.36,1.37": ["Matching", "Not Matching", "Not Installed"],
@@ -6513,7 +6526,7 @@ function captureImage(rowId) {
   context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
   console.log("📸 Capturing image...");
-  
+
   canvas.toBlob((blob) => {
     if (!blob) {
       console.error("⚠️ Failed to create image blob.");
@@ -6522,7 +6535,7 @@ function captureImage(rowId) {
 
     // Log the blob size and type to confirm it was created correctly
     console.log("📝 Image blob created. Size:", blob.size, "Type:", blob.type);
-    
+
     // Upload the captured image
     uploadCapturedImage(blob, rowId, imageContainer);
   }, "image/png");
@@ -6544,7 +6557,7 @@ function uploadCapturedImage(blob, rowId, imageContainer) {
     .then((response) => response.json())
     .then((data) => {
       console.log("📜 Upload response:", data);
-      
+
       if (data.success && data.file_paths && data.file_paths.length > 0) {
         const imageUrl = data.file_paths[0];
 
@@ -6944,7 +6957,7 @@ function highlightSelect(selectElement) {
     selectElement.style.backgroundColor = "red";
   }else if (selectElement.value === "Quantity Matched") {
     selectElement.style.backgroundColor = "green";
-  } 
+  }
   else if (selectElement.value === "Yes") {
     selectElement.style.backgroundColor = "green";
   } else if (selectElement.value === "Quantity Not Matched") {
@@ -6954,8 +6967,8 @@ function highlightSelect(selectElement) {
   } else {
     selectElement.style.backgroundColor = "";
   }
-  
-  
+
+
 }
 
 const deletedImagesMap = {}; // Tracks deleted image URLs for each observationID

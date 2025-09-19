@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DB to Excel</title>
+        <style>
+            button{
+                margin:10px;
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Upload DB file and Export it to Excel</h2>
+
+        <!-- Upload button-->
+        <form id="uploadForm" action="upload.php" method="POST" enctype="multipart/form-data">
+            <input type="file" name="dbFile" accept=".db" required>
+            <button type="submit">Upload DB</button>
+        </form>
+
+        <p id="uploadMessage"></p>
+
+        <!-- Export Button -->
+
+        <form id="exportForm" action="export.php" method="POST" style="display: none;">
+            <input type="hidden" name="dbFile" id="dbfilename">
+            <button type="submit">Export to Excel</button>
+        </form>
+
+        <p id="exportMessage"></p>
+
+    </body>
+    <script>
+        const uploadForm=document.getElementById("uploadForm");
+        const exportForm=document.getElementById("exportForm");
+        const uploadMessage=document.getElementById("uploadMessage");
+        const exportMessage=document.getElementById("exportMessage");
+        const dbFileNameInput=document.getElementById("dbfilename")
+
+        uploadForm.addEventListener('submit',function(e){
+                e.preventDefault();
+                const formData=new FormData(uploadForm);
+
+                fetch('upload.php',{
+                    method:'POST',
+                    body: formData
+                })
+                .then(res=>res.text())
+                .then(data=>{
+                    uploadMessage.innerText=data;
+                    if(data.includes('uploaded')){
+                        exportForm.style.display='block';
+                        dbFileNameInput.value=document.querySelector('input[name="dbFile"]').files[0].name;
+                    }
+                })
+                .catch(err=>console.error(err));
+        });
+    </script>
+</html>

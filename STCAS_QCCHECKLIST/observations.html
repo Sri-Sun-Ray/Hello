@@ -425,7 +425,7 @@ function decodeHtmlEntities(str) {
         console.log("Retrieved Employee Name:", employeeName);
         const { jsPDF } = window.jspdf;
         const pdf = new jsPDF();
-        const observationsArray = observationsData.data.filter(obs => 
+        const observationsArray = observationsData.data.filter(obs =>
           obs.observation_status && obs.observation_status.trim() !== '' && obs.observation_status.trim() !== 'Select'
         );
         console.log("📋 Observations Array Loaded: ", observationsArray);
@@ -452,7 +452,7 @@ function decodeHtmlEntities(str) {
         imageDataArray.forEach(entry => {
           imageData[entry.S_no] = entry.images;
         });
-        console.log("📁 Processed Image Data:", imageData); 
+        console.log("📁 Processed Image Data:", imageData);
         const logoPath = 'hbl_logo.jpg';
         const logoBase64 = await getBase64Image(logoPath);
         const pageHeight = pdf.internal.pageSize.height;
@@ -684,7 +684,7 @@ function decodeHtmlEntities(str) {
                 pdf.setFontSize(10);
                 pdf.text("Not Completed", boxX + boxSize + 6, boxY + boxSize - 1);
               }
-            }     
+            }
           }
         });
         finalY = pdf.lastAutoTable.finalY + 10;
@@ -704,7 +704,7 @@ function decodeHtmlEntities(str) {
           const headHeight = 10 + (2 * 2) + (0.5 * 2);
           let totalHeight = headHeight;
           const fittingRows = [];
-          
+
           for (let i = 0; i < rows.length; i++) {
             const rowHeight = calculateRowHeight(rows[i], sectionId);
             if (totalHeight + rowHeight <= availableHeight || (forceFirstOne && i === 0 && sectionId === "2")) {
@@ -1100,7 +1100,7 @@ function decodeHtmlEntities(str) {
         reportContainer.appendChild(reportItem);
       });
     }
-    
+
 
     document.addEventListener("DOMContentLoaded", fetchReports);
     async function uploadPDF(pdfBlob, fileName) {

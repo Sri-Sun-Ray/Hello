@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 if (isset($_SESSION['station_id'])) {
     // Station data available in session variables.
     $stationID = $_SESSION['station_id'];
@@ -26,6 +26,7 @@ if (isset($_SESSION['station_id'])) {
   <script src="libs/zxing-browser.min.js"></script>
   <script src="libs/jspdf.umd.min.js"></script>
   <script src="libs/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@latest/dist/xlsx.full.min.js"></script>
 
   <!-- your application logic -->
   <script src="script.js" defer></script>
@@ -70,22 +71,22 @@ if (isset($_SESSION['station_id'])) {
     <button class="button" onclick="showSection('4.0')" id="button-4" disabled>3.0 Station TCAS</button>
     <button class="button" onclick="showSection('5.0')" id="button-5" disabled>4.0 Relay installation and wiring</button>
     <button class="button" onclick="showSection('6.0')" id="button-6" disabled>5.0 SMOCIP</button>
-    
-    <button class="button" onclick="showSection('8.0')" id="button-8" disabled>6.1 RFID tags</button>
+    <button class="button" onclick="showSection('7.0')" id="button-8" disabled>6.1 RFID tags</button>
+
     <button class="button" onclick="showSection('9.0')" id="button-9" disabled>6.2 Tag to Tag Distance</button>
   </div>
 
-  
+
   <script>
     window.addEventListener('load', function() {
       // Clear all relevant stored data to ensure a fresh page each time.
-      
+
       // Optionally, clear all of sessionStorage (caution: if you have other data you want to keep)
       // sessionStorage.clear();
       // Also clear localStorage if you use it:
       // localStorage.removeItem("selectedStationId");
       // localStorage.removeItem("stationDetails");
-      
+
       // Read the URL hash to determine which section to show (e.g., "#0.0")
       const hash = window.location.hash;
       if (hash) {
@@ -98,10 +99,10 @@ if (isset($_SESSION['station_id'])) {
       }
     });
   </script>
-  
+
 
   <!-- Your additional scripts (for handling station info fetching, etc.) -->
-  <!-- 
+  <!--
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       function checkingValues(){
@@ -121,7 +122,7 @@ if (isset($_SESSION['station_id'])) {
  window.addEventListener('load', function() {
   // Only clear fields if no station info exists in sessionStorage
   const stationInfo = sessionStorage.getItem("stationInfo");
-  
+
   if (!stationInfo) {
     // Clear form fields explicitly only if no station info exists
     const fieldIds = ["station-id", "station-name", "zone", "division", "section-name", "initial-date", "updated-date"];
@@ -147,10 +148,10 @@ if (isset($_SESSION['station_id'])) {
 
 </script>
 
-  
 
-  
-  
+
+
+
   <!-- Success Modal -->
   <div id="success-modal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 20px; background-color: #4CAF50; color: white; border-radius: 5px;">
     Data saved successfully!
@@ -169,7 +170,7 @@ if (isset($_SESSION['station_id'])) {
     <!-- Code for image capture / upload -->
     <!-- ... -->
   </div>
-  
+
   <!-- Footer with Generate Report button -->
  <footer>
   <div class="action-buttons">
@@ -196,11 +197,11 @@ window.addEventListener("beforeunload", beforeUnloadHandler);
 
 
   </script>
-  
+
   <!-- Additional scripts (for station info handling, etc.) -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      
+
       const urlParams=new URLSearchParams(window.location.search);
       const stationId=urlParams.get("station_id");
       if(stationId){

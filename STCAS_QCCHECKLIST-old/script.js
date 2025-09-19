@@ -122,9 +122,11 @@ async function showSection(section) {
   console.log("Stored session data:", storedSession);
 
   let stationInfo = {};
-  if (storedSession) {
-    stationInfo = JSON.parse(storedSession);
-    console.log("Parsed station info:", stationInfo);
+  if (storedLocal) {
+    stationInfo=JSON.parse(storedLocal);
+  }
+  else if(storedSession){
+    stationInfo=JSON.parse(storedSession);
   } else {
     stationInfo = {
       stationId: "",
@@ -374,7 +376,7 @@ async function showSection(section) {
   }else if (section === "2.0") {
     // For all other sections, add Save Observation button
     mainContent.innerHTML += `
-      <h3 class="section-heading">Equipment serial number verification:</h3>
+      <h3 class="section-heading">VERIFICATION OF SERIAL NUMBERS OF EQUIPMENT AS PER IC</h3>
       <div class="table-container">
       <table class="observations" id="observations-section-2_0">
         <thead>
@@ -390,7 +392,7 @@ async function showSection(section) {
         <tr id="row-4">
         <td>1.1</td>
       <td class="observation_text" style="padding-right: 10px;">
-    Stationary TCAS Unit
+    Stationary Kavach Unit
   <input 
   type="text" 
   id="kavach-main-unit" 
@@ -407,15 +409,17 @@ async function showSection(section) {
   "/>
   </td>
       <td>
-        <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+        
+    <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+
            <option value="Select">Select</option>
            <option value="Present">Present</option>
            <option value="Not Present">Not Present</option>
         </select>
       </td>
-      <td class ="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20" style="width: 180px; padding: 5px; font-size: 14px;"></textarea><br>
-      </td>
+      <td class="remarks" style="padding-right: 10px;">
+    <textarea placeholder="Verify with IC" rows="2" cols="20" style="width: 180px; padding: 5px; font-size: 14px;"></textarea><br>
+  </td>
       <td style="padding-right: 10px;">
     <button class="add-image" onclick="showUploadOptions(4)" style="margin-left: 10px; padding: 5px 10px; font-size: 14px; cursor: pointer;">Add Image</button>
     <div class="upload-options" id="upload-options-4" style="display: none;">
@@ -711,7 +715,7 @@ async function showSection(section) {
 />
   </td>
   <td class="select">
-    <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+    <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
       <option value="Not Matching">Not Matching</option>
@@ -761,7 +765,7 @@ async function showSection(section) {
 />
   </td>
   <td class="select">
-    <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+    <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
       <option value="Not Matching">Not Matching</option>
@@ -812,7 +816,7 @@ async function showSection(section) {
   
   </td>
   <td class="select">
-    <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+    <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
       <option value="Not Matching">Not Matching</option>
@@ -864,7 +868,7 @@ async function showSection(section) {
            
           </td>
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -895,7 +899,7 @@ async function showSection(section) {
           </tr>
           <tr id="row-14">
             <td >1.11</td>
-           <td class="observation_text"> Integrated Data Logger Card (IDL)
+           <td class="observation_text"> Vital Gateway Card 3
            <input 
   type="text" 
   id="kavach-main-unit" 
@@ -915,7 +919,7 @@ async function showSection(section) {
 
         
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -965,7 +969,7 @@ async function showSection(section) {
 />  
 
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1018,7 +1022,7 @@ async function showSection(section) {
 </td>
 
             <td class="select">
-             <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+             <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1067,7 +1071,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1115,7 +1119,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1164,7 +1168,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1212,7 +1216,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1261,7 +1265,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1310,7 +1314,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1359,7 +1363,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1408,7 +1412,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1456,7 +1460,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1504,7 +1508,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1552,7 +1556,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1600,7 +1604,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1648,7 +1652,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1696,7 +1700,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1744,7 +1748,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1793,7 +1797,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1842,7 +1846,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1891,7 +1895,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1940,7 +1944,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -1989,7 +1993,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2039,7 +2043,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2088,7 +2092,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2137,7 +2141,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2186,7 +2190,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2236,7 +2240,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2286,7 +2290,7 @@ async function showSection(section) {
   "
 />
             <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2336,7 +2340,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2386,7 +2390,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2408,7 +2412,7 @@ async function showSection(section) {
       <div id="image-container-2390"></div>
       <!-- Camera Container -->
 <div id="camera-container-2390" style="display: none;">
-  <video id="camera-239" width="100%" height="auto" autoplay></video>
+  <video id="camera-2390" width="100%" height="auto" autoplay></video>
   <button class="add-image" onclick="captureImage(2390)">Capture Image</button>
   <button class="add-image" onclick="stopCamera(2390)">Stop Camera</button>
   <button class="reverse-camera" onclick="switchCamera(2390)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
@@ -2435,7 +2439,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2451,7 +2455,7 @@ async function showSection(section) {
 <div class="upload-options" id="upload-options-2391" style="display: none;">
   <button class="add-image" onclick="startCamera(2391)">Camera</button>
   <label for="file-input-2391" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-2391" accept="image/*" multiple onchange="displayImages(this, 2391)">
+  <input type="file" id="file-input-2391" accept="image/*" multiple onchange="displayImages(this,2391)">
 </div>
       <!-- Container for multiple images --> 
       <div id="image-container-2391"></div>
@@ -2485,7 +2489,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2534,7 +2538,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2584,7 +2588,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2634,7 +2638,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2683,7 +2687,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2733,7 +2737,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2782,7 +2786,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2832,7 +2836,7 @@ async function showSection(section) {
     toggleNotInstalledOption(this);
   "
 /> <td class="select">
-              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px;">
+              <select id="status-dropdown" onchange="highlightSelect(this)" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
                 <option value="Select">Select</option>
                 <option value="Matching">Matching</option>
                 <option value="Not Matching">Not Matching</option>
@@ -2882,7 +2886,7 @@ async function showSection(section) {
   } else if (section === "3.0") {
    // For all other sections, add Save Observation button
     mainContent.innerHTML += `
-      <h3 class="section-heading" > Loco Kavach Observations</h3>
+      <h3 class="section-heading" > Tower and RTU</h3>
        <div class="table-container">
       <table class="observations" id="observations-section-3_0">
         <thead>
@@ -2928,7 +2932,7 @@ async function showSection(section) {
 </tr>
 <tr id="row-24">
       <td>2.2</td>
-      <td class="observation_text"><p id="difference">Verification of RF Antenna Fixing and LMR Cable Routing:<p>Verification of Antenna Fixing</td>
+      <td class="observation_text"><b>Verification of RF Antenna Fixing and LMR Cable Routing:</b>The mounting of all antennas on the tower shall be at the same level, amd check whether the antennas are properly fixed with clamps at the bottom side of each antenna.
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
@@ -2960,7 +2964,7 @@ async function showSection(section) {
 
     <tr id="row-25">
       <td>2.3</td>
-      <td class="observation_text"><b>Verification of RF Antenna Fixing and LMR Cable Routing:</b>Verify the RF Cable joining to Antenna</td>
+      <td class="observation_text"><b>Verification of RF Antenna Fixing and LMR Cable Routing:</b>Verify the RF cable joining to antenna and ensure that no cable joints are used from the tower location box to the antennae, and confirm that the patch cords used are of minimum length.</td>
       <td class="select">
      <select id="status-dropdown"  onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
@@ -3053,13 +3057,14 @@ async function showSection(section) {
   </tr>
 <tr id="row-435">
       <td>2.6</td>
-      <td class="observation_text"><b>Installation of RTU Box and connections with identification:</b>Visual inspection, Identification and Radios functioning</td>
+      <td class="observation_text"><b>Installation of RTU Box and connections with identification:</b>RTU is installed on the plate form of Tower in a enclosure Box with Lock and Key.</td>
       <td>
-         <select id="status-dropdown"  onchange="highlightSelect(this)">
-                <option value="Select">Select</option>
-                <option value="Functioning">Functioning</option>
-                <option value="Not Functioning">Not Functioning</option>
-              </select>
+         <select id="status-dropdown" onchange="highlightSelect(this)">
+          <option value="Select">Select</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>     
+        </select>
+
       </td>
       <td class="remarks">
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
@@ -3364,7 +3369,7 @@ async function showSection(section) {
     </tr>
  <tr id="row-3333">
       <td>2.16</td>
-      <td class ="observation_text">Earthing for Tower as per Spec. < 2Ω</td>
+      <td class ="observation_text">Earthing for Tower as per Spec < 2Ω</td>
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
@@ -3396,12 +3401,43 @@ async function showSection(section) {
 
      <tr id="row-3334">
       <td>2.17</td>
-      <td class ="observation_text">Verification of Aviation Warning Lamp, Functioning and power supply 110V</td>
+      <td class ="observation_text">An aviation lamp is installed at the top of the tower to ensure visibility and proper functioning.</td>
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
                 <option value="Voltage found Ok">Voltage found Ok</option>
                 <option value="Voltage found not Ok">Voltage found not Ok</option>
+        </select>
+      </td>
+      <td class="remarks">
+        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
+      </td>
+     <td>
+       <button class="add-image" onclick="showUploadOptions(3333)">Add Image</button>
+<div class="upload-options" id="upload-options-3333" style="display: none;">
+  <button class="add-image" onclick="startCamera(3333)">Camera</button>
+  <label for="file-input-3333" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-3333" accept="image/*" multiple onchange="displayImages(this, 3333)">
+</div>
+      <!-- Container for multiple images --> 
+      <div id="image-container-3333"></div>
+      <!-- Camera Container -->
+<div id="camera-container-3333" style="display: none;">
+  <video id="camera-3333" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(3333)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(3333)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(3333)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-3333" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+</div>
+    </tr>
+ <tr id="row-33340">
+      <td>2.18</td>
+      <td class ="observation_text"><b>OFC Cabling and Routing</b>Ensure that OFC routing is properly done by avoiding 90-degree bends, routing through PVC casing or flexible hosepipe, and providing protective dust caps at spare OFC connectors</td>
+      <td class="select">
+         <select id="status-dropdown" onchange="highlightSelect(this)">
+          <option value="Select">Select</option>
+          <option value="Ok">Ok</option>
+          <option value="Not Ok">Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -3446,7 +3482,7 @@ async function showSection(section) {
   } else if (section === "4.0") {
     // For all other sections, add Save Observation button
     mainContent.innerHTML += `
-      <h3 class="section-heading" > EMI Filter Box Observations</h3>
+      <h3 class="section-heading" > Station TCAS</h3>
        <div class="table-container">
       <table class="observations" id="observations-section-4_0">
         <thead>
@@ -3461,7 +3497,7 @@ async function showSection(section) {
         <tbody id="observations-tbody-4_0">
           <tr id="row-34">
       <td>3.1</td>
-      <td class="observation_text">Visual Checks (Ex.Equipment labels, External appearance, Dents, Shade, Rust, Cable entries at STCAS to be closed properly with rubber gaskets/grommets in STCAS)</td>
+      <td class="observation_text"><b>Visual Checks:</b> Ensure that the equipment barcode sticker is available, cable entries at Kavach are properly closed with rubber gaskets or grommets, all modules are free of dirt and dust and are neatly fitted into the KAVACH rack as per the installation manual, and that no loose wires are hanging.</td>
        <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
@@ -3693,8 +3729,8 @@ async function showSection(section) {
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Found Ok">Found Ok</option>
-          <option value="Found Not Ok">Found Not Ok</option>
+          <option value="Rating as per Diagram:">Rating as per Diagram:</option>
+          <option value="Actual Rating:">Actual Rating:</option>
         </select>
       </td>
       <td class="remarks">
@@ -3721,7 +3757,7 @@ async function showSection(section) {
 
      <tr id="row-357">
       <td>3.9</td>
-      <td class="observation_text">TCAS system I/P110V DC supply</td>
+      <td class="observation_text">Check that 110 Volt DC supply from IPS/Power room to KAVACH rack shall be provided with duplicated cable with suitable gauge (10 Sq. mm), so as to ensure that voltage drop in cable shall not be more than 1Volt from integrated power supply source. Each cable shall be protected with an individual isolator and fuse of suitable capacity</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
            <option value="Select">Select</option>
@@ -3772,7 +3808,7 @@ async function showSection(section) {
   <input type="file" id="file-input-358" accept="image/*" multiple onchange="displayImages(this, 358)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-358"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
 <div id="camera-container-358" style="display: none;">
   <video id="camera-358" width="100%" height="auto" autoplay></video>
@@ -3836,7 +3872,7 @@ async function showSection(section) {
   <input type="file" id="file-input-360" accept="image/*" multiple onchange="displayImages(this, 360)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-360"></div>
+      <div id="image-container-35"></div>
       <!-- Camera Container -->
 <div id="camera-container-360" style="display: none;">
   <video id="camera-360" width="100%" height="auto" autoplay></video>
@@ -3913,7 +3949,7 @@ async function showSection(section) {
 
     <tr id="row-363">
       <td>3.15</td>
-      <td class="observation_text"><b>Verification of PDU Box fixing and wiring:</b>Implementation of glands/ grommets.</td>
+      <td class="observation_text"><b>Verification of PDU Box fixing and wiring:</b>Check whether cable glands are provided for all the incoming and outgoing wires.</td>
         <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
@@ -4139,7 +4175,7 @@ async function showSection(section) {
 </div>
     </tr>
 
-    <tr id="row-370">
+    <tr id="row-3699">
       <td>3.22</td>
       <td class="observation_text"><b>Verification of DC-DC Converter installation:</b>Implementation of glands/ grommets. </td>
         <td class = "select">
@@ -4153,23 +4189,25 @@ async function showSection(section) {
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
       </td>
       <td>
-       <button class="add-image" onclick="showUploadOptions(370)">Add Image</button>
-<div class="upload-options" id="upload-options-370" style="display: none;">
-  <button class="add-image" onclick="startCamera(370)">Camera</button>
-  <label for="file-input-370" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-370" accept="image/*" multiple onchange="displayImages(this, 370)">
+       <button class="add-image" onclick="showUploadOptions(3699)">Add Image</button>
+<div class="upload-options" id="upload-options-3699" style="display: none;">
+  <button class="add-image" onclick="startCamera(3699)">Camera</button>
+  <label for="file-input-3699" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-3699" accept="image/*" multiple onchange="displayImages(this, 3699)">
 </div>
       <!-- Container for multiple images --> 
-      <div id="image-container-370"></div>
+      <div id="image-container-3699"></div>
       <!-- Camera Container -->
-<div id="camera-container-370" style="display: none;">
-  <video id="camera-370" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(370)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(370)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(370)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-370" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+<div id="camera-container-3699" style="display: none;">
+  <video id="camera-3699" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(3699)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(3699)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(3699)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-3699" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
+
+   
 
      <tr id="row-371">
       <td>3.23</td>
@@ -4234,6 +4272,37 @@ async function showSection(section) {
   <canvas id="canvas-372" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
+<tr id="row-3720">
+      <td>3.25</td>
+      <td class="observation_text">Wiring done outside the relay room shall be routed by digging a pit at least 3 feet (1 meter) deep, with the wires placed through HDPE pipe or similar protection to avoid any damage from rodents.</td>
+        <td class = "select">
+        <select id="status-dropdown" onchange="highlightSelect(this)">
+          <option value="Select">Select</option>
+          <option value="Routing done">Routing Done</option>
+          <option value="Routing Not done">Routing Not Done</option>
+        </select>
+      </td>
+      <td class="remarks">
+        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
+      </td>
+      <td>
+       <button class="add-image" onclick="showUploadOptions(3720)">Add Image</button>
+<div class="upload-options" id="upload-options-3720" style="display: none;">
+  <button class="add-image" onclick="startCamera(3720)">Camera</button>
+  <label for="file-input-3720" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-3720" accept="image/*" multiple onchange="displayImages(this, 3720)">
+</div>
+      <!-- Container for multiple images --> 
+      <div id="image-container-3720"></div>
+      <!-- Camera Container -->
+<div id="camera-container-3720" style="display: none;">
+  <video id="camera-3720" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(3720)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(3720)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(3720)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-3720" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+</div>
+    </tr>
 
    
 
@@ -4255,7 +4324,7 @@ async function showSection(section) {
   } else if (section === "5.0") {
     // For all other sections, add Save Observation button
     mainContent.innerHTML += `
-      <h3 class="section-heading">RIB AND CAB INPUT BOX Observations</h3>
+      <h3 class="section-heading">Relay installation and wiring</h3>
        <div class="table-container">
       <table class="observations" id="observations-section-5_0">
         <thead>
@@ -4270,7 +4339,7 @@ async function showSection(section) {
         <tbody id="observations-tbody-5_0">
           <tr id="row-36">
       <td>4.1</td>
-      <td class="observation_text">Visual Checks (Ferrules/ Stickering to be done for easily identification of cables).</td>
+      <td class="observation_text">Visual Checks Ensure that wires are properly tagged and marked for easy identification, and wire ends are crimped with the correct size of lugs and inserted properly into the terminals.</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
@@ -4305,9 +4374,9 @@ async function showSection(section) {
       <td class="observation_text">Total Qty of Relay panels and repeater relays used.</td>
       <td class = "select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Found Ok">Found Ok</option>
-          <option value="Found Not Ok">Found Not Ok</option>
+         <option value="Select">Select</option>
+                <option value="Quantity Matched">Quantity Matched</option>
+                <option value="Quantity Not Matched">Quantity Not Matched</option>
         </select>
       </td>
       <td class="remarks">
@@ -4362,15 +4431,15 @@ async function showSection(section) {
   <canvas id="canvas-38" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
-    <tr id="row-39">
+<tr id="row-39">
       <td>4.4</td>
-      <td class="observation_text">Verify slow blowing fuse placement and Fuse rating (2A)</td>
+      <td class="observation_text">Ensure fuse should be fit in the fuse holders properly and there is no loose connection / contact.</td>
       <td class="select">
-           <select id="status-dropdown"  onchange="highlightSelect(this)">
-         <option value="Select">Select</option>
-                <option value="Found Ok">Found Ok</option>
-                <option value="Found Not Ok">Found Not Ok</option>
-        </select>     
+           <select id="status-dropdown" onchange="highlightSelect(this)">
+          <option value="Select">Select</option>
+          <option value="Ok">Ok</option>
+          <option value="Not Ok">Not Ok</option>
+        </select>    
       </td>
       <td class="remarks">
         <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
@@ -4393,8 +4462,39 @@ async function showSection(section) {
   <canvas id="canvas-39" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
-<tr id="row-1339">
+    <tr id="row-39088">
       <td>4.5</td>
+      <td class="observation_text">Verify slow blowing fuse placement and Fuse rating (2A)</td>
+      <td class="select">
+           <select id="status-dropdown"  onchange="highlightSelect(this)">
+         <option value="Select">Select</option>
+                <option value="Found Ok">Found Ok</option>
+                <option value="Found Not Ok">Found Not Ok</option>
+        </select>     
+      </td>
+      <td class="remarks">
+        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
+      </td>
+      <td>
+       <button class="add-image" onclick="showUploadOptions(39088)">Add Image</button>
+<div class="upload-options" id="upload-options-39088" style="display: none;">
+  <button class="add-image" onclick="startCamera(39088)">Camera</button>
+  <label for="file-input-39088" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-39088" accept="image/*" multiple onchange="displayImages(this, 39088)">
+</div>
+      <!-- Container for multiple images --> 
+      <div id="image-container-39088"></div>
+      <!-- Camera Container -->
+<div id="camera-container-39088" style="display: none;">
+  <video id="camera-39088" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(39088)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(39088)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(39088)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-39088" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+</div>
+    </tr>
+<tr id="row-1339">
+      <td>4.6</td>
       <td class="observation_text">Verification of Relay Contact 24V supply (18VDA to 26VDA) </td>
       <td class="select">
           <select id="status-dropdown" onchange="highlightSelect(this)">
@@ -4426,13 +4526,13 @@ async function showSection(section) {
     </tr>
 
     <tr id="row-40">
-      <td>4.6</td>
-      <td class="observation_text">Verification of Data Logger connectivity</td>
+      <td>4.7</td>
+      <td class="observation_text">Is the wiring from relay interlocking taken with double cutting of relay inputs to avoid wrong signal detection?</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
-          <option value="Connected">Connected</option>
-          <option value="Not Connected">Not Connected</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>     
         </select>
 
       </td>
@@ -4480,7 +4580,7 @@ async function showSection(section) {
   else if (section === "6.0") {
     // For all other sections, add Save Observation button
     mainContent.innerHTML += `
-      <h3 class="section-heading" > DMI (LP-OCIP) Observations</h3>
+      <h3 class="section-heading" > SMOCIP Observations</h3>
        <div  class="table-container">
       <table class="observations" id="observations-section-6_0">
         <thead>
@@ -4495,7 +4595,7 @@ async function showSection(section) {
         <tbody id="observations-tbody-6_0">
           <tr id="row-41">
       <td>5.1</td>
-      <td class="observation_text">Visual Checks </td>
+      <td class="observation_text"><b>Visual Checks</b>The mechanical mountings of SM-OCIP Panels should be properly installed properly in Station Master Room.</td>
        <td class="select">
        <select id="status-dropdown" onchange="highlightSelect(this)">
                 <option value="Select">Select</option>
@@ -4524,10 +4624,41 @@ async function showSection(section) {
   <canvas id="canvas-41" style="display: none;"></canvas> <!-- Canvas to capture the image -->
 </div>
     </tr>
+ <tr id="row-4265">
+      <td>5.2</td>
+      <td class="observation_text">Check whether the communication cable is properly connected from the SMOCIP to the Stationary's KAVACH  unit.</td>
+      <td class="select">
+         <select id="status-dropdown" onchange="highlightSelect(this)">
+          <option value="Select">Select</option>
+                <option value="Connected">Connected</option>
+          <option value="Not Connected">Not Connected</option>
+        </select>
+      </td>
+      <td class="remarks">
+        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
+      </td>
+      <td>
+       <button class="add-image" onclick="showUploadOptions(4265)">Add Image</button>
+<div class="upload-options" id="upload-options-4265" style="display: none;">
+  <button class="add-image" onclick="startCamera(4265)">Camera</button>
+  <label for="file-input-4265" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-4265" accept="image/*" multiple onchange="displayImages(this, 4265)">
+</div>
+<!-- Container for multiple images --> 
+<div id="image-container-4265"></div>
+<!-- Camera Container -->
+<div id="camera-container-4265" style="display: none;">
+  <video id="camera-4265" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(4265)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(4265)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(4265)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-4265" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+</div>
+    </tr>
 
     <tr id="row-42">
-      <td>5.2</td>
-      <td class="observation_text">Verification of SMOCIP Unit fixing, Connectivity & Fibre Splicing and Key on off position</td>
+      <td>5.3</td>
+      <td class="observation_text">Verify SMOCIP unit fixing, connectivity, and fibre splicing, and note that if the SM key is switched ON, all of the above operations shall be executed, whereas if the SM key is switched OFF, no operation shall be executed</td>
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
@@ -4557,8 +4688,8 @@ async function showSection(section) {
 </div>
     </tr>
     <tr id="row-43">
-      <td>5.3</td>
-      <td class="observation_text">SMOCIP Health Status</td>
+      <td>5.4</td>
+      <td class="observation_text">After powering up the SMOCIP, check whether the station name, date, and time are displayed on the LCD after a few seconds, and verify that the green LED is glowing </td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
@@ -4588,7 +4719,7 @@ async function showSection(section) {
 </div>
     </tr>
     <tr id="row-44">
-      <td>5.4</td>
+      <td>5.5</td>
       <td class="observation_text">SMOCIP Earthing</td>
       <td class="select">
          <select id="status-dropdown" onchange="highlightSelect(this)">
@@ -4619,13 +4750,79 @@ async function showSection(section) {
 </div>
     </tr>
     <tr id="row-45">
-      <td>5.5</td>
+      <td>5.6</td>
       <td class="observation_text">Checksum verification as per FAT Report.</td>
       <td class="select">
         <select id="status-dropdown" onchange="highlightSelect(this)">
           <option value="Select">Select</option>
           <option value="Matching">Matching</option>
           <option value="Not Matching">Not Matching</option>
+        </select>
+      </td>
+      <td class="remarks">
+        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
+      </td>
+      <td>
+       <button class="add-image" onclick="showUploadOptions(45)">Add Image</button>
+<div class="upload-options" id="upload-options-45" style="display: none;">
+  <button class="add-image" onclick="startCamera(45)">Camera</button>
+  <label for="file-input-45" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-45" accept="image/*" multiple onchange="displayImages(this, 45)">
+</div>
+<!-- Container for multiple images --> 
+<div id="image-container-45"></div>
+<!-- Camera Container -->
+<div id="camera-container-45" style="display: none;">
+  <video id="camera-45" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(45)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(45)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(45)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-45" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+</div>
+    </tr>
+   </tr>
+    <tr id="row-45098">
+      <td>5.7</td>
+      <td class="observation_text">Ensure that by pressing the SOS and Common Button on the SM-OCIP SOS LED Should be displayed on the SM-OCIP.
+Note: Display Messages format (SM-OCIP) “SOS PRESSED”
+Counter shall be incremented by one .</td>
+      <td class="select">
+        <select id="status-dropdown" onchange="highlightSelect(this)">
+          <option value="Select">Select</option>
+          <option value="Ok">Ok</option>
+          <option value="Not Ok">Not Ok</option>
+        </select>
+      </td>
+      <td class="remarks">
+        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
+      </td>
+      <td>
+       <button class="add-image" onclick="showUploadOptions(45)">Add Image</button>
+<div class="upload-options" id="upload-options-45" style="display: none;">
+  <button class="add-image" onclick="startCamera(45)">Camera</button>
+  <label for="file-input-45" class="upload-label">Upload from Device</label>
+  <input type="file" id="file-input-45" accept="image/*" multiple onchange="displayImages(this, 45)">
+</div>
+<!-- Container for multiple images --> 
+<div id="image-container-45"></div>
+<!-- Camera Container -->
+<div id="camera-container-45" style="display: none;">
+  <video id="camera-45" width="100%" height="auto" autoplay></video>
+  <button class="add-image" onclick="captureImage(45)">Capture Image</button>
+  <button class="add-image" onclick="stopCamera(45)">Stop Camera</button>
+  <button class="reverse-camera" onclick="switchCamera(45)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
+  <canvas id="canvas-45" style="display: none;"></canvas> <!-- Canvas to capture the image -->
+</div>
+    </tr>
+   </tr>
+    <tr id="row-4675">
+      <td>5.8</td>
+      <td class="observation_text">Ensure that by pressing the CANCEL and Common Button on the SM-OCIP CANCEL Popup message Should be displayed on the SM- OCIP.</td>
+      <td class="select">
+        <select id="status-dropdown" onchange="highlightSelect(this)">
+          <option value="Select">Select</option>
+          <option value="Ok">Ok</option>
+          <option value="Not Ok">Not Ok</option>
         </select>
       </td>
       <td class="remarks">
@@ -4665,11 +4862,24 @@ async function showSection(section) {
          <button id="get-details-btn" onclick="getDetails()">Get Details</button>
       </div>
     ;`
-  } else if (section === "7.0") {
+  } 
+
+    else if (section === "7.0") {
     // For all other sections, add Save Observation button
     mainContent.innerHTML += `
-      <h3 class="section-heading">RFID PS Unit Observations</h3>
-      <div class="table-container"> 
+      <div class="upload-container" style="margin-bottom: 10px">
+      <label for="upload-excel" 
+      style="background-color:green;
+      color:white;
+      padding: 8px 14px;
+      border-radius:5px;
+      cursor:pointer;
+      font-weight:bold;">
+      Upload File</label>
+      <input type="file" id="upload-excel" accept=".xlsx, .xls" style="display: none;" onchange="handleExcelUpload(event)">
+      </div>
+      <h3 class="section-heading" > RFID Tags Observations</h3>
+       <div  class="table-container">
       <table class="observations" id="observations-section-7_0">
         <thead>
           <tr>
@@ -4681,149 +4891,29 @@ async function showSection(section) {
           </tr>
         </thead>
         <tbody id="observations-tbody-7_0">
-          <tr id="row-51">
-      <td>6.1</td>
-      <td class="observation_text">Visual Checks (Cracks, Shade, No oil, Center Placement, Play and Tag Number & ABS location on TAG )</td>
-      <td class = "select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Found Ok">Found Ok</option>
-          <option value="Found Not Ok">Found Not Ok</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(51)">Add Image</button>
-<div class="upload-options" id="upload-options-51" style="display: none;">
-  <button class="add-image" onclick="startCamera(51)">Camera</button>
-  <label for="file-input-51" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-51" accept="image/*" multiple onchange="displayImages(this, 51)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-51"></div>
-<!-- Camera Container -->
-<div id="camera-container-51" style="display: none;">
-  <video id="camera-51" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(51)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(51)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(51)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-51" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-
-    <tr id="row-52">
-      <td>6.2</td>
-      <td class="observation_text">Verification of RFID TAG fixing
-Fixing proper Brackets (Point sleeper Bracket & Normal Sleeper Bracket) as per drawing no 5 16 67 0490,106, CC Apran TCAS/2021_02_15 & RDSO Drawing No. SDO/S&T/TCAS/008</td>
-     <td class = "select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Found Ok">Found Ok</option>
-          <option value="Found Not Ok">Found Not Ok</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(52)">Add Image</button>
-<div class="upload-options" id="upload-options-52" style="display: none;">
-  <button class="add-image" onclick="startCamera(52)">Camera</button>
-  <label for="file-input-52" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-52" accept="image/*" multiple onchange="displayImages(this, 52)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-52"></div>
-<!-- Camera Container -->
-<div id="camera-container-52" style="display: none;">
-  <video id="camera-52" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(52)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(52)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(52)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-52" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-    </tr>
-    <tr id="row-53">
-      <td>6.3</td>
-      <td class="observation_text">Verification of Tag Program  as per RFID Tag layout</td>
-     <td class = "select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Found Ok">Found Ok</option>
-          <option value="Found Not Ok">Found Not Ok</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-      <td>
-       <button class="add-image" onclick="showUploadOptions(53)">Add Image</button>
-       <div class="upload-options" id="upload-options-53" style="display: none;">
-       <button class="add-image" onclick="startCamera(53)">Camera</button>
-       <label for="file-input-53" class="upload-label">Upload from Device</label>
-       <input type="file" id="file-input-53" accept="image/*" multiple onchange="displayImages(this, 53)">
-       </div>
-      <!-- Container for multiple images --> 
-      <div id="image-container-53"></div>
-      <!-- Camera Container -->
-      <div id="camera-container-53" style="display: none;">
-      <video id="camera-53" width="100%" height="auto" autoplay></video>
-      <button class="add-image" onclick="captureImage(53)">Capture Image</button>
-      <button class="add-image" onclick="stopCamera(53)">Stop Camera</button>
-      <button class="reverse-camera" onclick="switchCamera(53)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-      <canvas id="canvas-53" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-      </div>
-    </tr>
-    <tr id="row-54">
-      <td>6.4</td>
-      <td class="observation_text">Verification of RFID Tag Placement</td>
-      <td class = "select">
-        <select id="status-dropdown" onchange="highlightSelect(this)">
-          <option value="Select">Select</option>
-          <option value="Found Ok">Found Ok</option>
-          <option value="Found Not Ok">Found Not Ok</option>
-        </select>
-      </td>
-      <td class="remarks">
-        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20"></textarea><br>
-      </td>
-       <td>
-       <button class="add-image" onclick="showUploadOptions(54)">Add Image</button>
-<div class="upload-options" id="upload-options-54" style="display: none;">
-  <button class="add-image" onclick="startCamera(54)">Camera</button>
-  <label for="file-input-54" class="upload-label">Upload from Device</label>
-  <input type="file" id="file-input-54" accept="image/*" multiple onchange="displayImages(this, 54)">
-</div>
-<!-- Container for multiple images --> 
-<div id="image-container-54"></div>
-<!-- Camera Container -->
-<div id="camera-container-54" style="display: none;">
-  <video id="camera-54" width="100%" height="auto" autoplay></video>
-  <button class="add-image" onclick="captureImage(54)">Capture Image</button>
-  <button class="add-image" onclick="stopCamera(54)">Stop Camera</button>
-  <button class="reverse-camera" onclick="switchCamera(54)">🔄 Switch Camera</button> <!-- Reverse Camera Icon -->
-  <canvas id="canvas-54" style="display: none;"></canvas> <!-- Canvas to capture the image -->
-</div>
-       </tr>
-     </tbody>
+         
+  
+    </tbody>
       </table>
       </div>
       <div class="action-buttons">
         <!-- New UPDATE button: -->
       <button type="button" 
               id="update-btn" 
-              style="background-color: blue; color: white; display:none;" 
+              style="background-color: blue; color: white; display: none;" 
               onclick="updateObservation('7_0')">
         Update
       </button>
-        <button type="button" id= "save-btn" style = "display: inline-block;"  onclick="if(validateMandatoryImages('7_0')) { saveObservation('7_0'); }">Save</button>
-         <button id="get-details-btn" onclick="getDetails()">Get Details</button>
+         <button type="button" id= "save-btn" style = "display: inline-block;" onclick="if(validateMandatoryImages('7_0')) { saveObservation('7_0'); }">Save</button>
+         <button id="get-details-btn" onclick="getDetails()" >Get Details</button>
       </div>
     ;`
-  }  
+  } 
+
+
   
+
+
 
 }
 
@@ -4919,7 +5009,8 @@ async function generateReport() {
   const data = await response.json();
 
   if (data.success) {
-
+    // Store the fetched data in sessionStorage
+    console.log("SOMETHING IS FISHYYYYYYYYYYYYYYYYYYYYYYYYYYYYY")
     sessionStorage.setItem("stationDetails", JSON.stringify(data.stationDetails));
      sessionStorage.setItem(
       "observationsData",
@@ -5190,14 +5281,22 @@ async function saveObservation(section) {
     const S_no = row.querySelector("td:first-child")?.innerText.trim() || "";
     const obsField = row.querySelector(".observation_text");
 
+    if (!obsField && section !== "8_0") {
+      alert(`❌ Missing description field for S.No ${S_no}`);
+      if (saveBtn) saveBtn.disabled = false;
+      return;
+    }
+
     let descriptionHtml = "";
     if (obsField) {
       const clone = obsField.cloneNode(true);
       clone.querySelectorAll("input").forEach(i => i.remove());
       descriptionHtml = clone.innerHTML.trim();
-    } 
+    } else if (section === "8_0") {
+      descriptionHtml = "Tag_No:";
+    }
 
-    if (!descriptionHtml || descriptionHtml.toUpperCase() === "N/A") {
+    if ((!descriptionHtml || descriptionHtml.toUpperCase() === "N/A") && section !== "8_0") {
       alert(`⚠️ Description cannot be empty or "N/A" for S.No ${S_no}`);
       if (saveBtn) saveBtn.disabled = false;
       return;
@@ -5209,11 +5308,19 @@ async function saveObservation(section) {
     //const status = row.querySelector("select")?.value || "";
      let status = "";
 
-    status = row.querySelector("select")?.value || "";
-    if (status && status !== "Select") {
-        anyDropdownSelected = true;
-    }
-      
+      // ✅ Special case for S.No 4.2
+      if (S_no === "4.2") {
+        const inputs = row.querySelectorAll(".input-grid input");
+        let values = [];
+        inputs.forEach(inp => values.push(inp.value.trim()));
+        status = values.join(" | "); // You can format however you like
+        anyDropdownSelected=true;
+      } else {
+        status = row.querySelector("select")?.value || "";
+        if (status && status !== "Select") {
+          anyDropdownSelected = true;
+        }
+      }
 
     if (status && status !== "Select") {
       anyDropdownSelected = true;
@@ -5828,7 +5935,7 @@ async function updateObservation(section) {
   // 1) Section mapping (optional index)
   const sectionMapping = {
     "2_0": 0,  "3_0": 1,  "4_0": 2,
-    "5_0": 3,  "6_0": 4,  "7_0": 5
+    "5_0": 3,  "6_0": 4,  "7_0": 5,  "8_0": 6
   };
 
   // 2) Section‐level fields
@@ -5869,6 +5976,12 @@ async function updateObservation(section) {
 
     // 5a) Text, barcode (for 2_0), remarks, status
     let observationText = row.querySelector(".observation_text")?.textContent.trim() || "";
+    if (section === "8_0") {
+      const tagInput = row.querySelector("td:nth-child(2) input[type='text']");
+      const tagVal = tagInput ? tagInput.value.trim() : "";
+      observationText = tagVal ? `Tag_No: ${tagVal}` : "";
+      if (tagVal) hasChanges = true;
+    }
     let barcodeValue    = "";
     if (section === "2_0") {
       const bcInput = row.querySelector("input[name='barcode_kavach_main_unit']");
@@ -5982,26 +6095,27 @@ function getDropdownOptions(sno, observationStatus) {
     return defaultOption;
   }  
 const specificOptions = {
-    "1.1": ["Present", "Not Present"],
-"1.38,1.39,1.40,1.41,1.42,1.43,1.44,1.45,1.46,1.47,1.48,1.49,1.50" : ["Matching", "Not Matching", "Not Installed", "Not Applicable"],    "1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22,1.23,1.24,1.25,1.26,1.27,1.28,1.29,1.30,1.31,1.32,1.33,1.34,1.35,1.36,1.37": ["Matching", "Not Matching", "Not Installed"],
-    "2.1,3.1,3.3,3.12,3.17,3.23,3.24,4.1,4.4,4.5,3.18,3.19,5.1,5.2,5.3,4.2,6.1,6.2,6.3,6.4" : ["Found Ok","Found Not Ok"],
+   "1.1": ["Present", "Not Present"],
+    "1.38,1.39,1.40,1.41,1.42,1.43,1.50,1.44,1.45,1.46,1.47,1.48,1.49" : ["Matching", "Not Matching", "Not Installed", "Not Applicable"],    "1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22,1.23,1.24,1.25,1.26,1.27,1.28,1.29,1.30,1.31,1.32,1.33,1.34,1.35,1.36,1.37": ["Matching", "Not Matching", "Not Installed"],
+    "2.1,3.1,3.3,3.12,3.17,3.23,3.24,4.1,4.5,3.18,3.19,5.1,5.3,5.4,6.1,6.2,6.3,6.4" : ["Found Ok","Found Not Ok"],
     "3.4,3.5,3.6,3.15,3.22" : ["Implemented","Not Implemeneted"],
     "2.2,2.7,2.8,2.13" : ["Fixed","Not Fixed"],
-    "3.16,3.21,4.3,4.6,5.4": ["Connected","Not Connected"],
-    "2.5,2.14,3.2,3.14" : ["Routing done", "Routing Not done"],
+    "3.16,3.21,4.3,5.2,5.5": ["Connected","Not Connected"],
+    "2.5,2.14,3.2,3.14,3.25" : ["Routing done", "Routing Not done"],
     "2.10,2.17,3.9,3.10" : ["Voltage found Ok" , "Voltage found not Ok"],
     "2.12,2.15,3.20" : ["Done","Not Done"],
-    "2.16": ["Ok","Not Ok"],
+    "2.16,5.7,5.8,4.4,2.18": ["Ok","Not Ok"],
     "3.11": ["PCCL Done","PCCL Not Done"],
     "2.11": ["Earth Connected","Earth not connected"],
-    "2.6": ["Functioning","Not Functioning"],
-    "5.5": ["Matching","Not Matching"],
+    "5.6": ["Matching","Not Matching"],
     "3.13": ["Identification Done","Identification Not Done"],
     "2.4,2.9": ["Cable ties implemented","Cable ties not implemented"],
     "2.3":["Joined","Not Joined"],
     "3.7": ["Installed","Not Installed"],
     "3.8":["Rating as per Diagram:","Actual Rating:"],
-    
+    "4.2": ["Quantity Matched","Quantity Not Matched"],
+    "4.6":["Connected","Not Connected","Not Applicable"],
+    "4.7,2.6":["Yes","No"],
   };
 
 
@@ -6030,7 +6144,12 @@ const specificOptions = {
 }
 
 
-
+function handleExcelUpload(event){
+  const file=event.target.files[0];
+  if(file){
+    console.log("Filename:".file.name);
+  }
+}
 
 
 function formatDescription(description) {
@@ -6503,7 +6622,7 @@ function uploadImages(files) {
   });
 }
 function highlightSelect(selectElement) {
-  if (selectElement.value === "Not Present") {
+   if (selectElement.value === "Not Present") {
     selectElement.style.backgroundColor = "red";
   } else if (selectElement.value === "Present") {
     selectElement.style.backgroundColor = "green";
@@ -6579,16 +6698,19 @@ function highlightSelect(selectElement) {
     selectElement.style.backgroundColor = "green";
   } else if (selectElement.value === "Not Installed") {
     selectElement.style.backgroundColor = "red";
-  }else if (selectElement.value === "Panel Qty as per PSD:") {
+  }else if (selectElement.value === "Quantity Matched") {
     selectElement.style.backgroundColor = "green";
   } 
-  else if (selectElement.value === "Actual:") {
+  else if (selectElement.value === "Yes") {
     selectElement.style.backgroundColor = "green";
-  } else if (selectElement.value === "Repeater relays Qty as per PSD:") {
-    selectElement.style.backgroundColor = "green";
+  } else if (selectElement.value === "Quantity Not Matched") {
+    selectElement.style.backgroundColor = "red";
+  } else if (selectElement.value === "No") {
+    selectElement.style.backgroundColor = "red";
   } else {
     selectElement.style.backgroundColor = "";
   }
+  
   
 }
 
@@ -6636,6 +6758,127 @@ function validateMandatoryImages(sectionID) {
   return true;
 }
 
+// Add new row for section 8.0 (RFID PS Unit Observations)
+function addRowSection8() {
+  const sectionId = "8_0";
+  const tbody = document.getElementById(`observations-tbody-${sectionId}`);
+  if (!tbody) return;
+
+  // Determine next S_no: find last numeric s_no in existing rows
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+  const sNos = rows
+    .map(tr => parseFloat(tr.cells?.[0]?.textContent))
+    .filter(n => !isNaN(n));
+  const base = 7.0; // continue after 7.x as per first row 7.1
+  const nextIndex = sNos.length ? Math.max(...sNos) + 0.1 : base + 0.1;
+  const nextSno = nextIndex.toFixed(1);
+
+  // Create a unique rowId using sno without dot
+  const rowId = nextSno.replace(".", "");
+
+  // Build row HTML
+  const tr = document.createElement("tr");
+  tr.id = `row-${rowId}`;
+  tr.innerHTML = `
+      <td>${nextSno}</td>
+      <td class="tag_no" style="width: 20%;"><input type="text" id="tag-no-${rowId}" placeholder="enter tag no" style="width: 100%; box-sizing: border-box;"></td>
+      <td class="select">
+        <select onchange="highlightSelect(this)">
+          <option value="Select">Select</option>
+          <option value="Torquing done">Details in annexure -A</option>
+        </select>
+      </td>
+      <td class="remarks" style="width: 40%;">
+        <textarea placeholder="Add comments here if Not OK..." rows="2" cols="20" style="width: 100%; box-sizing: border-box;"></textarea><br>
+      </td>
+      <td>
+        <button class="add-image" onclick="showUploadOptions(${rowId})">Add Image</button>
+        <div class="upload-options" id="upload-options-${rowId}" style="display: none;">
+          <button class="add-image" onclick="startCamera(${rowId})">Camera</button>
+          <label for="file-input-${rowId}" class="upload-label">Upload from Device</label>
+          <input type="file" id="file-input-${rowId}" accept="image/*" multiple onchange="displayImages(this, ${rowId})">
+        </div>
+        <div id="image-container-${rowId}"></div>
+        <div id="camera-container-${rowId}" style="display: none;">
+          <video id="camera-${rowId}" width="100%" height="auto" autoplay></video>
+          <button class="add-image" onclick="captureImage(${rowId})">Capture Image</button>
+          <button class="add-image" onclick="stopCamera(${rowId})">Stop Camera</button>
+          <button class="reverse-camera" onclick="switchCamera(${rowId})">🔄 Switch Camera</button>
+          <canvas id="canvas-${rowId}" style="display: none;"></canvas>
+        </div>
+      </td>
+  `;
+
+  // Insert before the add-row placeholder if it exists, else append
+  const addRowPlaceholder = document.getElementById(`add-row-${sectionId}`);
+  if (addRowPlaceholder) {
+    tbody.insertBefore(tr, addRowPlaceholder);
+  } else {
+    tbody.appendChild(tr);
+  }
+}
+
+function addRowSection9() {
+  const sectionId = "9_0";
+  const tbody = document.getElementById(`observations-tbody-${sectionId}`);
+  if (!tbody) return;
+
+  // Determine next S_no: find last numeric s_no in existing rows
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+  const sNos = rows
+    .map(tr => parseFloat(tr.cells?.[0]?.textContent))
+    .filter(n => !isNaN(n));
+
+  const base = 1;
+  const nextIndex = sNos.length ? Math.max(...sNos) + 1 : base + 1;
+  const nextSno = nextIndex.toFixed(1);
+
+  // Create a unique rowId using sno without dot
+  const rowId = nextSno.replace(".", "");
+
+  // Build row HTML
+  const tr = document.createElement("tr");
+  tr.id = `row-${rowId}`;
+  tr.innerHTML = `
+    <td>${nextSno}</td>
+    <td class="SA_tag_no">
+      <input type="text" id="SA_tag-no-${rowId}" placeholder="enter SA tag no" style="width: 100%; box-sizing: border-box;">
+    </td>
+    <td class="SF_tag_no">
+      <input type="text" id="SF_tag-no-${rowId}" placeholder="enter SF tag no" style="width: 100%; box-sizing: border-box;">
+    </td>
+    <td class="Req-Dis">
+      <input type="text" id="Req-Dis-${rowId}" placeholder="enter Required Distance as per Layout" style="width: 100%; box-sizing: border-box;">
+    </td>
+    <td class="Act-Dis">
+      <input type="text" id="Act-Dis-${rowId}" placeholder="enter Actual Distance" style="width: 100%; box-sizing: border-box;">
+    </td>
+    <td>
+      <button class="add-image" onclick="showUploadOptions(${rowId})">Add Image</button>
+      <div class="upload-options" id="upload-options-${rowId}" style="display: none;">
+        <button class="add-image" onclick="startCamera(${rowId})">Camera</button>
+        <label for="file-input-${rowId}" class="upload-label">Upload from Device</label>
+        <input type="file" id="file-input-${rowId}" accept="image/*" multiple onchange="displayImages(this, ${rowId})">
+      </div>
+      <div id="image-container-${rowId}"></div>
+      <div id="camera-container-${rowId}" style="display: none;">
+        <video id="camera-${rowId}" width="100%" height="auto" autoplay></video>
+        <button class="add-image" onclick="captureImage(${rowId})">Capture Image</button>
+        <button class="add-image" onclick="stopCamera(${rowId})">Stop Camera</button>
+        <button class="reverse-camera" onclick="switchCamera(${rowId})">🔄 Switch Camera</button>
+        <canvas id="canvas-${rowId}" style="display: none;"></canvas>
+      </div>
+    </td>
+  `;
+
+  // Insert before the add-row placeholder if it exists, else append
+  const addNextRowPlaceholder = document.getElementById(`add-next-row-${sectionId}`);
+  if (addNextRowPlaceholder) {
+    tbody.insertBefore(tr, addNextRowPlaceholder);
+  } else {
+    tbody.appendChild(tr);
+  }
+}
 
 
 
